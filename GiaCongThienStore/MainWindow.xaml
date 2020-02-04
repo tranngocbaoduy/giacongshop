@@ -1,0 +1,913 @@
+﻿<Window x:Class="GiaCongThienStore.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GiaCongThienStore" 
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        DataContext="{StaticResource MainVM}"
+        xmlns:helper="clr-namespace:GiaCongThienStore.Helper"
+            
+        BorderBrush="Black"
+        BorderThickness="0.4"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}" 
+        Height="768"
+        Width="1366"
+        WindowStyle="None"  
+        WindowStartupLocation="CenterScreen" 
+        ResizeMode="NoResize" 
+        Icon="Icon1.ico">
+
+    <Grid>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.25*" Style="{StaticResource BackgroundMode}"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <!--Nội dung trái-->
+            <Grid Grid.Column="0" Height="auto"  Style="{StaticResource BackgroundMode}">
+                <Grid Width="auto">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Name="Heading" Height="65" Style="{StaticResource HeadingNCStyle}"></RowDefinition>
+                        <RowDefinition Style="{StaticResource NCStyle}"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Height="65">
+                        <!--xử lý listener-->
+                        <Grid.Resources>
+                            <Style TargetType="{x:Type Grid}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="False">
+                                        <Setter Property="Background" Value="Transparent"></Setter>
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="#FFE24B"></Setter>
+                                    </Trigger>
+
+                                </Style.Triggers>
+                            </Style>
+                        </Grid.Resources>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                <i:InvokeCommandAction Command="{Binding  }"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
+                        <!--chia cột-->
+                        <TextBlock Style="{StaticResource HeadingTextNCStyle}" Text="Gia Công Thiên" ></TextBlock>
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Grid>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" Style="{StaticResource NCStyle}"></RowDefinition>
+                                <RowDefinition Height="50" Style="{StaticResource NCStyle}"></RowDefinition>
+                                <RowDefinition Height="50" Style="{StaticResource NCStyle}"></RowDefinition>
+                                <RowDefinition Height="50" Style="{StaticResource NCStyle}"></RowDefinition>
+                                <RowDefinition Height="50" Style="{StaticResource NCStyle}"></RowDefinition>
+                                <RowDefinition Height="50" Style="{StaticResource NCStyle}"></RowDefinition>
+                                <RowDefinition Height="50" Style="{StaticResource NCStyle}"></RowDefinition>
+                                <RowDefinition Height="0.05*" Style="{StaticResource NCStyle}"></RowDefinition>
+                                <RowDefinition Height="50" Style="{StaticResource NCStyle}"></RowDefinition>
+                                <RowDefinition Height="50" Style="{StaticResource NCStyle}"></RowDefinition>
+                                <RowDefinition Height="50" Style="{StaticResource NCStyle}"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <!--Tổng quan-->
+                            <Border BorderThickness="0 1 0 0" BorderBrush="#fff" Grid.Row="0" Height="50" ToolTip="Tổng quát thông tin bán hàng">
+                                <Grid Style="{StaticResource ActiveTask}">
+                                    <Grid.Resources>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Background" Value="{Binding ActiveContent[0]}"></Setter>
+                                            <Setter Property="Opacity" Value="{Binding ActiveContent[1]}"></Setter>
+                                        </Style>
+                                    </Grid.Resources>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                                            <i:InvokeCommandAction Command="{Binding ActiveWC}"
+                                                                   CommandParameter="0"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0">
+                                        <Canvas  Width="20" Height="20">
+                                            <Path Data="M22.67,12L18.18,16.5L15.67,14L17.65,12L15.67,10.04L18.18,7.53L22.67,12M12,1.33L16.47,5.82L13.96,8.33L12,6.35L10,8.33L7.5,5.82L12,1.33M12,22.67L7.53,18.18L10.04,15.67L12,17.65L14,15.67L16.5,18.18L12,22.67M1.33,12L5.82,7.5L8.33,10L6.35,12L8.33,13.96L5.82,16.47L1.33,12M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10Z" 
+                                                 Width="20" Height="20" Fill="#fff"  Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Canvas>
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <TextBlock  Style="{StaticResource ActiveTextBlock}" Text="Tổng quan" ></TextBlock>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+
+                            <!--Bản vẽ-->
+                            <Border  Grid.Row="1" Height="50" ToolTip="Tổng quát thông tin bán hàng" Style="{StaticResource BorderNCStyle}" >
+                                <Grid Style="{StaticResource ActiveTask}">
+                                    <Grid.Resources>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Background" Value="{Binding ActiveContent[3]}"></Setter>
+                                            <Setter Property="Opacity" Value="{Binding ActiveContent[4]}"></Setter>
+                                        </Style>
+                                    </Grid.Resources>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                                            <i:InvokeCommandAction Command="{Binding ActiveWC}"
+                                                                   CommandParameter="3"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0">
+                                        <Canvas  Width="20" Height="20">
+                                            <Path Data="M11,2L6,7L7,8L2,13L7,18L8,17L13,22L18,17L17,16L22,11L17,6L16,7L11,2M10,8.5L16,12L10,15.5V8.5Z"
+                                                 Width="20" Height="20" Fill="#fff"  Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Canvas>
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <TextBlock Style="{StaticResource ActiveTextBlock}" Text="Bản vẽ" ></TextBlock>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+
+
+                            <!--Nhân viên-->
+                            <Border  Grid.Row="2" Height="45" ToolTip="Tổng quát thông tin bán hàng" Style="{StaticResource BorderNCStyle}" >
+                                <Grid Style="{StaticResource ActiveTask}">
+                                    <Grid.Resources>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Background" Value="{Binding ActiveContent[6]}"></Setter>
+                                            <Setter Property="Opacity" Value="{Binding ActiveContent[7]}"></Setter>
+                                        </Style>
+                                    </Grid.Resources>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                                            <i:InvokeCommandAction Command="{Binding ActiveWC}"
+                                                                   CommandParameter="6"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0">
+                                        <Canvas  Width="20" Height="20">
+                                            <Path Data="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z"
+                                                Width="20" Height="20"  Fill="#fff"  Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Canvas>
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <TextBlock Style="{StaticResource ActiveTextBlock}" Text="Nhân viên" ></TextBlock>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+
+                            <!--Khách hàng-->
+                            <Border  Grid.Row="3" Height="45" ToolTip="Tổng quát thông tin bán hàng" Style="{StaticResource BorderNCStyle}" >
+                                <Grid Style="{StaticResource ActiveTask}">
+                                    <Grid.Resources>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Background" Value="{Binding ActiveContent[9]}"></Setter>
+                                            <Setter Property="Opacity" Value="{Binding ActiveContent[10]}"></Setter>
+                                        </Style>
+                                    </Grid.Resources>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                                            <i:InvokeCommandAction Command="{Binding ActiveWC}"
+                                                                   CommandParameter="9"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0">
+                                        <Canvas  Width="20" Height="20">
+                                            <Path Data="M22.67,12L18.18,16.5L15.67,14L17.65,12L15.67,10.04L18.18,7.53L22.67,12M12,1.33L16.47,5.82L13.96,8.33L12,6.35L10,8.33L7.5,5.82L12,1.33M12,22.67L7.53,18.18L10.04,15.67L12,17.65L14,15.67L16.5,18.18L12,22.67M1.33,12L5.82,7.5L8.33,10L6.35,12L8.33,13.96L5.82,16.47L1.33,12M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10Z" 
+                                                  Width="20" Height="20" Fill="#fff"  Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Canvas>
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <TextBlock Style="{StaticResource ActiveTextBlock}" Text="Khách hàng" ></TextBlock>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+
+
+                            <!--Sản phẩm-->
+                            <Border  Grid.Row="4" Height="45" ToolTip="Tổng quát thông tin bán hàng" Style="{StaticResource BorderNCStyle}" >
+                                <Grid Style="{StaticResource ActiveTask}">
+                                    <Grid.Resources>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Background" Value="{Binding ActiveContent[12]}"></Setter>
+                                            <Setter Property="Opacity" Value="{Binding ActiveContent[13]}"></Setter>
+                                        </Style>
+                                    </Grid.Resources>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                                            <i:InvokeCommandAction Command="{Binding ActiveWC}"
+                                                                   CommandParameter="12"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0">
+                                        <Canvas  Width="20" Height="20">
+                                            <Path Data="M12.6,2.86C15.27,4.1 18,5.39 20.66,6.63C20.81,6.7 21,6.75 21,6.95C21,7.15 20.81,7.19 20.66,7.26C18,8.5 15.3,9.77 12.62,11C12.21,11.21 11.79,11.21 11.38,11C8.69,9.76 6,8.5 3.32,7.25C3.18,7.19 3,7.14 3,6.94C3,6.76 3.18,6.71 3.31,6.65C6,5.39 8.74,4.1 11.44,2.85C11.73,2.72 12.3,2.73 12.6,2.86M12,21.15C11.8,21.15 11.66,21.07 11.38,20.97C8.69,19.73 6,18.47 3.33,17.22C3.19,17.15 3,17.11 3,16.9C3,16.7 3.19,16.66 3.34,16.59C3.78,16.38 4.23,16.17 4.67,15.96C5.12,15.76 5.56,15.76 6,15.97C7.79,16.8 9.57,17.63 11.35,18.46C11.79,18.67 12.23,18.66 12.67,18.46C14.45,17.62 16.23,16.79 18,15.96C18.44,15.76 18.87,15.75 19.29,15.95C19.77,16.16 20.24,16.39 20.71,16.61C20.78,16.64 20.85,16.68 20.91,16.73C21.04,16.83 21.04,17 20.91,17.08C20.83,17.14 20.74,17.19 20.65,17.23C18,18.5 15.33,19.72 12.66,20.95C12.46,21.05 12.19,21.15 12,21.15M12,16.17C11.9,16.17 11.55,16.07 11.36,16C8.68,14.74 6,13.5 3.34,12.24C3.2,12.18 3,12.13 3,11.93C3,11.72 3.2,11.68 3.35,11.61C3.8,11.39 4.25,11.18 4.7,10.97C5.13,10.78 5.56,10.78 6,11C7.78,11.82 9.58,12.66 11.38,13.5C11.79,13.69 12.21,13.69 12.63,13.5C14.43,12.65 16.23,11.81 18.04,10.97C18.45,10.78 18.87,10.78 19.29,10.97C19.76,11.19 20.24,11.41 20.71,11.63C20.77,11.66 20.84,11.69 20.9,11.74C21.04,11.85 21.04,12 20.89,12.12C20.84,12.16 20.77,12.19 20.71,12.22C18,13.5 15.31,14.75 12.61,16C12.42,16.09 12.08,16.17 12,16.17Z"  
+                                                 Width="20" Height="20"  Fill="#fff"  Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Canvas>
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <TextBlock Style="{StaticResource ActiveTextBlock}" Text="Sản Phẩm" ></TextBlock>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+
+                            <!--Sổ quỹ -->
+                            <Border  Grid.Row="5" Height="45" ToolTip="Tổng quát thông tin bán hàng" Style="{StaticResource BorderNCStyle}" >
+                                <Grid Style="{StaticResource ActiveTask}">
+                                    <Grid.Resources>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Background" Value="{Binding ActiveContent[15]}"></Setter>
+                                            <Setter Property="Opacity" Value="{Binding ActiveContent[16]}"></Setter>
+                                        </Style>
+                                    </Grid.Resources>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                                            <i:InvokeCommandAction Command="{Binding ActiveWC}"
+                                                                   CommandParameter="15"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0">
+                                        <Canvas  Width="20" Height="20">
+                                            <Path Data="M22,21H2V3H4V19H6V17H10V19H12V16H16V19H18V17H22V21M18,14H22V16H18V14M12,6H16V9H12V6M16,15H12V10H16V15M6,10H10V12H6V10M10,16H6V13H10V16Z"
+                                                 Width="20" Height="20"  Fill="#fff"  Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Canvas>
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <TextBlock Style="{StaticResource ActiveTextBlock}" Text="Sổ quỹ" ></TextBlock>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+
+                            <!--Báo cáo-->
+                            <Border  Grid.Row="6" Height="45" ToolTip="Tổng quát thông tin bán hàng" Style="{StaticResource BorderNCStyle}" >
+                                <Grid Style="{StaticResource ActiveTask}">
+                                    <Grid.Resources>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Background" Value="{Binding ActiveContent[18]}"></Setter>
+                                            <Setter Property="Opacity" Value="{Binding ActiveContent[19]}"></Setter>
+                                        </Style>
+                                    </Grid.Resources>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                                            <i:InvokeCommandAction Command="{Binding ActiveWC}"
+                                                                   CommandParameter="18"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0">
+                                        <Canvas  Width="20" Height="20">
+                                            <Path Data="M19,3H14.82C14.25,1.44 12.53,0.64 11,1.2C10.14,1.5 9.5,2.16 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M7,7H17V5H19V19H5V5H7V7M17,11H7V9H17V11M15,15H7V13H15V15Z" 
+                                                 Width="18" Height="24"  Fill="#fff"  Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Canvas>
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <TextBlock Style="{StaticResource ActiveTextBlock}" Text="Báo cáo" ></TextBlock>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+
+
+                            <Grid Grid.Row="7" Height="100" Style="{StaticResource NCStyle}"></Grid>
+                            <!--Cá nhân -->
+                            <Border BorderThickness="0 0.5 0 0" BorderBrush="#fff" Grid.Row="8" Height="45" ToolTip="Tổng quát thông tin bán hàng" Style="{StaticResource BorderNCStyle}" >
+                                <Grid Style="{StaticResource ActiveTask}">
+                                    <Grid.Resources>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Background" Value="{Binding ActiveContent[21]}"></Setter>
+                                            <Setter Property="Opacity" Value="{Binding ActiveContent[22]}"></Setter>
+                                        </Style>
+                                    </Grid.Resources>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                                            <i:InvokeCommandAction Command="{Binding ActiveWC}"
+                                                                   CommandParameter="21"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0">
+                                        <Canvas  Width="20" Height="20">
+                                            <Path Data="M22.67,12L18.18,16.5L15.67,14L17.65,12L15.67,10.04L18.18,7.53L22.67,12M12,1.33L16.47,5.82L13.96,8.33L12,6.35L10,8.33L7.5,5.82L12,1.33M12,22.67L7.53,18.18L10.04,15.67L12,17.65L14,15.67L16.5,18.18L12,22.67M1.33,12L5.82,7.5L8.33,10L6.35,12L8.33,13.96L5.82,16.47L1.33,12M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10Z" 
+                                                 Width="24" Height="24"  Fill="#fff"  Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Canvas>
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <TextBlock Style="{StaticResource ActiveTextBlock}" Text="Cá nhân" ></TextBlock>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+
+                            <!--Góp ý-->
+                            <Border  Grid.Row="9" Height="45" ToolTip="Tổng quát thông tin bán hàng" Style="{StaticResource BorderNCStyle}" >
+                                <Grid Style="{StaticResource ActiveTask}">
+                                    <Grid.Resources>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Background" Value="{Binding ActiveContent[24]}"></Setter>
+                                            <Setter Property="Opacity" Value="{Binding ActiveContent[25]}"></Setter>
+                                        </Style>
+                                    </Grid.Resources>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                                            <i:InvokeCommandAction Command="{Binding ActiveWC}"
+                                                                   CommandParameter="24"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0">
+                                        <Canvas  Width="20" Height="20">
+                                            <Path Data="M22.67,12L18.18,16.5L15.67,14L17.65,12L15.67,10.04L18.18,7.53L22.67,12M12,1.33L16.47,5.82L13.96,8.33L12,6.35L10,8.33L7.5,5.82L12,1.33M12,22.67L7.53,18.18L10.04,15.67L12,17.65L14,15.67L16.5,18.18L12,22.67M1.33,12L5.82,7.5L8.33,10L6.35,12L8.33,13.96L5.82,16.47L1.33,12M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10Z" 
+                                                 Width="24" Height="24"  Fill="#fff"  Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Canvas>
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <TextBlock Style="{StaticResource ActiveTextBlock}" Text="Góp ý" ></TextBlock>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+
+                            <!--Cấu hình-->
+                            <Border  Grid.Row="10" Height="45" ToolTip="Tổng quát thông tin bán hàng" Style="{StaticResource BorderNCStyle}" >
+                                <Grid Style="{StaticResource ActiveTask}">
+                                    <Grid.Resources>
+                                        <Style TargetType="Grid">
+                                            <Setter Property="Background" Value="{Binding ActiveContent[27]}"></Setter>
+                                            <Setter Property="Opacity" Value="{Binding ActiveContent[28]}"></Setter>
+                                        </Style>
+                                    </Grid.Resources>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                                            <i:InvokeCommandAction Command="{Binding ActiveWC}"
+                                                                   CommandParameter="27"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0">
+                                        <Canvas  Width="20" Height="20">
+                                            <Path Data="M22.67,12L18.18,16.5L15.67,14L17.65,12L15.67,10.04L18.18,7.53L22.67,12M12,1.33L16.47,5.82L13.96,8.33L12,6.35L10,8.33L7.5,5.82L12,1.33M12,22.67L7.53,18.18L10.04,15.67L12,17.65L14,15.67L16.5,18.18L12,22.67M1.33,12L5.82,7.5L8.33,10L6.35,12L8.33,13.96L5.82,16.47L1.33,12M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10Z" 
+                                                 Width="24" Height="24"  Fill="#fff"  Stretch="Fill" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                        </Canvas>
+                                    </Grid>
+                                    <Grid Grid.Column="1">
+                                        <TextBlock Style="{StaticResource ActiveTextBlock}" Text="Cấu hình" ></TextBlock>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+            <!--Nội dung phải-->
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <!--Content Tổng Quan-->
+                    <Grid x:Name="TongQuan" Visibility="{Binding ActiveContent[2]}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="0.2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.Resources>
+                            <Style TargetType="Grid">
+                            </Style>
+                        </Grid.Resources>
+                        <Grid Grid.Row="0" >
+                            <TextBlock Text="Hoạt động nổi bật" Style="{StaticResource HeadingContent}"></TextBlock>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Margin="75 25">
+                            <Grid.Resources>
+                                <Style TargetType="Grid">
+                                    <Setter Property="Height" Value="180"></Setter>
+                                    <Setter Property="Width" Value="auto"></Setter>
+                                </Style>
+                            </Grid.Resources>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+
+                            <!--Hoạt động nổi bật-->
+
+                            <Grid Grid.Column="0" Background="#2687CE" Margin="0 0 25 0">
+                                <Grid Width="auto" Height="auto">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0">
+                                        <Canvas Height="70" Width="57" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Path Height="70" Width="57" Stretch="Fill" Fill="White"
+                                                Data="M19,3H14.82C14.25,1.44 12.53,0.64 11,1.2C10.14,1.5 9.5,2.16 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M7,7H17V5H19V19H5V5H7V7M17,11H7V9H17V11M15,15H7V13H15V15Z" />
+                                        </Canvas>
+                                    </Grid>
+                                    <Grid Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                        <Grid.Resources>
+                                            <Style TargetType="Grid">
+                                            </Style>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                                                <Setter Property="FontFamily" Value="Roboto"></Setter>
+                                                <Setter Property="Foreground" Value="White"></Setter>
+                                                <Setter Property="FontSize" Value="18"></Setter>
+                                                <Setter Property="Margin" Value="0 10"></Setter>
+                                                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                                                <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                                            </Style>
+                                        </Grid.Resources>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1.2*"></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Grid.Row="0" Text="Tổng số bản vẽ"></TextBlock>
+                                        <TextBlock Grid.Row="1" Text="Số bản vẽ đang theo dõi"></TextBlock>
+                                        <TextBlock Grid.Row="2" Text="Nhân viên đang hoạt động"></TextBlock>
+
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+
+
+                            <!--Tồn kho-->
+
+                            <Grid Grid.Column="1" Background="#E84343" Margin="25 0 0 0">
+                                <Grid Width="auto" Height="auto">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Column="0">
+                                        <Canvas Height="70" Width="57" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Path Height="70" Width="57" Stretch="Fill" Fill="White"
+                                                Data="M19,3H14.82C14.25,1.44 12.53,0.64 11,1.2C10.14,1.5 9.5,2.16 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M7,7H17V5H19V19H5V5H7V7M17,11H7V9H17V11M15,15H7V13H15V15Z" />
+                                        </Canvas>
+                                    </Grid>
+                                    <Grid Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">
+                                        <Grid.Resources>
+                                            <Style TargetType="Grid">
+                                            </Style>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                                                <Setter Property="FontFamily" Value="Roboto"></Setter>
+                                                <Setter Property="Foreground" Value="White"></Setter>
+                                                <Setter Property="FontSize" Value="18"></Setter>
+                                                <Setter Property="Margin" Value="0 10"></Setter>
+                                                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                                                <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                                            </Style>
+                                        </Grid.Resources>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="1.2*"></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                            <RowDefinition></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock Grid.Row="0" Text="Tổng số bản vẽ"></TextBlock>
+                                        <TextBlock Grid.Row="1" Text="Số bản vẽ đang theo dõi"></TextBlock>
+                                        <TextBlock Grid.Row="2" Text="Nhân viên đang hoạt động"></TextBlock>
+
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.Row="2" >
+                            <TextBlock Text="Hoạt động nổi bật" Style="{StaticResource HeadingContent}"></TextBlock>
+                        </Grid>
+                        <materialDesign:Card ToolTip="Bản vẽ gần nhất" Grid.Row="3" Margin="75 25" VerticalAlignment="Stretch" >
+                            <ScrollViewer VerticalScrollBarVisibility="Disabled" >
+                                <ListView ItemsSource="{Binding CaLamViecList}" >
+                                    <ListView.View >
+                                        <GridView>
+                                            <GridViewColumn Header="Mã ca" DisplayMemberBinding="{Binding MC}"></GridViewColumn>
+                                            <GridViewColumn Header="Tên ca" DisplayMemberBinding="{Binding TENCA}"></GridViewColumn>
+                                            <GridViewColumn Header="Từ" DisplayMemberBinding="{Binding TU}"></GridViewColumn>
+                                            <GridViewColumn Header="Đến" DisplayMemberBinding="{Binding DEN}"></GridViewColumn>
+                                            <GridViewColumn Header="Ngày khởi tạo" DisplayMemberBinding="{Binding NGAYKHOITAO}"></GridViewColumn>
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </ScrollViewer>
+                        </materialDesign:Card>
+                    </Grid>
+
+                    <!--Content Bản Vẽ-->
+                    <Grid x:Name="BanVe" Visibility="{Binding ActiveContent[5]}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="0.2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" >
+                            <TextBlock Style="{StaticResource HeadingContent}" Text="Bản vẽ"></TextBlock>
+                        </Grid>
+                    </Grid>
+
+                    <!--Content Nhân Viên-->
+                    <Grid x:Name="NhanVien" Visibility="{Binding ActiveContent[8]}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="0.2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" >
+                            <TextBlock Style="{StaticResource HeadingContent}" Text="Nhân viên"  FontSize="27"></TextBlock>
+                        </Grid>
+                    </Grid>
+
+                    <!--Content Khách Hàng-->
+                    <Grid x:Name="KhachHang" Visibility="{Binding ActiveContent[11]}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="0.2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" >
+                            <TextBlock Style="{StaticResource HeadingContent}" Text="Khách Hàng"  FontSize="27"></TextBlock>
+                        </Grid>
+                    </Grid>
+
+                    <!--Content Sản Phẩm-->
+                    <Grid x:Name="SanPham" Visibility="{Binding ActiveContent[14]}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="0.2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" >
+                            <TextBlock Text="Tác vụ" Style="{StaticResource HeadingContent}"></TextBlock>
+                        </Grid>
+
+                        <Grid Grid.Row="1" Margin="75 25">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                                <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                                <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.Resources>
+                                <Style TargetType="Grid">
+                                    <Setter Property="Height" Value="auto" ></Setter>
+                                    <Setter Property="Width" Value="auto"></Setter>
+                                </Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="#FFF"></Setter>
+                                    <Setter Property="Width" Value="Auto"></Setter>
+                                    <Setter Property="Height" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"></Setter>
+                                    <Style.Triggers>
+                                        <MultiTrigger>
+                                            <MultiTrigger.Conditions>
+                                                <Condition  Property="IsMouseOver" Value="True" />
+                                            </MultiTrigger.Conditions>
+                                            <MultiTrigger.Setters>
+                                                <Setter Property="Background" Value="#DCEEFF"></Setter>
+                                            </MultiTrigger.Setters>
+                                        </MultiTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Grid.Resources>
+                            <Grid Grid.Column="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.Resources>
+                                    <Style TargetType="Grid">
+                                        <Setter Property="Height" Value="auto" ></Setter>
+                                        <Setter Property="Width" Value="auto"></Setter>
+                                    </Style>
+                                </Grid.Resources>
+                                <Border BorderBrush="#000" BorderThickness="1" Grid.Row="0" Margin="10">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.75*"></RowDefinition>
+                                            <RowDefinition Height="0.25*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.Resources>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                                                <Setter Property="FontFamily" Value="Roboto"></Setter>
+                                                <Setter Property="Foreground" Value="#000"></Setter>
+                                                <Setter Property="FontSize" Value="18"></Setter>
+                                                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                                                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                                            </Style>
+                                            <Style TargetType="Canvas">
+                                                <Setter Property="Width" Value="170"></Setter>
+                                                <Setter Property="Height" Value="170"></Setter>
+                                            </Style>
+                                            <Style TargetType="Image">
+                                                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                                                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                                                <Setter Property="Width" Value="170"></Setter>
+                                                <Setter Property="Height" Value="170"></Setter>
+                                                <Setter Property="Margin" Value="0 25 0 0"></Setter>
+                                            </Style>
+                                        </Grid.Resources>
+                                        <Grid  Grid.Row="0">
+                                            <Canvas>
+                                                <Image Source="./ResourceImage/order.png"/>
+                                            </Canvas>
+                                        </Grid>
+                                        <TextBlock Grid.Row="1" Text="Danh mục sản phẩm"></TextBlock>
+                                    </Grid>
+                                </Border>
+
+                                <Border BorderBrush="#000" BorderThickness="1" Grid.Row="1" Margin="10">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.75*"></RowDefinition>
+                                            <RowDefinition Height="0.25*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.Resources>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                                                <Setter Property="FontFamily" Value="Roboto"></Setter>
+                                                <Setter Property="Foreground" Value="#000"></Setter>
+                                                <Setter Property="FontSize" Value="18"></Setter>
+                                                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                                                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                                            </Style>
+                                            <Style TargetType="Canvas">
+                                                <Setter Property="Width" Value="170"></Setter>
+                                                <Setter Property="Height" Value="170"></Setter>
+                                            </Style>
+                                            <Style TargetType="Image">
+                                                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                                                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                                                <Setter Property="Width" Value="170"></Setter>
+                                                <Setter Property="Height" Value="170"></Setter>
+                                                <Setter Property="Margin" Value="0 25 0 0"></Setter>
+                                            </Style>
+                                        </Grid.Resources>
+                                        <Grid  Grid.Row="0">
+                                            <Canvas>
+                                                <Image Source="./ResourceImage/order.png"/>
+                                            </Canvas>
+                                        </Grid>
+                                        <TextBlock Grid.Row="1" Text="Danh mục sản phẩm"></TextBlock>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Border BorderBrush="#000" BorderThickness="1" Grid.Row="0" Margin="10">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.75*"></RowDefinition>
+                                            <RowDefinition Height="0.25*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.Resources>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                                                <Setter Property="FontFamily" Value="Roboto"></Setter>
+                                                <Setter Property="Foreground" Value="#000"></Setter>
+                                                <Setter Property="FontSize" Value="18"></Setter>
+                                                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                                                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                                            </Style>
+                                            <Style TargetType="Canvas">
+                                                <Setter Property="Width" Value="170"></Setter>
+                                                <Setter Property="Height" Value="170"></Setter>
+                                            </Style>
+                                            <Style TargetType="Image">
+                                                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                                                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                                                <Setter Property="Width" Value="170"></Setter>
+                                                <Setter Property="Height" Value="170"></Setter>
+                                                <Setter Property="Margin" Value="0 25 0 0"></Setter>
+                                            </Style>
+                                        </Grid.Resources>
+                                        <Grid  Grid.Row="0">
+                                            <Canvas>
+                                                <Image Source="./ResourceImage/order.png"/>
+                                            </Canvas>
+                                        </Grid>
+                                        <TextBlock Grid.Row="1" Text="Danh mục sản phẩm"></TextBlock>
+                                    </Grid>
+                                </Border>
+
+                                <Border BorderBrush="#000" BorderThickness="1" Grid.Row="1" Margin="10">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="0.75*"></RowDefinition>
+                                            <RowDefinition Height="0.25*"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <Grid.Resources>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                                                <Setter Property="FontFamily" Value="Roboto"></Setter>
+                                                <Setter Property="Foreground" Value="#000"></Setter>
+                                                <Setter Property="FontSize" Value="18"></Setter>
+                                                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                                                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                                            </Style>
+                                            <Style TargetType="Canvas">
+                                                <Setter Property="Width" Value="170"></Setter>
+                                                <Setter Property="Height" Value="170"></Setter>
+                                            </Style>
+                                            <Style TargetType="Image">
+                                                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                                                <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                                                <Setter Property="Width" Value="170"></Setter>
+                                                <Setter Property="Height" Value="170"></Setter>
+                                                <Setter Property="Margin" Value="0 25 0 0"></Setter>
+                                            </Style>
+                                        </Grid.Resources>
+                                        <Grid  Grid.Row="0">
+                                            <Canvas>
+                                                <Image Source="./ResourceImage/order.png"/>
+                                            </Canvas>
+                                        </Grid>
+                                        <TextBlock Grid.Row="1" Text="Danh mục sản phẩm"></TextBlock>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+                            <Grid Grid.Column="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="Width" Value="auto"></Setter>
+                                        <Setter Property="BorderBrush" Value="#000"></Setter>
+                                        <Setter Property="BorderThickness" Value="1"></Setter>
+                                        <Setter Property="Margin" Value="10"></Setter>
+                                        <Setter Property="Background" Value="#36A541"></Setter>
+                                    </Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="FontWeight" Value="Bold"></Setter>
+                                        <Setter Property="FontFamily" Value="Roboto"></Setter>
+                                        <Setter Property="Foreground" Value="#fff"></Setter>
+                                        <Setter Property="FontSize" Value="18"></Setter>
+                                        <Setter Property="Margin" Value="0 10"></Setter>
+                                        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                                        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+                                    </Style>
+                                </Grid.Resources>
+                                <Border Grid.Row="0">
+                                    <TextBlock Text="Thêm sản phẩm mới"></TextBlock>
+                                </Border>
+                                <Border Grid.Row="1"></Border>
+                                <Border Grid.Row="2"></Border>
+                                <Border Grid.Row="3"></Border>
+                            </Grid>
+                        </Grid>
+
+                    </Grid>
+
+                    <!--Content Sổ quỹ-->
+                    <Grid x:Name="SoQuy" Visibility="{Binding ActiveContent[17]}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="0.2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" >
+                            <TextBlock Style="{StaticResource HeadingContent}" Text="Sổ quỹ"  FontSize="27"></TextBlock>
+                        </Grid>
+                    </Grid>
+
+
+                    <!--Content Báo Cáo-->
+                    <Grid x:Name="BaoCao" Visibility="{Binding ActiveContent[20]}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="0.2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" >
+                            <TextBlock Style="{StaticResource HeadingContent}" Text="Báo cáo"  FontSize="27"></TextBlock>
+                        </Grid>
+                    </Grid>
+
+                    <!--Content Cá Nhân-->
+                    <Grid x:Name="CaNhan" Visibility="{Binding ActiveContent[23]}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="0.2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" >
+                            <TextBlock Style="{StaticResource HeadingContent}" Text="Cá nhân"  FontSize="27"></TextBlock>
+                        </Grid>
+                    </Grid>
+
+                    <!--Content Góp Ý-->
+                    <Grid x:Name="GopY" Visibility="{Binding ActiveContent[26]}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="0.2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" >
+                            <TextBlock Style="{StaticResource HeadingContent}" Text="Góp ý"  FontSize="27"></TextBlock>
+                        </Grid>
+                    </Grid>
+
+                    <!--Content Cấu Hình-->
+                    <Grid x:Name="CauHinh" Visibility="{Binding ActiveContent[29]}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="0.2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" >
+                            <TextBlock Style="{StaticResource HeadingContent}" Text="Cấu hình"  FontSize="27"></TextBlock>
+                        </Grid>
+                    </Grid>
+
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

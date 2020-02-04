@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7ae224cdd2354e109d808589daee3fbd" Name="Diagram1">
+        <EntityTypeShape EntityType="GiaCongStoreModel.BANVE" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.CALAMVIEC" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.CHEDOCAT" Width="1.5" PointX="8.25" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.CHITIETNGUOITHAMGIABANVE" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.CHITIETNGUOITHAMGIAQUYTRINH" Width="1.5" PointX="6" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.CHITIETPHIEUNHAP" Width="1.5" PointX="13.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.CHITIETPHIEUXUAT" Width="1.5" PointX="10.5" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.CHITIETSANPHAMDUKIENBANVE" Width="1.5" PointX="10.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.CHITIETSANPHAMQUYTRINH" Width="1.5" PointX="12.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.CHUCVU" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.KHACHHANG" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.LOAIQUYTRINH" Width="1.5" PointX="8.25" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.LOAISANPHAM" Width="1.5" PointX="6" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.NHACUNGCAP" Width="1.5" PointX="6" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.NHANVIEN" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.PHIEUNHAP" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.PHIEUXUAT" Width="1.5" PointX="8.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.QUYTRINH" Width="1.5" PointX="10.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.SANPHAM" Width="1.5" PointX="8.25" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.TAIKHOAN" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.TRANGTHAINHAPXUAT" Width="1.5" PointX="6" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_BANVE_KHACHHANG" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_BANVE_NHANVIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_CHITIETNGUOITHAMGIABANVE_BANVE" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_CHITIETSANPHAMDUKIENBANVE_BANVE" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_QUYTRINH_BANVE" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_NHANVIEN_CALAMVIEC" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_QUYTRINH_CHEDOCAT" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_CHITIETNGUOITHAMGIABANVE_CHUCVU" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_CHITIETNGUOITHAMGIABANVE_NHANVIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_CHITIETNGUOITHAMGIAQUYTRINH_CHUCVU" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_CHITIETNGUOITHAMGIAQUYTRINH_NHANVIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_CHITIETNGUOITHAMGIAQUYTRINH_QUYTRINH" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_CHITIETPHIEUNHAP_PHIEUNHAP" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_CHITIETPHIEUNHAP_SANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_CHITIETPHIEUXUAT_PHIEUXUAT" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_CHITIETPHIEUXUAT_SANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_CHITIETSANPHAMDUKIENBANVE_SANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_CHITIETSANPHAMQUYTRINH_QUYTRINH" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_CHITIETSANPHAMQUYTRINH_SANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_NHANVIEN_CHUCVU" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_QUYTRINH_LOAIQUYTRINH" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_SANPHAM_LOAISANPHAM" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_SANPHAM_NHACUNGCAP" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_NHANVIEN_TAIKHOAN" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_PHIEUNHAP_NHANVIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_PHIEUXUAT_NHANVIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_QUYTRINH_NHANVIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_PHIEUNHAP_TRANGTHAINHAPXUAT" ManuallyRouted="false" />
+        <AssociationConnector Association="GiaCongStoreModel.FK_PHIEUXUAT_TRANGTHAINHAPXUAT" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
