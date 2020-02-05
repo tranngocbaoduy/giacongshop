@@ -143,7 +143,7 @@
     <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="ACTIVATE" Type="Boolean" Nullable="false" />
     <Property Name="NGAYKHOITAO" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="BANVE" Relationship="Self.FK_BANVE_KHACHHANG" FromRole="KHACHHANG" ToRole="BANVE" />
+    <NavigationProperty Name="BANVEs" Relationship="Self.FK_BANVE_KHACHHANG" FromRole="KHACHHANG" ToRole="BANVE" />
   </EntityType>
   <EntityType Name="LOAIQUYTRINH">
     <Key>
@@ -263,9 +263,15 @@
     <Property Name="MSP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="TENSANPHAM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DONVITINH" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CODE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="SOLUONG" Type="Int32" Nullable="false" />
-    <Property Name="QUYCACH" Type="Int32" Nullable="false" />
-    <Property Name="HINHANH" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="QUYCACH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DTRONG" Type="Double" Nullable="false" />
+    <Property Name="DNGOAI" Type="Double" Nullable="false" />
+    <Property Name="LCHIEUDAI" Type="Double" Nullable="false" />
+    <Property Name="PHIDUONGKINH" Type="Double" Nullable="false" />
+    <Property Name="GHICHU" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HINHANH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ACTIVATE" Type="Boolean" Nullable="false" />
     <Property Name="NHACUNGCAP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="LOAISANPHAM" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
@@ -299,13 +305,13 @@
   </EntityType>
   <Association Name="FK_BANVE_KHACHHANG">
     <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
-    <End Role="BANVE" Type="Self.BANVE" Multiplicity="0..1" />
+    <End Role="BANVE" Type="Self.BANVE" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="KHACHHANG">
         <PropertyRef Name="MKH" />
       </Principal>
       <Dependent Role="BANVE">
-        <PropertyRef Name="MBV" />
+        <PropertyRef Name="MKH" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

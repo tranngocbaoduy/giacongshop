@@ -226,8 +226,14 @@
           <ScalarProperty Name="MSP" ColumnName="MSP" />
           <ScalarProperty Name="TENSANPHAM" ColumnName="TENSANPHAM" />
           <ScalarProperty Name="DONVITINH" ColumnName="DONVITINH" />
+          <ScalarProperty Name="CODE" ColumnName="CODE" />
           <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
           <ScalarProperty Name="QUYCACH" ColumnName="QUYCACH" />
+          <ScalarProperty Name="DTRONG" ColumnName="DTRONG" />
+          <ScalarProperty Name="DNGOAI" ColumnName="DNGOAI" />
+          <ScalarProperty Name="LCHIEUDAI" ColumnName="LCHIEUDAI" />
+          <ScalarProperty Name="PHIDUONGKINH" ColumnName="PHIDUONGKINH" />
+          <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
           <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
           <ScalarProperty Name="ACTIVATE" ColumnName="ACTIVATE" />
           <ScalarProperty Name="NHACUNGCAP" ColumnName="NHACUNGCAP" />

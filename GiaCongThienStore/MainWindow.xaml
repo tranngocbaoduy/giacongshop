@@ -24,7 +24,7 @@
     <Grid>
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.25*" Style="{StaticResource BackgroundMode}"></ColumnDefinition>
+                <ColumnDefinition Width="0.2*" Style="{StaticResource BackgroundMode}"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <!--Nội dung trái-->
@@ -484,6 +484,11 @@
                                             <ColumnDefinition Width="0.4*"></ColumnDefinition>
                                             <ColumnDefinition></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
+                                        <Grid.Resources>
+                                            <Style TargetType="Grid">
+                                                <Setter Property="Margin" Value="0"></Setter>
+                                            </Style>
+                                        </Grid.Resources>
                                         <Grid Grid.Column="0">
                                             <Canvas Height="70" Width="57" HorizontalAlignment="Center" VerticalAlignment="Center">
                                                 <Path Height="70" Width="57" Stretch="Fill" Fill="White"
@@ -526,6 +531,11 @@
                                             <ColumnDefinition Width="0.4*"></ColumnDefinition>
                                             <ColumnDefinition></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
+                                        <Grid.Resources>
+                                            <Style TargetType="Grid">
+                                                <Setter Property="Margin" Value="0"></Setter>
+                                            </Style>
+                                        </Grid.Resources>
                                         <Grid Grid.Column="0">
                                             <Canvas Height="70" Width="57" HorizontalAlignment="Center" VerticalAlignment="Center">
                                                 <Path Height="70" Width="57" Stretch="Fill" Fill="White"
@@ -634,7 +644,6 @@
                                 <RowDefinition Height="auto"></RowDefinition>
                                 <RowDefinition Height="auto"></RowDefinition>
                                 <RowDefinition Height="auto"></RowDefinition>
-                                <RowDefinition Height="0.2*"></RowDefinition>
                             </Grid.RowDefinitions>
                             <Grid Grid.Row="0" > 
                                 <TextBlock Text="Tác vụ" Style="{StaticResource HeadingContent}"></TextBlock> 

@@ -31,8 +31,10 @@
         <Setter Property="Control.Background" Value="Transparent"/>
     </Style>
     <Style x:Key="HeadingTextNCStyle">
-        <Setter Property="Control.FontSize" Value="30" />
+        <Setter Property="Control.FontSize" Value="25" />
         <Setter Property="Control.Foreground" Value="#fff" />
+        <Setter Property="Control.FontFamily" Value="Century Gothic" />
+        <Setter Property="Control.FontStyle" Value="Italic" /> 
         <Setter Property="Control.HorizontalAlignment" Value="Center"/>
         <Setter Property="Control.VerticalAlignment" Value="Center"/>
     </Style>

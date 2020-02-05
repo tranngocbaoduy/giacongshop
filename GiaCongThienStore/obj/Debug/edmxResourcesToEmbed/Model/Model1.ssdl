@@ -214,9 +214,15 @@
     <Property Name="MSP" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="TENSANPHAM" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="DONVITINH" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="CODE" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="SOLUONG" Type="int" Nullable="false" />
-    <Property Name="QUYCACH" Type="int" Nullable="false" />
-    <Property Name="HINHANH" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="QUYCACH" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DTRONG" Type="float" Nullable="false" />
+    <Property Name="DNGOAI" Type="float" Nullable="false" />
+    <Property Name="LCHIEUDAI" Type="float" Nullable="false" />
+    <Property Name="PHIDUONGKINH" Type="float" Nullable="false" />
+    <Property Name="GHICHU" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="HINHANH" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="ACTIVATE" Type="bit" Nullable="false" />
     <Property Name="NHACUNGCAP" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="LOAISANPHAM" Type="varchar" MaxLength="10" Nullable="false" />
@@ -241,13 +247,13 @@
   </EntityType>
   <Association Name="FK_BANVE_KHACHHANG">
     <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
-    <End Role="BANVE" Type="Self.BANVE" Multiplicity="0..1" />
+    <End Role="BANVE" Type="Self.BANVE" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="KHACHHANG">
         <PropertyRef Name="MKH" />
       </Principal>
       <Dependent Role="BANVE">
-        <PropertyRef Name="MBV" />
+        <PropertyRef Name="MKH" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -26,8 +26,14 @@ namespace GiaCongThienStore.Model
         public string MSP { get; set; }
         public string TENSANPHAM { get; set; }
         public string DONVITINH { get; set; }
+        public string CODE { get; set; }
         public int SOLUONG { get; set; }
-        public int QUYCACH { get; set; }
+        public string QUYCACH { get; set; }
+        public double DTRONG { get; set; }
+        public double DNGOAI { get; set; }
+        public double LCHIEUDAI { get; set; }
+        public double PHIDUONGKINH { get; set; }
+        public string GHICHU { get; set; }
         public string HINHANH { get; set; }
         public bool ACTIVATE { get; set; }
         public string NHACUNGCAP { get; set; }

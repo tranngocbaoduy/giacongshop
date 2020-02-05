@@ -28,3 +28,4 @@ C:\Users\Tamaki\source\repos\GiaCongThienStore\GiaCongThienStore\obj\Debug\GiaCo
 C:\Users\Tamaki\source\repos\GiaCongThienStore\GiaCongThienStore\obj\Debug\GiaCongThienStore.csproj.CopyComplete
 C:\Users\Tamaki\source\repos\GiaCongThienStore\GiaCongThienStore\obj\Debug\GiaCongThienStore.exe
 C:\Users\Tamaki\source\repos\GiaCongThienStore\GiaCongThienStore\obj\Debug\GiaCongThienStore.pdb
+C:\Users\Tamaki\source\repos\GiaCongThienStore\GiaCongThienStore\obj\Debug\GiaCongThienStore.csprojAssemblyReference.cache

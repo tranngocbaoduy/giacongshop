@@ -14,6 +14,12 @@ namespace GiaCongThienStore.Model
     
     public partial class KHACHHANG
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public KHACHHANG()
+        {
+            this.BANVEs = new HashSet<BANVE>();
+        }
+    
         public string MKH { get; set; }
         public string TENKHACHHANG { get; set; }
         public string SDT { get; set; }
@@ -22,6 +28,7 @@ namespace GiaCongThienStore.Model
         public bool ACTIVATE { get; set; }
         public Nullable<System.DateTime> NGAYKHOITAO { get; set; }
     
-        public virtual BANVE BANVE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BANVE> BANVEs { get; set; }
     }
 }
