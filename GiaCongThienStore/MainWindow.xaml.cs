@@ -23,6 +23,6 @@ namespace GiaCongThienStore
         public MainWindow()
         {
             InitializeComponent();
-        }
+        } 
     }
 }

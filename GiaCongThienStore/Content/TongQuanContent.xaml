@@ -1,0 +1,206 @@
+﻿<UserControl x:Class="GiaCongThienStore.Content.TongQuanContent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i ="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:local="clr-namespace:GiaCongThienStore.Content"
+             mc:Ignorable="d"  
+             d:DesignHeight="450" d:DesignWidth="800"
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+            TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+            TextElement.FontWeight="Regular"
+            TextElement.FontSize="13"
+            TextOptions.TextFormattingMode="Ideal"
+            TextOptions.TextRenderingMode="Auto"
+            Background="{DynamicResource MaterialDesignPaper}"
+            FontFamily="{DynamicResource MaterialDesignFont}" Name="TongQuanUC">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Grid">
+            </Style>
+        </Grid.Resources>
+        <Grid Grid.Row="0">
+            <TextBlock Text="Bản vẽ gần nhất" Style="{StaticResource HeadingContent}"></TextBlock>
+        </Grid>
+        <Grid  Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.05*"></ColumnDefinition>
+                <ColumnDefinition Width="0.9*"></ColumnDefinition>
+                <ColumnDefinition Width="0.05*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.Resources>
+                <Style TargetType="Grid">
+                    <Setter Property="Height" Value="180"></Setter>
+                    <Setter Property="Width" Value="auto"></Setter>
+                </Style>
+                <Style TargetType="Border">
+                    <Setter Property="Margin" Value="0 25"></Setter>
+                    <Setter Property="Background" Value="#B8E1FF"></Setter>
+                </Style>
+                <Style TargetType="ProgressBar">
+                    <Setter Property="Margin" Value="25"></Setter>
+                    <Setter Property="Background" Value="#B8E1FF"></Setter>
+                </Style>
+            </Grid.Resources>
+            <Border CornerRadius="8" Grid.Column="1" BorderBrush="#325976" BorderThickness="0.5">
+                <ProgressBar Grid.Column="1" Value="20" Height="5"  />
+            </Border>
+            <!--<ProgressBar Grid.Column="1" 
+                                  Value="20" Height="5"  />-->
+            <!-- should disable on 2nd transition... -->
+            <!--<ProgressBar Value="75" />-->
+        </Grid>
+        <Grid Grid.Row="2" >
+            <TextBlock Text="Hoạt động nổi bật" Style="{StaticResource HeadingContent}"></TextBlock>
+        </Grid>
+
+        <Grid Grid.Row="3">
+            <Grid.Resources>
+                <Style TargetType="Grid">
+                    <Setter Property="Height" Value="180"></Setter>
+                    <Setter Property="Width" Value="auto"></Setter>
+                    <Setter Property="Margin" Value="0 25"></Setter>
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.05*"></ColumnDefinition>
+                <ColumnDefinition Width="0.45*"></ColumnDefinition>
+                <ColumnDefinition Width="0.45*"></ColumnDefinition> 
+                <ColumnDefinition Width="0.05*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <!--<Grid Grid.Column="3">
+                <TextBlock Text="23"></TextBlock>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseLeftButtonDown">
+                        <i:InvokeCommandAction Command="{Binding TongQuanCommand}"
+                                               CommandParameter="{Binding ElementName=TongQuanUC}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Grid>-->
+            <!--Hoạt động nổi bật--> 
+            <Grid Grid.Column="1" Background="#2687CE" Margin="0 0 25 0"> 
+                <Grid Width="auto" Height="auto">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="Grid">
+                            <Setter Property="Margin" Value="0"></Setter>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid Grid.Column="0">
+                        <Canvas Height="70" Width="57" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Path Height="70" Width="57" Stretch="Fill" Fill="White"
+                                                Data="M19,3H14.82C14.25,1.44 12.53,0.64 11,1.2C10.14,1.5 9.5,2.16 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M7,7H17V5H19V19H5V5H7V7M17,11H7V9H17V11M15,15H7V13H15V15Z" />
+                        </Canvas>
+                    </Grid>
+                    <Grid Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <Grid.Resources>
+                            <Style TargetType="Grid">
+                            </Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                                <Setter Property="FontFamily" Value="Roboto"></Setter>
+                                <Setter Property="Foreground" Value="White"></Setter>
+                                <Setter Property="FontSize" Value="18"></Setter>
+                                <Setter Property="Margin" Value="0 10"></Setter>
+                                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                                <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1.2*"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="Tổng số bản vẽ"></TextBlock>
+                        <TextBlock Grid.Row="1" Text="Số bản vẽ đang theo dõi"></TextBlock>
+                        <TextBlock Grid.Row="2" Text="Nhân viên đang hoạt động"></TextBlock>
+
+                    </Grid>
+                </Grid>
+            </Grid>
+
+
+            <!--Tồn kho-->
+
+            <Grid Grid.Column="2" Background="#E84343" Margin="25 0 0 0">
+                <Grid Width="auto" Height="auto">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="Grid">
+                            <Setter Property="Margin" Value="0"></Setter>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid Grid.Column="0">
+                        <Canvas Height="70" Width="57" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Path Height="70" Width="57" Stretch="Fill" Fill="White"
+                                                Data="M19,3H14.82C14.25,1.44 12.53,0.64 11,1.2C10.14,1.5 9.5,2.16 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M7,7H17V5H19V19H5V5H7V7M17,11H7V9H17V11M15,15H7V13H15V15Z" />
+                        </Canvas>
+                    </Grid>
+                    <Grid Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <Grid.Resources>
+                            <Style TargetType="Grid">
+                            </Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                                <Setter Property="FontFamily" Value="Roboto"></Setter>
+                                <Setter Property="Foreground" Value="White"></Setter>
+                                <Setter Property="FontSize" Value="18"></Setter>
+                                <Setter Property="Margin" Value="0 10"></Setter>
+                                <Setter Property="VerticalAlignment" Value="Center"></Setter>
+                                <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                            </Style>
+                        </Grid.Resources>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1.2*"></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="Tổng số bản vẽ"></TextBlock>
+                        <TextBlock Grid.Row="1" Text="Số bản vẽ đang theo dõi"></TextBlock>
+                        <TextBlock Grid.Row="2" Text="Nhân viên đang hoạt động"></TextBlock>
+
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="4" >
+            <TextBlock Text="Lịch sử hoạt động" Style="{StaticResource HeadingContent}"></TextBlock>
+        </Grid>
+        <Grid  Grid.Row="5">
+            <materialDesign:Card ToolTip="Bản vẽ gần nhất" Margin="75 25" VerticalAlignment="Stretch" >
+                <ScrollViewer VerticalScrollBarVisibility="Disabled" >
+                    <ListView ItemsSource="{Binding CaLamViecList}" >
+                        <ListView.View >
+                            <GridView>
+                                <GridViewColumn Header="Mã ca" DisplayMemberBinding="{Binding MC}"></GridViewColumn>
+                                <GridViewColumn Header="Tên ca" DisplayMemberBinding="{Binding TENCA}"></GridViewColumn>
+                                <GridViewColumn Header="Từ" DisplayMemberBinding="{Binding TU}"></GridViewColumn>
+                                <GridViewColumn Header="Đến" DisplayMemberBinding="{Binding DEN}"></GridViewColumn>
+                                <GridViewColumn Header="Ngày khởi tạo" DisplayMemberBinding="{Binding NGAYKHOITAO}"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
+            </materialDesign:Card>
+        </Grid>
+    </Grid>
+</UserControl>

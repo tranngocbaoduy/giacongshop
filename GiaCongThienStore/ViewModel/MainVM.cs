@@ -11,11 +11,28 @@ using System.Windows.Input;
 
 namespace GiaCongThienStore.ViewModel
 {
-    class MainVM : BaseViewModel
+    public class MainVM : BaseViewModel
     {
         #region commands
-        public ICommand ActiveWC { get; set; } 
+        public ICommand ActiveWC { get; set; }
+        public ICommand LoadedWC { get; set; }
         #endregion
+        private static TAIKHOAN _Account;
+        public static TAIKHOAN Account
+        {
+            get
+            {
+                if (_Account == null)
+                    _Account = new TAIKHOAN();
+                return _Account;
+            }
+            set
+            {
+                _Account = value;
+            }
+        }
+
+        public static bool IsLogin {get; set;} = false ;
 
         private ObservableCollection<String> _ActiveContent;
         public ObservableCollection<String> ActiveContent { get => _ActiveContent; set { _ActiveContent = value; OnPropertyChanged(); } }
@@ -27,6 +44,32 @@ namespace GiaCongThienStore.ViewModel
         {
             int holdActive = -1;
             InitalMainVM();
+
+            //checked login
+            LoadedWC = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                // Show form login when start program
+                if (p != null)
+                {
+                    p.Hide();
+                    Login loginForm = new Login();
+                    loginForm.ShowDialog();
+                    if (loginForm.DataContext == null)
+                    {
+                        return;
+                    }
+                     
+                    if (MainVM.IsLogin)
+                    { 
+                        p.Show(); 
+                    }
+                    else
+                    {
+                        p.Close();
+                    }
+
+                }
+            }); 
 
             //ActiveContent mong muốn bằng cách sữa index
             ActiveWC = new RelayCommand<String>((index) => { return true; }, (index) =>

@@ -7,10 +7,10 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" 
+        Title="Màn Hình Chính" 
         DataContext="{StaticResource MainVM}"
-        xmlns:helper="clr-namespace:GiaCongThienStore.Helper"
-            
+        xmlns:helper="clr-namespace:GiaCongThienStore.Helper" 
+        xmlns:content="clr-namespace:GiaCongThienStore.Content"
         BorderBrush="Black"
         BorderThickness="0.4"
         TextOptions.TextRenderingMode="Auto"
@@ -19,7 +19,15 @@
         Height="768"
         Width="1366"
         WindowStartupLocation="CenterScreen" 
-        Icon="Icon1.ico">
+        Icon="Icon1.ico"
+        Name="mainWindow">
+
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedWC}" CommandParameter="{Binding ElementName=mainWindow}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 
     <Grid>
         <Grid Grid.Row="0">
@@ -139,7 +147,6 @@
                                 </Grid>
                             </Border>
 
-
                             <!--Nhân viên-->
                             <Border  Grid.Row="2" Height="45" ToolTip="Tổng quát thông tin bán hàng" Style="{StaticResource BorderNCStyle}" >
                                 <Grid Style="{StaticResource ActiveTask}">
@@ -203,7 +210,6 @@
                                     </Grid>
                                 </Grid>
                             </Border>
-
 
                             <!--Sản phẩm-->
                             <Border  Grid.Row="4" Height="45" ToolTip="Tổng quát thông tin bán hàng" Style="{StaticResource BorderNCStyle}" >
@@ -300,7 +306,6 @@
                                     </Grid>
                                 </Grid>
                             </Border>
-
 
                             <Grid Grid.Row="7" Height="100" Style="{StaticResource NCStyle}"></Grid>
                             <!--Cá nhân -->
@@ -412,184 +417,7 @@
                     <Grid Grid.Row="0">
                         <!--Content Tổng Quan-->
                         <Grid x:Name="TongQuan" Visibility="{Binding ActiveContent[2]}">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"></RowDefinition>
-                                <RowDefinition Height="auto"></RowDefinition>
-                                <RowDefinition Height="auto"></RowDefinition>
-                                <RowDefinition Height="auto"></RowDefinition>
-                                <RowDefinition Height="auto"></RowDefinition>
-                                <RowDefinition Height="auto"></RowDefinition>
-                                <RowDefinition Height="0.2*"></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Grid.Resources>
-                                <Style TargetType="Grid">
-                                </Style>
-                            </Grid.Resources>
-                            <Grid Grid.Row="0">
-                                <TextBlock Text="Bản vẽ gần nhất" Style="{StaticResource HeadingContent}"></TextBlock>
-                            </Grid>
-                            <Grid  Grid.Row="1">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="0.05*"></ColumnDefinition>
-                                    <ColumnDefinition Width="0.9*"></ColumnDefinition>
-                                    <ColumnDefinition Width="0.05*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Grid.Resources>
-                                    <Style TargetType="Grid">
-                                        <Setter Property="Height" Value="180"></Setter>
-                                        <Setter Property="Width" Value="auto"></Setter>
-                                           </Style>
-                                    <Style TargetType="Border">
-                                        <Setter Property="Margin" Value="0 25"></Setter>
-                                        <Setter Property="Background" Value="#B8E1FF"></Setter>
-                                    </Style>
-                                    <Style TargetType="ProgressBar">
-                                        <Setter Property="Margin" Value="25"></Setter>
-                                        <Setter Property="Background" Value="#B8E1FF"></Setter>
-                                    </Style>
-                                </Grid.Resources>
-                                <Border CornerRadius="8" Grid.Column="1" BorderBrush="#325976" BorderThickness="0.5">
-                                    <ProgressBar Grid.Column="1" Value="20" Height="5"  />
-                                </Border>
-                                <!--<ProgressBar Grid.Column="1" 
-                                  Value="20" Height="5"  />-->
-                                <!-- should disable on 2nd transition... -->
-                                <!--<ProgressBar Value="75" />-->
-                            </Grid>
-                            <Grid Grid.Row="2" >
-                                <TextBlock Text="Hoạt động nổi bật" Style="{StaticResource HeadingContent}"></TextBlock>
-                            </Grid>
-
-                            <Grid Grid.Row="3"> 
-                                <Grid.Resources>
-                                    <Style TargetType="Grid">
-                                        <Setter Property="Height" Value="180"></Setter>
-                                        <Setter Property="Width" Value="auto"></Setter>
-                                        <Setter Property="Margin" Value="0 25"></Setter>
-                                    </Style>
-                                </Grid.Resources>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="0.05*"></ColumnDefinition>
-                                    <ColumnDefinition Width="0.45*"></ColumnDefinition>
-                                    <ColumnDefinition Width="0.45*"></ColumnDefinition>
-                                    <ColumnDefinition Width="0.05*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-
-
-                                <!--Hoạt động nổi bật-->
-
-                                <Grid Grid.Column="1" Background="#2687CE" Margin="0 0 25 0">
-                                    <Grid Width="auto" Height="auto">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="0.4*"></ColumnDefinition>
-                                            <ColumnDefinition></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.Resources>
-                                            <Style TargetType="Grid">
-                                                <Setter Property="Margin" Value="0"></Setter>
-                                            </Style>
-                                        </Grid.Resources>
-                                        <Grid Grid.Column="0">
-                                            <Canvas Height="70" Width="57" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                <Path Height="70" Width="57" Stretch="Fill" Fill="White"
-                                                Data="M19,3H14.82C14.25,1.44 12.53,0.64 11,1.2C10.14,1.5 9.5,2.16 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M7,7H17V5H19V19H5V5H7V7M17,11H7V9H17V11M15,15H7V13H15V15Z" />
-                                            </Canvas>
-                                        </Grid>
-                                        <Grid Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">
-                                            <Grid.Resources>
-                                                <Style TargetType="Grid">
-                                                </Style>
-                                                <Style TargetType="TextBlock">
-                                                    <Setter Property="FontWeight" Value="Bold"></Setter>
-                                                    <Setter Property="FontFamily" Value="Roboto"></Setter>
-                                                    <Setter Property="Foreground" Value="White"></Setter>
-                                                    <Setter Property="FontSize" Value="18"></Setter>
-                                                    <Setter Property="Margin" Value="0 10"></Setter>
-                                                    <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                                                    <Setter Property="HorizontalAlignment" Value="Left"></Setter>
-                                                </Style>
-                                            </Grid.Resources>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="1.2*"></RowDefinition>
-                                                <RowDefinition></RowDefinition>
-                                                <RowDefinition></RowDefinition>
-                                            </Grid.RowDefinitions>
-                                            <TextBlock Grid.Row="0" Text="Tổng số bản vẽ"></TextBlock>
-                                            <TextBlock Grid.Row="1" Text="Số bản vẽ đang theo dõi"></TextBlock>
-                                            <TextBlock Grid.Row="2" Text="Nhân viên đang hoạt động"></TextBlock>
-
-                                        </Grid>
-                                    </Grid>
-                                </Grid>
-
-
-                                <!--Tồn kho-->
-
-                                <Grid Grid.Column="2" Background="#E84343" Margin="25 0 0 0">
-                                    <Grid Width="auto" Height="auto">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="0.4*"></ColumnDefinition>
-                                            <ColumnDefinition></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.Resources>
-                                            <Style TargetType="Grid">
-                                                <Setter Property="Margin" Value="0"></Setter>
-                                            </Style>
-                                        </Grid.Resources>
-                                        <Grid Grid.Column="0">
-                                            <Canvas Height="70" Width="57" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                                <Path Height="70" Width="57" Stretch="Fill" Fill="White"
-                                                Data="M19,3H14.82C14.25,1.44 12.53,0.64 11,1.2C10.14,1.5 9.5,2.16 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M7,7H17V5H19V19H5V5H7V7M17,11H7V9H17V11M15,15H7V13H15V15Z" />
-                                            </Canvas>
-                                        </Grid>
-                                        <Grid Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">
-                                            <Grid.Resources>
-                                                <Style TargetType="Grid">
-                                                </Style>
-                                                <Style TargetType="TextBlock">
-                                                    <Setter Property="FontWeight" Value="Bold"></Setter>
-                                                    <Setter Property="FontFamily" Value="Roboto"></Setter>
-                                                    <Setter Property="Foreground" Value="White"></Setter>
-                                                    <Setter Property="FontSize" Value="18"></Setter>
-                                                    <Setter Property="Margin" Value="0 10"></Setter>
-                                                    <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                                                    <Setter Property="HorizontalAlignment" Value="Left"></Setter>
-                                                </Style>
-                                            </Grid.Resources>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="1.2*"></RowDefinition>
-                                                <RowDefinition></RowDefinition>
-                                                <RowDefinition></RowDefinition>
-                                            </Grid.RowDefinitions>
-                                            <TextBlock Grid.Row="0" Text="Tổng số bản vẽ"></TextBlock>
-                                            <TextBlock Grid.Row="1" Text="Số bản vẽ đang theo dõi"></TextBlock>
-                                            <TextBlock Grid.Row="2" Text="Nhân viên đang hoạt động"></TextBlock>
-
-                                        </Grid>
-                                    </Grid>
-                                </Grid>
-                            </Grid>
-
-                            <Grid Grid.Row="4" >
-                                <TextBlock Text="Lịch sử hoạt động" Style="{StaticResource HeadingContent}"></TextBlock>
-                            </Grid>
-                            <Grid  Grid.Row="5">
-                                <materialDesign:Card ToolTip="Bản vẽ gần nhất" Margin="75 25" VerticalAlignment="Stretch" >
-                                    <ScrollViewer VerticalScrollBarVisibility="Disabled" >
-                                        <ListView ItemsSource="{Binding CaLamViecList}" >
-                                            <ListView.View >
-                                                <GridView>
-                                                    <GridViewColumn Header="Mã ca" DisplayMemberBinding="{Binding MC}"></GridViewColumn>
-                                                    <GridViewColumn Header="Tên ca" DisplayMemberBinding="{Binding TENCA}"></GridViewColumn>
-                                                    <GridViewColumn Header="Từ" DisplayMemberBinding="{Binding TU}"></GridViewColumn>
-                                                    <GridViewColumn Header="Đến" DisplayMemberBinding="{Binding DEN}"></GridViewColumn>
-                                                    <GridViewColumn Header="Ngày khởi tạo" DisplayMemberBinding="{Binding NGAYKHOITAO}"></GridViewColumn>
-                                                </GridView>
-                                            </ListView.View>
-                                        </ListView>
-                                    </ScrollViewer>
-                                </materialDesign:Card>
-                            </Grid> 
+                            <content:TongQuanContent Tag="{Binding Title,ElementName=mainWindow}"></content:TongQuanContent>
                         </Grid>
 
                         <!--Content Bản Vẽ-->
@@ -639,244 +467,9 @@
 
                         <!--Content Sản Phẩm-->
                         <Grid x:Name="SanPham" Visibility="{Binding ActiveContent[14]}">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"></RowDefinition>
-                                <RowDefinition Height="auto"></RowDefinition>
-                                <RowDefinition Height="auto"></RowDefinition>
-                                <RowDefinition Height="auto"></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <Grid Grid.Row="0" > 
-                                <TextBlock Text="Tác vụ" Style="{StaticResource HeadingContent}"></TextBlock> 
-                            </Grid>
-
-                            <Grid Grid.Row="1" Margin="0 25">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="0.05*"></ColumnDefinition>
-                                    <ColumnDefinition Width="0.25*"></ColumnDefinition>
-                                    <ColumnDefinition Width="0.25*"></ColumnDefinition>
-                                    <ColumnDefinition Width="0.267*"></ColumnDefinition>
-                                    <ColumnDefinition Width="0.05*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Grid.Resources>
-                                    <Style TargetType="Grid">
-                                        <Setter Property="Height" Value="auto" ></Setter>
-                                        <Setter Property="Width" Value="auto"></Setter>
-                                    </Style>
-                                    <Style TargetType="Border">
-                                        <Setter Property="Background" Value="#FFF"></Setter>
-                                        <Setter Property="Width" Value="Auto"></Setter>
-                                        <Setter Property="Height" Value="{Binding ActualWidth, RelativeSource={RelativeSource Self}}"></Setter>
-                                        <Style.Triggers>
-                                            <MultiTrigger>
-                                                <MultiTrigger.Conditions>
-                                                    <Condition  Property="IsMouseOver" Value="True" />
-                                                </MultiTrigger.Conditions>
-                                                <MultiTrigger.Setters>
-                                                    <Setter Property="Background" Value="#DCEEFF"></Setter>
-                                                </MultiTrigger.Setters>
-                                            </MultiTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </Grid.Resources>
-                                <Grid Grid.Column="1">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <Grid.Resources>
-                                        <Style TargetType="Grid">
-                                            <Setter Property="Height" Value="auto" ></Setter>
-                                            <Setter Property="Width" Value="auto"></Setter>
-                                        </Style>
-                                    </Grid.Resources>
-                                    <Border BorderBrush="#000" BorderThickness="1" Grid.Row="0" Margin="20 10">
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="0.75*"></RowDefinition>
-                                                <RowDefinition Height="0.25*"></RowDefinition>
-                                            </Grid.RowDefinitions>
-                                            <Grid.Resources>
-                                                <Style TargetType="TextBlock">
-                                                    <Setter Property="FontWeight" Value="Bold"></Setter>
-                                                    <Setter Property="FontFamily" Value="Roboto"></Setter>
-                                                    <Setter Property="Foreground" Value="#000"></Setter>
-                                                    <Setter Property="FontSize" Value="18"></Setter>
-                                                    <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                                                    <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-                                                </Style>
-                                                <Style TargetType="Canvas">
-                                                    <Setter Property="Width" Value="170"></Setter>
-                                                    <Setter Property="Height" Value="170"></Setter>
-                                                </Style>
-                                                <Style TargetType="Image">
-                                                    <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                                                    <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-                                                    <Setter Property="Width" Value="170"></Setter>
-                                                    <Setter Property="Height" Value="170"></Setter>
-                                                    <Setter Property="Margin" Value="0 25 0 0"></Setter>
-                                                </Style>
-                                            </Grid.Resources>
-                                            <Grid  Grid.Row="0">
-                                                <Canvas>
-                                                    <Image Source="./ResourceImage/order.png"/>
-                                                </Canvas>
-                                            </Grid>
-                                            <TextBlock Grid.Row="1" Text="Danh mục sản phẩm"></TextBlock>
-                                        </Grid>
-                                    </Border>
-
-                                    <Border BorderBrush="#000" BorderThickness="1" Grid.Row="1" Margin="20 10">
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="0.75*"></RowDefinition>
-                                                <RowDefinition Height="0.25*"></RowDefinition>
-                                            </Grid.RowDefinitions>
-                                            <Grid.Resources>
-                                                <Style TargetType="TextBlock">
-                                                    <Setter Property="FontWeight" Value="Bold"></Setter>
-                                                    <Setter Property="FontFamily" Value="Roboto"></Setter>
-                                                    <Setter Property="Foreground" Value="#000"></Setter>
-                                                    <Setter Property="FontSize" Value="18"></Setter>
-                                                    <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                                                    <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-                                                </Style>
-                                                <Style TargetType="Canvas">
-                                                    <Setter Property="Width" Value="170"></Setter>
-                                                    <Setter Property="Height" Value="170"></Setter>
-                                                </Style>
-                                                <Style TargetType="Image">
-                                                    <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                                                    <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-                                                    <Setter Property="Width" Value="170"></Setter>
-                                                    <Setter Property="Height" Value="170"></Setter>
-                                                    <Setter Property="Margin" Value="0 25 0 0"></Setter>
-                                                </Style>
-                                            </Grid.Resources>
-                                            <Grid  Grid.Row="0">
-                                                <Canvas>
-                                                    <Image Source="./ResourceImage/order.png"/>
-                                                </Canvas>
-                                            </Grid>
-                                            <TextBlock Grid.Row="1" Text="Danh mục sản phẩm"></TextBlock>
-                                        </Grid>
-                                    </Border>
-                                </Grid>
-
-                                <Grid Grid.Column="2">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <Border BorderBrush="#000" BorderThickness="1" Grid.Row="0" Margin="20 10">
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="0.75*"></RowDefinition>
-                                                <RowDefinition Height="0.25*"></RowDefinition>
-                                            </Grid.RowDefinitions>
-                                            <Grid.Resources>
-                                                <Style TargetType="TextBlock">
-                                                    <Setter Property="FontWeight" Value="Bold"></Setter>
-                                                    <Setter Property="FontFamily" Value="Roboto"></Setter>
-                                                    <Setter Property="Foreground" Value="#000"></Setter>
-                                                    <Setter Property="FontSize" Value="18"></Setter>
-                                                    <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                                                    <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-                                                </Style>
-                                                <Style TargetType="Canvas">
-                                                    <Setter Property="Width" Value="170"></Setter>
-                                                    <Setter Property="Height" Value="170"></Setter>
-                                                </Style>
-                                                <Style TargetType="Image">
-                                                    <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                                                    <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-                                                    <Setter Property="Width" Value="170"></Setter>
-                                                    <Setter Property="Height" Value="170"></Setter>
-                                                    <Setter Property="Margin" Value="0 25 0 0"></Setter>
-                                                </Style>
-                                            </Grid.Resources>
-                                            <Grid  Grid.Row="0">
-                                                <Canvas>
-                                                    <Image Source="./ResourceImage/order.png"/>
-                                                </Canvas>
-                                            </Grid>
-                                            <TextBlock Grid.Row="1" Text="Danh mục sản phẩm"></TextBlock>
-                                        </Grid>
-                                    </Border>
-
-                                    <Border BorderBrush="#000" BorderThickness="1" Grid.Row="1" Margin="20 10">
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="0.75*"></RowDefinition>
-                                                <RowDefinition Height="0.25*"></RowDefinition>
-                                            </Grid.RowDefinitions>
-                                            <Grid.Resources>
-                                                <Style TargetType="TextBlock">
-                                                    <Setter Property="FontWeight" Value="Bold"></Setter>
-                                                    <Setter Property="FontFamily" Value="Roboto"></Setter>
-                                                    <Setter Property="Foreground" Value="#000"></Setter>
-                                                    <Setter Property="FontSize" Value="18"></Setter>
-                                                    <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                                                    <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-                                                </Style>
-                                                <Style TargetType="Canvas">
-                                                    <Setter Property="Width" Value="170"></Setter>
-                                                    <Setter Property="Height" Value="170"></Setter>
-                                                </Style>
-                                                <Style TargetType="Image">
-                                                    <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                                                    <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-                                                    <Setter Property="Width" Value="170"></Setter>
-                                                    <Setter Property="Height" Value="170"></Setter>
-                                                    <Setter Property="Margin" Value="0 25 0 0"></Setter>
-                                                </Style>
-                                            </Grid.Resources>
-                                            <Grid  Grid.Row="0">
-                                                <Canvas>
-                                                    <Image Source="./ResourceImage/order.png"/>
-                                                </Canvas>
-                                            </Grid>
-                                            <TextBlock Grid.Row="1" Text="Danh mục sản phẩm"></TextBlock>
-                                        </Grid>
-                                    </Border>
-                                </Grid>
-
-                                <Grid Grid.Column="3" Margin="10">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                        <RowDefinition></RowDefinition>
-                                    </Grid.RowDefinitions>
-                                    <Grid.Resources>
-                                        <Style TargetType="Border">
-                                            <Setter Property="Width" Value="auto"></Setter>
-                                            <Setter Property="BorderBrush" Value="#000"></Setter>
-                                            <Setter Property="BorderThickness" Value="1"></Setter>
-                                            <Setter Property="Margin" Value="10"></Setter>
-                                            <Setter Property="Background" Value="#36A541"></Setter>
-                                        </Style>
-                                        <Style TargetType="TextBlock">
-                                            <Setter Property="FontWeight" Value="Bold"></Setter>
-                                            <Setter Property="FontFamily" Value="Roboto"></Setter>
-                                            <Setter Property="Foreground" Value="#fff"></Setter>
-                                            <Setter Property="FontSize" Value="18"></Setter>
-                                            <Setter Property="Margin" Value="0 10"></Setter>
-                                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                                            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-                                        </Style>
-                                    </Grid.Resources>
-                                    <Border Grid.Row="0">
-                                        <TextBlock Text="Thêm sản phẩm mới"></TextBlock>
-                                    </Border>
-                                    <Border Grid.Row="1"></Border>
-                                    <Border Grid.Row="2"></Border>
-                                    <Border Grid.Row="3"></Border>
-                                </Grid>
-                            </Grid>
-
+                            <content:SanPhamContent Tag="{Binding Title,ElementName=mainWindow}"></content:SanPhamContent>
                         </Grid>
+
 
                         <!--Content Sổ quỹ-->
                         <Grid x:Name="SoQuy" Visibility="{Binding ActiveContent[17]}">
@@ -910,20 +503,10 @@
                         </Grid>
 
                         <!--Content Cá Nhân-->
-                        <Grid x:Name="CaNhan" Visibility="{Binding ActiveContent[23]}">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"></RowDefinition>
-                                <RowDefinition Height="auto"></RowDefinition>
-                                <RowDefinition Height="auto"></RowDefinition>
-                                <RowDefinition Height="auto"></RowDefinition>
-                                <RowDefinition Height="0.2*"></RowDefinition>
-                            </Grid.RowDefinitions>
-
-                            <Grid Grid.Row="0" >
-                                <TextBlock Style="{StaticResource HeadingContent}" Text="Cá nhân"  FontSize="27"></TextBlock>
-                            </Grid>
+                        <Grid Visibility="{Binding ActiveContent[23]}">
+                            <content:CaNhanContent Tag="{Binding Title,ElementName=mainWindow}"></content:CaNhanContent>
                         </Grid>
-
+                      
                         <!--Content Góp Ý-->
                         <Grid x:Name="GopY" Visibility="{Binding ActiveContent[26]}">
                             <Grid.RowDefinitions>

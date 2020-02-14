@@ -14,6 +14,7 @@
 
                 <ResourceDictionary Source="./ResourceXAML/MainResource.xaml"></ResourceDictionary> 
                 <ResourceDictionary Source="./ResourceXAML/MainCSS.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="./ResourceXAML/ContentChildResource.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

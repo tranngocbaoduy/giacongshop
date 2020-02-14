@@ -1,8 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-                    xmlns:viewmodel="clr-namespace:GiaCongThienStore.ViewModel"
-                    xmlns:local="clr-namespace:GiaCongThienStore.ResourceXAML">
+                    xmlns:viewmodel="clr-namespace:GiaCongThienStore.ViewModel" >
 
     <viewmodel:MainVM x:Key="MainVM"></viewmodel:MainVM>
- 
+    <viewmodel:LoginVM x:Key="LoginVM"></viewmodel:LoginVM>
+     
 </ResourceDictionary>

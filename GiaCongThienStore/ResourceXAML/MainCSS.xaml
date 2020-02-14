@@ -80,4 +80,19 @@
         <Setter Property="Control.FontSize" Value="22"></Setter>
         <Setter Property="Control.VerticalAlignment" Value="Center"></Setter> 
     </Style>
+
+    <Style x:Key="HeadingContentChild">
+        <Setter Property="Control.FontWeight" Value="Bold"></Setter>
+        <Setter Property="Control.Margin" Value="0 10 0 7"></Setter>
+        <Setter Property="Control.Foreground" Value="#0069A5"></Setter>
+        <Setter Property="Control.Height" Value="auto"></Setter>
+        <Setter Property="Control.FontFamily" Value="Arial"></Setter>
+        <Setter Property="Control.FontSize" Value="22"></Setter>
+        <Setter Property="Control.VerticalAlignment" Value="Center"></Setter>
+        <Setter Property="Control.HorizontalAlignment" Value="Right"></Setter>
+    </Style>
+
+    <Style x:Key="MaterialDesignSubtitle1TextBlock">
+        <Setter Property="Control.Background" Value="Black"></Setter> 
+    </Style>
 </ResourceDictionary>
