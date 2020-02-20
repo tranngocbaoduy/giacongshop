@@ -154,6 +154,7 @@
           <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
           <ScalarProperty Name="SDT" ColumnName="SDT" />
           <ScalarProperty Name="ACTIVATE" ColumnName="ACTIVATE" />
+          <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
           <ScalarProperty Name="NGAYKHOITAO" ColumnName="NGAYKHOITAO" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -236,8 +237,8 @@
           <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
           <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
           <ScalarProperty Name="ACTIVATE" ColumnName="ACTIVATE" />
-          <ScalarProperty Name="NHACUNGCAP" ColumnName="NHACUNGCAP" />
-          <ScalarProperty Name="LOAISANPHAM" ColumnName="LOAISANPHAM" />
+          <ScalarProperty Name="MNCC" ColumnName="MNCC" />
+          <ScalarProperty Name="MLSP" ColumnName="MLSP" />
           <ScalarProperty Name="NGAYKHOITAO" ColumnName="NGAYKHOITAO" />
         </MappingFragment>
       </EntityTypeMapping>

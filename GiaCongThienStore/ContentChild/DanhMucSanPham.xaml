@@ -4,10 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GiaCongThienStore.ContentChild"
-        xmlns:i ="http://schemas.microsoft.com/expression/2010/interactivity"
-            
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
-        Title="Sản Phẩm" 
+        Title="Sản Phẩm"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -19,144 +18,348 @@
         DataContext="{StaticResource DanhMucSanPhamVM}"
         Height="768"
         Width="1366"
-        WindowStartupLocation="CenterScreen" 
+        WindowStartupLocation="CenterScreen"
         Name="DanhMucSanPhamWindow">
-    <i:Interaction.Triggers> 
+    <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadedAccountWindowCommand}"/>
+            <i:InvokeCommandAction Command="{Binding LoadedAccountWindowCommand}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Grid >
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="75"></ColumnDefinition>
-                <ColumnDefinition Width="0.3*"></ColumnDefinition>
-                <ColumnDefinition Width="0.6*"></ColumnDefinition> 
-            </Grid.ColumnDefinitions>
-            <Grid.Resources>
-                <Style TargetType="Grid">
-                    <Setter Property="Height" Value="auto" ></Setter>
-                    <Setter Property="Width" Value="auto"></Setter>
-                    <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                    <Setter Property="HorizontalAlignment" Value="Left"></Setter>
-                </Style>
-            </Grid.Resources>
-            <Grid Grid.Column="0"></Grid>
-            <Grid Grid.Column="1">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+
+            <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
                 </Grid.RowDefinitions>
-
-                <Grid Grid.Row="0"></Grid>
-                <Grid Grid.Row="1" Opacity="0.5" >
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="MouseLeftButtonDown">
-                            <i:InvokeCommandAction Command="{Binding BackCommand}" CommandParameter="{Binding ElementName=DanhMucSanPhamWindow}"/>
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.8*"></ColumnDefinition>
+                        <ColumnDefinition Width="75"></ColumnDefinition>
+                        <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.6*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.Resources>
                         <Style TargetType="Grid">
-                            <Setter Property="Height" Value="auto" ></Setter>
-                            <Setter Property="Width" Value="auto"></Setter>
-                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
-                        </Style>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="Height" Value="auto" ></Setter>
-                            <Setter Property="Width" Value="auto"></Setter>
-                            <Setter Property="VerticalAlignment" Value="Center"></Setter>
-                            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                            <Setter Property="Height"
+                                    Value="auto"></Setter>
+                            <Setter Property="Width"
+                                    Value="auto"></Setter>
+                            <Setter Property="VerticalAlignment"
+                                    Value="Center"></Setter>
+                            <Setter Property="HorizontalAlignment"
+                                    Value="Left"></Setter>
                         </Style>
                     </Grid.Resources>
-                    <materialDesign:PackIcon Grid.Column="0" Kind="KeyboardArrowLeft" Width="25" Height="25" RenderTransformOrigin="0.5,0.5">
-                    </materialDesign:PackIcon>
-                    <TextBlock Text="Quay lại" Grid.Column="1"></TextBlock>
-                </Grid>
-                <TextBlock Grid.Row="2" Text="Danh mục" Style="{StaticResource HeadingContentChild}" ></TextBlock>
+                    <Grid Grid.Column="0"></Grid>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
 
-            </Grid>
-
-        </Grid>
-
-        <Grid Grid.Row="1" Margin="0 25">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.04*"></ColumnDefinition>
-                <ColumnDefinition Width="0.94*"></ColumnDefinition>
-                <ColumnDefinition Width="0.04*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.Resources>
-                <Style TargetType="Grid">
-                    <Setter Property="Height" Value="auto" ></Setter>
-                    <Setter Property="Width" Value="auto"></Setter>
-                </Style>
-            </Grid.Resources>
-            <Grid  Grid.Column="1">
-                <materialDesign:Card ToolTip="Danh sách sản phẩm"  VerticalAlignment="Stretch" >
-                    <DockPanel LastChildFill="True">
-                        <Grid DockPanel.Dock="Top" Margin="0 20 10 20">
+                        <Grid Grid.Row="0"></Grid>
+                        <Grid Grid.Row="1"
+                              Opacity="0.5">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseLeftButtonDown">
+                                    <i:InvokeCommandAction Command="{Binding BackCommand}"
+                                                           CommandParameter="{Binding ElementName=DanhMucSanPhamWindow}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.15*"></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                <ColumnDefinition Width="0.8*"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                         
-                            <ComboBox  Grid.Column="0" materialDesign:HintAssist.Hint="Filter" Width="auto"  MinWidth="72" Margin="16 0 16 0" 
-                                      VerticalAlignment="Bottom" IsEditable="True" ItemsSource="{Binding LoaiFilter}"  SelectedValue="{Binding SelectedValueFilter}">
-                                <ComboBox.Text >
-                                    <Binding  Path="SelectedTextTwo" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                                    </Binding>
-                                </ComboBox.Text>
-                                <ComboBox.ItemsPanel>
-                                    <ItemsPanelTemplate >
-                                        <VirtualizingStackPanel  />
-                                    </ItemsPanelTemplate>
-                                </ComboBox.ItemsPanel>
-                            </ComboBox>
-
-                            <TextBox Grid.Column="1"  Name="bindingFilterText" Text="{Binding Path=FilterText}" HorizontalAlignment="Stretch" >
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="KeyUp">
-                                        <i:InvokeCommandAction Command="{Binding OnKeyUpFilterText,UpdateSourceTrigger=PropertyChanged}" CommandParameter="{Binding ElementName=bindingFilterText}"/>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
-                            </TextBox>
+                            <Grid.Resources>
+                                <Style TargetType="Grid">
+                                    <Setter Property="Height"
+                                            Value="auto"></Setter>
+                                    <Setter Property="Width"
+                                            Value="auto"></Setter>
+                                    <Setter Property="VerticalAlignment"
+                                            Value="Center"></Setter>
+                                    <Setter Property="HorizontalAlignment"
+                                            Value="Left"></Setter>
+                                </Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Height"
+                                            Value="auto"></Setter>
+                                    <Setter Property="Width"
+                                            Value="auto"></Setter>
+                                    <Setter Property="VerticalAlignment"
+                                            Value="Center"></Setter>
+                                    <Setter Property="HorizontalAlignment"
+                                            Value="Left"></Setter>
+                                </Style>
+                            </Grid.Resources>
+                            <materialDesign:PackIcon Grid.Column="0"
+                                                     Kind="KeyboardArrowLeft"
+                                                     Width="25"
+                                                     Height="25"
+                                                     RenderTransformOrigin="0.5,0.5">
+                            </materialDesign:PackIcon>
+                            <TextBlock Text="Quay lại"
+                                       Grid.Column="1"></TextBlock>
                         </Grid>
-                        
-                            <ScrollViewer VerticalScrollBarVisibility="Disabled"  >
-                            <ListView ItemsSource="{Binding SanPhamList}"  >
-                                <ListView.View >
-                                    <GridView>
-                                        <GridViewColumn Header="Mã SP" DisplayMemberBinding="{Binding CODE}"></GridViewColumn>
-                                        <GridViewColumn Header="" DisplayMemberBinding="{Binding HINHANH}"></GridViewColumn> 
-                                        <GridViewColumn Header="Tên SP" DisplayMemberBinding="{Binding TENSANPHAM}"></GridViewColumn>
-                                        <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding SOLUONG}"></GridViewColumn>
-                                        <GridViewColumn Header="ĐVT" DisplayMemberBinding="{Binding DONVITINH}"></GridViewColumn>
-                                        <GridViewColumn Header="Quy cách" DisplayMemberBinding="{Binding QUYCACH}"></GridViewColumn>
-                                        <GridViewColumn Header="D trong" DisplayMemberBinding="{Binding DTRONG}"></GridViewColumn>
-                                        <GridViewColumn Header="D ngoài" DisplayMemberBinding="{Binding DNGOAI}"></GridViewColumn>
-                                        <GridViewColumn Header="Chiều dài (L)" DisplayMemberBinding="{Binding LCHIEUDAI}"></GridViewColumn>
-                                        <GridViewColumn Header="Đường kính" DisplayMemberBinding="{Binding PHIDUONGKINH}"></GridViewColumn>
-                                        <GridViewColumn Header="Nhà cung cấp" DisplayMemberBinding="{Binding NHACUNGCAP1.TENNHACUNGCAP}"></GridViewColumn>
-                                        <GridViewColumn Header="Loại Sản phẩm" DisplayMemberBinding="{Binding LOAISANPHAM1.TENLOAI}"></GridViewColumn>
-                                        <GridViewColumn Header="Ngày khởi tạo" DisplayMemberBinding="{Binding NGAYKHOITAO}"></GridViewColumn>
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
-                        </ScrollViewer>
-                    </DockPanel>
-                </materialDesign:Card>
+                        <TextBlock Grid.Row="2"
+                                   Text="Danh mục"
+                                   Style="{StaticResource HeadingContentChild}"></TextBlock>
+
+                    </Grid>
+
+                </Grid>
+
+                <Grid Grid.Row="1"
+                      Margin="0 25">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.04*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.94*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.04*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="Grid">
+                            <Setter Property="Height"
+                                    Value="auto"></Setter>
+                            <Setter Property="Width"
+                                    Value="auto"></Setter>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid  Grid.Column="1">
+                        <materialDesign:Card ToolTip="Danh sách sản phẩm"
+                                             VerticalAlignment="Stretch">
+                            <DockPanel LastChildFill="True">
+                                <Grid DockPanel.Dock="Top"
+                                      Margin="0 20 10 20">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.15*"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <ComboBox  Grid.Column="0"
+                                               materialDesign:HintAssist.Hint="Filter"
+                                               Width="auto"
+                                               MinWidth="72"
+                                               Margin="16 0 16 0"
+                                               VerticalAlignment="Bottom"
+                                               IsEditable="True"
+                                               ItemsSource="{Binding LoaiFilter}"
+                                               SelectedValue="{Binding SelectedValueFilter}">
+                                        <ComboBox.Text>
+                                            <Binding  Path="SelectedTextTwo"
+                                                      Mode="TwoWay"
+                                                      UpdateSourceTrigger="PropertyChanged">
+                                            </Binding>
+                                        </ComboBox.Text>
+                                        <ComboBox.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <VirtualizingStackPanel />
+                                            </ItemsPanelTemplate>
+                                        </ComboBox.ItemsPanel>
+                                    </ComboBox>
+
+                                    <TextBox Grid.Column="1"
+                                             Name="bindingFilterText"
+                                             Text="{Binding Path=FilterText}"
+                                             HorizontalAlignment="Stretch">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="KeyUp">
+                                                <i:InvokeCommandAction Command="{Binding OnKeyUpFilterText,UpdateSourceTrigger=PropertyChanged}"
+                                                                       CommandParameter="{Binding ElementName=bindingFilterText}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </TextBox>
+                                </Grid>
+
+                                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                              HorizontalScrollBarVisibility="Auto"
+                                              MaxHeight="300">
+                                    <ListView ItemsSource="{Binding SanPhamList}" SelectedItem="{Binding SelectedSanPham}">
+                                        <ListView.View>
+                                            <GridView>
+                                              
+                                                <GridViewColumn Header="Mã SP"
+                                                                DisplayMemberBinding="{Binding CODE}"
+> 
+                                                </GridViewColumn>
+                                                <GridViewColumn Header="Tên SP"
+                                                                DisplayMemberBinding="{Binding TENSANPHAM}"></GridViewColumn>
+                                                <GridViewColumn Header="Số lượng"
+                                                                DisplayMemberBinding="{Binding SOLUONG}"></GridViewColumn>
+                                                <GridViewColumn Header="ĐVT"
+                                                                DisplayMemberBinding="{Binding DONVITINH}"></GridViewColumn>
+                                                <GridViewColumn Header="Quy cách"
+                                                                DisplayMemberBinding="{Binding QUYCACH}"></GridViewColumn>
+                                                <GridViewColumn Header="D trong"
+                                                                DisplayMemberBinding="{Binding DTRONG}"></GridViewColumn>
+                                                <GridViewColumn Header="D ngoài"
+                                                                DisplayMemberBinding="{Binding DNGOAI}"></GridViewColumn>
+                                                <GridViewColumn Header="Chiều dài (L)"
+                                                                DisplayMemberBinding="{Binding LCHIEUDAI}"></GridViewColumn>
+                                                <GridViewColumn Header="Đường kính"
+                                                                DisplayMemberBinding="{Binding PHIDUONGKINH}"></GridViewColumn>
+                                                <GridViewColumn Header="Nhà cung cấp"
+                                                                DisplayMemberBinding="{Binding NHACUNGCAP.TENNHACUNGCAP}"></GridViewColumn>
+                                                <GridViewColumn Header="Loại Sản phẩm"
+                                                                DisplayMemberBinding="{Binding LOAISANPHAM.TENLOAI}"></GridViewColumn>
+                                                <GridViewColumn Header="Ngày khởi tạo"
+                                                                DisplayMemberBinding="{Binding NGAYKHOITAO}"></GridViewColumn>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </ScrollViewer>
+                            </DockPanel>
+                        </materialDesign:Card>
+                    </Grid>
+                </Grid>
             </Grid>
-        </Grid>
-    </Grid>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="75"></ColumnDefinition>
+                        <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="Grid">
+                            <Setter Property="Height"
+                                    Value="auto"></Setter>
+                            <Setter Property="Width"
+                                    Value="auto"></Setter>
+                            <Setter Property="VerticalAlignment"
+                                    Value="Center"></Setter>
+                            <Setter Property="HorizontalAlignment"
+                                    Value="Left"></Setter>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid Grid.Column="0"></Grid>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0"></Grid>
+                        <TextBlock Grid.Row="1"
+                                   Text="Lịch sử giao dịch"
+                                   Style="{StaticResource HeadingContentChild}"></TextBlock>
+
+                    </Grid>
+
+                </Grid>
+
+                <Grid Grid.Row="1"
+                      Margin="0 25">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.04*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.94*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.04*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="Grid">
+                            <Setter Property="Height"
+                                    Value="auto"></Setter>
+                            <Setter Property="Width"
+                                    Value="auto"></Setter>
+                        </Style>
+                    </Grid.Resources>
+                    <Grid  Grid.Column="1">
+                        <materialDesign:Card ToolTip="Danh sách sản phẩm"
+                                             VerticalAlignment="Stretch">
+                            <DockPanel LastChildFill="True">
+                                <Grid DockPanel.Dock="Top"
+                                      Margin="0 20 10 20">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="0.15*"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <ComboBox  Grid.Column="0"
+                                               materialDesign:HintAssist.Hint="Filter"
+                                               Width="auto"
+                                               MinWidth="72"
+                                               Margin="16 0 16 0"
+                                               VerticalAlignment="Bottom"
+                                               IsEditable="True"
+                                               ItemsSource="{Binding LoaiFilter}"
+                                               SelectedValue="{Binding SelectedValueFilter}">
+                                        <ComboBox.Text>
+                                            <Binding  Path="SelectedTextTwo"
+                                                      Mode="TwoWay"
+                                                      UpdateSourceTrigger="PropertyChanged">
+                                            </Binding>
+                                        </ComboBox.Text>
+                                        <ComboBox.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <VirtualizingStackPanel />
+                                            </ItemsPanelTemplate>
+                                        </ComboBox.ItemsPanel>
+                                    </ComboBox>
+
+                                    <TextBox Grid.Column="1"
+                                             Text="{Binding Path=FilterText}"
+                                             HorizontalAlignment="Stretch">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="KeyUp">
+                                                <i:InvokeCommandAction Command="{Binding OnKeyUpFilterText,UpdateSourceTrigger=PropertyChanged}"
+                                                                       CommandParameter="{Binding ElementName=bindingFilterText}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </TextBox>
+                                </Grid>
+
+                                <!--<ScrollViewer VerticalScrollBarVisibility="Auto">
+                                    <ListView ItemsSource="{Binding SanPhamList}">
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn Header="Mã SP"
+                                                                DisplayMemberBinding="{Binding CODE}"></GridViewColumn>
+                                                <GridViewColumn Header=""
+                                                                DisplayMemberBinding="{Binding HINHANH}"></GridViewColumn>
+                                                <GridViewColumn Header="Tên SP"
+                                                                DisplayMemberBinding="{Binding TENSANPHAM}"></GridViewColumn>
+                                                <GridViewColumn Header="Số lượng"
+                                                                DisplayMemberBinding="{Binding SOLUONG}"></GridViewColumn>
+                                                <GridViewColumn Header="ĐVT"
+                                                                DisplayMemberBinding="{Binding DONVITINH}"></GridViewColumn>
+                                                <GridViewColumn Header="Quy cách"
+                                                                DisplayMemberBinding="{Binding QUYCACH}"></GridViewColumn>
+                                                <GridViewColumn Header="D trong"
+                                                                DisplayMemberBinding="{Binding DTRONG}"></GridViewColumn>
+                                                <GridViewColumn Header="D ngoài"
+                                                                DisplayMemberBinding="{Binding DNGOAI}"></GridViewColumn>
+                                                <GridViewColumn Header="Chiều dài (L)"
+                                                                DisplayMemberBinding="{Binding LCHIEUDAI}"></GridViewColumn>
+                                                <GridViewColumn Header="Đường kính"
+                                                                DisplayMemberBinding="{Binding PHIDUONGKINH}"></GridViewColumn>
+                                                <GridViewColumn Header="Nhà cung cấp"
+                                                                DisplayMemberBinding="{Binding NHACUNGCAP1.TENNHACUNGCAP}"></GridViewColumn>
+                                                <GridViewColumn Header="Loại Sản phẩm"
+                                                                DisplayMemberBinding="{Binding LOAISANPHAM1.TENLOAI}"></GridViewColumn>
+                                                <GridViewColumn Header="Ngày khởi tạo"
+                                                                DisplayMemberBinding="{Binding NGAYKHOITAO}"></GridViewColumn>
+                                            </GridView>
+                                        </ListView.View>
+                                    </ListView>
+                                </ScrollViewer>-->
+                            </DockPanel>
+                        </materialDesign:Card>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </StackPanel>
+
+
+    </ScrollViewer>
 </Window>

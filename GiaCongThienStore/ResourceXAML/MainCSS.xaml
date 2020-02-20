@@ -95,4 +95,5 @@
     <Style x:Key="MaterialDesignSubtitle1TextBlock">
         <Setter Property="Control.Background" Value="Black"></Setter> 
     </Style>
+
 </ResourceDictionary>

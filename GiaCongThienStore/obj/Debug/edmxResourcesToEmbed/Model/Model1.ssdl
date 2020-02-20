@@ -147,6 +147,7 @@
     <Property Name="DIACHI" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="SDT" Type="char" MaxLength="50" Nullable="false" />
     <Property Name="ACTIVATE" Type="bit" Nullable="false" />
+    <Property Name="GHICHU" Type="nvarchar" MaxLength="500" Nullable="false" />
     <Property Name="NGAYKHOITAO" Type="datetime" />
   </EntityType>
   <EntityType Name="NHANVIEN">
@@ -222,10 +223,10 @@
     <Property Name="LCHIEUDAI" Type="float" Nullable="false" />
     <Property Name="PHIDUONGKINH" Type="float" Nullable="false" />
     <Property Name="GHICHU" Type="nvarchar" MaxLength="500" Nullable="false" />
-    <Property Name="HINHANH" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="HINHANH" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="ACTIVATE" Type="bit" Nullable="false" />
-    <Property Name="NHACUNGCAP" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="LOAISANPHAM" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="MNCC" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="MLSP" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="NGAYKHOITAO" Type="datetime" />
   </EntityType>
   <EntityType Name="TAIKHOAN">
@@ -577,7 +578,7 @@
         <PropertyRef Name="MLSP" />
       </Principal>
       <Dependent Role="SANPHAM">
-        <PropertyRef Name="LOAISANPHAM" />
+        <PropertyRef Name="MLSP" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -589,7 +590,7 @@
         <PropertyRef Name="MNCC" />
       </Principal>
       <Dependent Role="SANPHAM">
-        <PropertyRef Name="NHACUNGCAP" />
+        <PropertyRef Name="MNCC" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

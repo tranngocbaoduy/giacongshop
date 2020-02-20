@@ -174,6 +174,7 @@
     <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="SDT" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
     <Property Name="ACTIVATE" Type="Boolean" Nullable="false" />
+    <Property Name="GHICHU" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="NGAYKHOITAO" Type="DateTime" Precision="3" />
     <NavigationProperty Name="SANPHAMs" Relationship="Self.FK_SANPHAM_NHACUNGCAP" FromRole="NHACUNGCAP" ToRole="SANPHAM" />
   </EntityType>
@@ -271,17 +272,17 @@
     <Property Name="LCHIEUDAI" Type="Double" Nullable="false" />
     <Property Name="PHIDUONGKINH" Type="Double" Nullable="false" />
     <Property Name="GHICHU" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="HINHANH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HINHANH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ACTIVATE" Type="Boolean" Nullable="false" />
-    <Property Name="NHACUNGCAP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="LOAISANPHAM" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MNCC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MLSP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="NGAYKHOITAO" Type="DateTime" Precision="3" />
     <NavigationProperty Name="CHITIETPHIEUNHAPs" Relationship="Self.FK_CHITIETPHIEUNHAP_SANPHAM" FromRole="SANPHAM" ToRole="CHITIETPHIEUNHAP" />
     <NavigationProperty Name="CHITIETPHIEUXUATs" Relationship="Self.FK_CHITIETPHIEUXUAT_SANPHAM" FromRole="SANPHAM" ToRole="CHITIETPHIEUXUAT" />
     <NavigationProperty Name="CHITIETSANPHAMDUKIENBANVEs" Relationship="Self.FK_CHITIETSANPHAMDUKIENBANVE_SANPHAM" FromRole="SANPHAM" ToRole="CHITIETSANPHAMDUKIENBANVE" />
     <NavigationProperty Name="CHITIETSANPHAMQUYTRINHs" Relationship="Self.FK_CHITIETSANPHAMQUYTRINH_SANPHAM" FromRole="SANPHAM" ToRole="CHITIETSANPHAMQUYTRINH" />
-    <NavigationProperty Name="LOAISANPHAM1" Relationship="Self.FK_SANPHAM_LOAISANPHAM" FromRole="SANPHAM" ToRole="LOAISANPHAM" />
-    <NavigationProperty Name="NHACUNGCAP1" Relationship="Self.FK_SANPHAM_NHACUNGCAP" FromRole="SANPHAM" ToRole="NHACUNGCAP" />
+    <NavigationProperty Name="LOAISANPHAM" Relationship="Self.FK_SANPHAM_LOAISANPHAM" FromRole="SANPHAM" ToRole="LOAISANPHAM" />
+    <NavigationProperty Name="NHACUNGCAP" Relationship="Self.FK_SANPHAM_NHACUNGCAP" FromRole="SANPHAM" ToRole="NHACUNGCAP" />
   </EntityType>
   <EntityType Name="TAIKHOAN">
     <Key>
@@ -563,7 +564,7 @@
         <PropertyRef Name="MLSP" />
       </Principal>
       <Dependent Role="SANPHAM">
-        <PropertyRef Name="LOAISANPHAM" />
+        <PropertyRef Name="MLSP" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -575,7 +576,7 @@
         <PropertyRef Name="MNCC" />
       </Principal>
       <Dependent Role="SANPHAM">
-        <PropertyRef Name="NHACUNGCAP" />
+        <PropertyRef Name="MNCC" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

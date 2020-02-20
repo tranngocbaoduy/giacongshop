@@ -16,125 +16,132 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         DataContext="{StaticResource ThemSanPhamVM}"
-        Height="768"
+        Height="auto"
         Width="1366"
         WindowStartupLocation="CenterScreen"
-        Name="DanhMucSanPhamWindow">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="75"></ColumnDefinition>
-                <ColumnDefinition Width="0.3*"></ColumnDefinition>
-                <ColumnDefinition Width="0.6*"></ColumnDefinition>
-                <!--<ColumnDefinition Width="0.05*"></ColumnDefinition>-->
-            </Grid.ColumnDefinitions>
-            <Grid.Resources>
-                <Style TargetType="Grid">
-                    <Setter Property="Height"
-                            Value="auto"></Setter>
-                    <Setter Property="Width"
-                            Value="auto"></Setter>
-                    <Setter Property="VerticalAlignment"
-                            Value="Center"></Setter>
-                    <Setter Property="HorizontalAlignment"
-                            Value="Left"></Setter>
-                </Style>
-            </Grid.Resources>
-            <Grid Grid.Column="0"></Grid>
-            <Grid Grid.Column="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"></RowDefinition>
-                    <RowDefinition Height="auto"></RowDefinition>
-                    <RowDefinition Height="auto"></RowDefinition>
-                </Grid.RowDefinitions>
+        Name="DanhMucSanPhamWindow"
+        >
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="75"></ColumnDefinition>
+                    <ColumnDefinition Width="0.3*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                    <!--<ColumnDefinition Width="0.05*"></ColumnDefinition>-->
+                </Grid.ColumnDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="Grid">
+                        <Setter Property="Height"
+                                Value="auto"></Setter>
+                        <Setter Property="Width"
+                                Value="auto"></Setter>
+                        <Setter Property="VerticalAlignment"
+                                Value="Center"></Setter>
+                        <Setter Property="HorizontalAlignment"
+                                Value="Left"></Setter>
+                    </Style>
+                </Grid.Resources>
+                <Grid Grid.Column="0"></Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition Height="auto"></RowDefinition>
+                    </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0"></Grid>
-                <Grid Grid.Row="1"
-                      Opacity="0.5">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="MouseLeftButtonDown">
-                            <i:InvokeCommandAction Command="{Binding BackCommand}"
-                                                   CommandParameter="{Binding ElementName=DanhMucSanPhamWindow}" />
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.2*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.8*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid.Resources>
-                        <Style TargetType="Grid">
-                            <Setter Property="Height"
-                                    Value="auto"></Setter>
-                            <Setter Property="Width"
-                                    Value="auto"></Setter>
-                            <Setter Property="VerticalAlignment"
-                                    Value="Center"></Setter>
-                            <Setter Property="HorizontalAlignment"
-                                    Value="Left"></Setter>
-                        </Style>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="Height"
-                                    Value="auto"></Setter>
-                            <Setter Property="Width"
-                                    Value="auto"></Setter>
-                            <Setter Property="VerticalAlignment"
-                                    Value="Center"></Setter>
-                            <Setter Property="HorizontalAlignment"
-                                    Value="Left"></Setter>
-                        </Style>
-                    </Grid.Resources>
-                    <materialDesign:PackIcon Grid.Column="0"
-                                             Kind="KeyboardArrowLeft"
-                                             Width="25"
-                                             Height="25"
-                                             RenderTransformOrigin="0.5,0.5">
-                    </materialDesign:PackIcon>
-                    <TextBlock Text="Quay lại"
-                               Grid.Column="1"></TextBlock>
+                    <Grid Grid.Row="0"></Grid>
+                    <Grid Grid.Row="1"
+                          Opacity="0.5">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                <i:InvokeCommandAction Command="{Binding BackCommand}"
+                                                       CommandParameter="{Binding ElementName=DanhMucSanPhamWindow}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.8*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.Resources>
+                            <Style TargetType="Grid">
+                                <Setter Property="Height"
+                                        Value="auto"></Setter>
+                                <Setter Property="Width"
+                                        Value="auto"></Setter>
+                                <Setter Property="VerticalAlignment"
+                                        Value="Center"></Setter>
+                                <Setter Property="HorizontalAlignment"
+                                        Value="Left"></Setter>
+                            </Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Height"
+                                        Value="auto"></Setter>
+                                <Setter Property="Width"
+                                        Value="auto"></Setter>
+                                <Setter Property="VerticalAlignment"
+                                        Value="Center"></Setter>
+                                <Setter Property="HorizontalAlignment"
+                                        Value="Left"></Setter>
+                            </Style>
+                        </Grid.Resources>
+                        <materialDesign:PackIcon Grid.Column="0"
+                                                 Kind="KeyboardArrowLeft"
+                                                 Width="25"
+                                                 Height="25"
+                                                 RenderTransformOrigin="0.5,0.5">
+                        </materialDesign:PackIcon>
+                        <TextBlock Text="Quay lại"
+                                   Grid.Column="1"></TextBlock>
+                    </Grid>
+                    <TextBlock Grid.Row="2"
+                               Text="Thêm sản phẩm mới"
+                               Style="{StaticResource HeadingContentChild}"></TextBlock>
+
                 </Grid>
-                <TextBlock Grid.Row="2"
-                           Text="Thêm sản phẩm mới"
-                           Style="{StaticResource HeadingContentChild}"></TextBlock>
 
             </Grid>
 
-        </Grid>
-
-        <Grid Grid.Row="1"
-              Margin="0 25">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.04*"></ColumnDefinition>
-                <ColumnDefinition Width="0.4*"></ColumnDefinition>
-                <ColumnDefinition Width="0.02*"></ColumnDefinition>
-                <ColumnDefinition Width="0.5*"></ColumnDefinition>
-                <ColumnDefinition Width="0.04*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.Resources>
-                <Style TargetType="Grid">
-                    <Setter Property="Height"
-                            Value="auto"></Setter>
-                    <Setter Property="Width"
-                            Value="auto"></Setter>
-                </Style>
-            </Grid.Resources>
-            <materialDesign:Card  Grid.Column="1"
-                                  Background="{DynamicResource MaterialDesignBackground}">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.01*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.5*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.4*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.05*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="1">
-                        <StackPanel>
-                            <!--<ListBox ItemsSource="{Binding Path=MyImages}">
+            <Grid Grid.Row="1"
+                  Margin="0 25">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.04*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.02*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.04*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="Grid">
+                        <Setter Property="Height"
+                                Value="auto"></Setter>
+                        <Setter Property="Width"
+                                Value="auto"></Setter>
+                    </Style>
+                </Grid.Resources>
+                <materialDesign:Card  Grid.Column="1"
+                                      Background="{DynamicResource MaterialDesignBackground}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.01*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.4*"></ColumnDefinition>
+                            <ColumnDefinition Width="0.05*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="1">
+                            <StackPanel>
+                                <!--<ListBox ItemsSource="{Binding Path=MyImages}">
                                 <ListBoxItem>
                                     <StackPanel Orientation="Horizontal">
                                         <Image Source="{Binding ImageSource}"
@@ -146,29 +153,29 @@
                                         <TextBlock Text="{Binding Name}"> </TextBlock>
                                     </StackPanel>
                                 </ListBoxItem>
-                            </ListBox>--> 
-                            <ListBox ItemsSource="{Binding Path=MyImages}">
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Image Source="{Binding ImageSource}"
-                                                   VerticalAlignment="Center"
-                                                   HorizontalAlignment="Center"
-                                                   Margin="10 30" 
-                                                   Width="220"/> 
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
-                        </StackPanel>
-                    </Grid>
-                    <StackPanel  Grid.Column="2">
-                        <StackPanel.Resources>
-                            <Style TargetType="StackPanel">
-                                <Setter Property="Margin"
-                                        Value="10 7 0 5"></Setter>
-                            </Style>
-                            <!--<Style TargetType="TextBox">
+                            </ListBox>-->
+                                <ListBox ItemsSource="{Binding Path=MyImages}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Source="{Binding ImageSource}"
+                                                       VerticalAlignment="Center"
+                                                       HorizontalAlignment="Center"
+                                                       Margin="10 30"
+                                                       Width="220" />
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </StackPanel>
+                        </Grid>
+                        <StackPanel  Grid.Column="2">
+                            <StackPanel.Resources>
+                                <Style TargetType="StackPanel">
+                                    <Setter Property="Margin"
+                                            Value="10 7 0 5"></Setter>
+                                </Style>
+                                <!--<Style TargetType="TextBox">
                                 <Setter Property="Width"
                                         Value="auto"></Setter>
                                 <Setter Property="Height"
@@ -184,12 +191,85 @@
                                 <Setter Property="BorderThickness"
                                         Value="0.5"></Setter> 
                             </Style>-->
+                            </StackPanel.Resources>
+                            <StackPanel>
+                                <TextBlock Text="Tên hình ảnh"
+                                           FontSize="15"
+                                           FontWeight="DemiBold"
+                                           materialDesign:HintAssist.Hint="Dao 156SS0"></TextBlock>
+                            </StackPanel>
+                            <StackPanel>
+                                <StackPanel.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Margin"
+                                                Value="0 5"></Setter>
+                                    </Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Margin"
+                                                Value="0 15"></Setter>
+                                        <Setter Property="Padding"
+                                                Value="10 5"></Setter>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Border CornerRadius="2"
+                                                            Background="#0069A5"
+                                                            BorderThickness="1">
+                                                        <ContentPresenter x:Name="contentPresenter"
+                                                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                                          Content="{TemplateBinding Content}"
+                                                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                                          Margin="{TemplateBinding Padding}"
+                                                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </StackPanel.Resources>
+                                <TextBlock Text="Đường dẫn hình ảnh"
+                                           FontWeight="DemiBold"></TextBlock>
+                                <TextBox  materialDesign:HintAssist.Hint="Path"
+                                          Text="{Binding MyImages[0].Path, UpdateSourceTrigger=Default}">
+                                </TextBox>
+
+                                <Button Name="btnLoad"
+                                        Background="#0069A5"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Bottom"
+                                        Margin="0 10"
+                                        Width="100"
+                                        Foreground="White"
+                                        Command="{Binding ImgUploadCommand}">Upload</Button>
+                            </StackPanel>
+
+                        </StackPanel>
+
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card  Grid.Column="3"
+                                      Height="auto"
+                                      Background="{DynamicResource MaterialDesignBackground}">
+
+                    <StackPanel Margin="20 10">
+                        <StackPanel.Resources>
+                            <Style TargetType="StackPanel">
+                                <Setter Property="Margin"
+                                        Value="0 10"></Setter>
+                            </Style>
                         </StackPanel.Resources>
                         <StackPanel>
-                            <TextBlock Text="Tên hình ảnh"
-                                       FontSize="15"
-                                       FontWeight="DemiBold"
-                                       materialDesign:HintAssist.Hint="Dao 156SS0"></TextBlock>
+                            <StackPanel.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Margin"
+                                            Value="0"></Setter>
+                                    <Setter Property="FontSize"
+                                            Value="20"></Setter>
+                                    <Setter Property="FontWeight"
+                                            Value="Bold"></Setter>
+                                </Style>
+                            </StackPanel.Resources>
+                            <TextBlock Text="Phiên bản sản phẩm"></TextBlock>
                         </StackPanel>
                         <StackPanel>
                             <StackPanel.Resources>
@@ -197,44 +277,220 @@
                                     <Setter Property="Margin"
                                             Value="0 5"></Setter>
                                 </Style>
-                                <Style TargetType="Button">
+                            </StackPanel.Resources>
+
+                            <DockPanel>
+                                <DockPanel.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Margin"
+                                                Value="0 5"></Setter>
+                                    </Style>
+                                </DockPanel.Resources>
+                                <StackPanel DockPanel.Dock="Left"
+                                            Width="100"
+                                            Margin="0 10 36 0">
+                                    <TextBlock Text="Mã sản phẩm"
+                                               FontWeight="DemiBold"></TextBlock>
+                                    <TextBox materialDesign:HintAssist.Hint="Code SP"
+                                             materialDesign:HintAssist.HelperText="*Bắt buộc"
+                                             Text="{Binding SanPhamMoi.CODE}">
+                                    </TextBox>
+                                </StackPanel>
+                                <StackPanel  DockPanel.Dock="Right">
+                                    <TextBlock Text="Tên phiên bản sản phẩm"
+                                               FontWeight="DemiBold"></TextBlock>
+                                    <TextBox materialDesign:HintAssist.Hint="Tên SP"
+                                             materialDesign:HintAssist.HelperText="Tên sản phẩm phải lớn hơn 2 kí tự"
+                                             Text="{Binding SanPhamMoi.TENSANPHAM}">
+                                    </TextBox>
+                                </StackPanel>
+                            </DockPanel>
+                        </StackPanel>
+                        <StackPanel>
+
+                            <DockPanel>
+                                <DockPanel.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Margin"
+                                                Value="0 5"></Setter>
+                                    </Style>
+                                </DockPanel.Resources>
+                                <Grid DockPanel.Dock="Left">
+                                    <StackPanel>
+                                        <TextBlock Text="Loại sản phẩm"
+                                                   FontWeight="DemiBold"></TextBlock>
+
+                                        <ComboBox  materialDesign:HintAssist.Hint="Filter"
+                                                   Width="100"
+                                                   Margin="0 0 32 0"
+                                                   VerticalAlignment="Bottom"
+                                                   IsEditable="True"
+                                                   ItemsSource="{Binding LoaiSanPham}"
+                                                   DisplayMemberPath="TENLOAI"
+                                                   SelectedValue="{Binding SelectedLoaiSanPham}">
+
+                                            <ComboBox.Text>
+                                                <Binding  Path="SelectedTextTwo"
+                                                          Mode="TwoWay"
+                                                          UpdateSourceTrigger="PropertyChanged">
+                                                </Binding>
+                                            </ComboBox.Text>
+                                            <ComboBox.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <VirtualizingStackPanel />
+                                                </ItemsPanelTemplate>
+                                            </ComboBox.ItemsPanel>
+                                        </ComboBox>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid DockPanel.Dock="Right">
+                                    <StackPanel>
+                                        <TextBlock Text="Quy cách"
+                                                   FontWeight="DemiBold"></TextBlock>
+                                        <TextBox materialDesign:HintAssist.Hint="Kích thước SP"
+                                                 materialDesign:HintAssist.HelperText="Kích thước có thể là số hoặc chữ"
+                                                 Text="{Binding SanPhamMoi.QUYCACH}">
+
+                                        </TextBox>
+                                    </StackPanel>
+                                </Grid>
+                            </DockPanel>
+
+                        </StackPanel>
+                    </StackPanel>
+                </materialDesign:Card>
+            </Grid>
+
+            <Border Grid.Row="2"
+                    Background="{DynamicResource MaterialDesignDivider}"
+                    Height="1"
+                    Margin="50 0"
+                    HorizontalAlignment="Stretch"
+                    SnapsToDevicePixels="True" />
+
+            <Grid Grid.Row="3"
+                  Margin="0 25">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.04*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.04*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="Grid">
+                        <Setter Property="Height"
+                                Value="auto"></Setter>
+                        <Setter Property="Width"
+                                Value="auto"></Setter>
+                    </Style>
+                </Grid.Resources>
+                <materialDesign:Card  Grid.Column="1"
+                                      Height="auto"
+                                      Background="{DynamicResource MaterialDesignBackground}">
+
+                    <StackPanel Margin="20 10">
+                        <StackPanel.Resources>
+                            <Style TargetType="StackPanel">
+                                <Setter Property="Margin"
+                                        Value="0 10"></Setter>
+                            </Style>
+                        </StackPanel.Resources>
+                        <StackPanel>
+                            <StackPanel.Resources>
+                                <Style TargetType="TextBlock">
                                     <Setter Property="Margin"
-                                            Value="0 15"></Setter>
-                                    <Setter Property="Padding"
-                                            Value="10 5"></Setter>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="Button">
-                                                <Border CornerRadius="2"
-                                                        Background="#0069A5"
-                                                        BorderThickness="1">
-                                                    <ContentPresenter x:Name="contentPresenter"
-                                                                      ContentTemplate="{TemplateBinding ContentTemplate}"
-                                                                      Content="{TemplateBinding Content}"
-                                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                                                      Margin="{TemplateBinding Padding}"
-                                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                                                </Border>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
+                                            Value="0"></Setter>
+                                    <Setter Property="FontSize"
+                                            Value="20"></Setter>
+                                    <Setter Property="FontWeight"
+                                            Value="Bold"></Setter>
                                 </Style>
                             </StackPanel.Resources>
-                            <TextBlock Text="Đường dẫn hình ảnh"
-                                       FontWeight="DemiBold"></TextBlock>
-                            <TextBox  materialDesign:HintAssist.Hint="Path"
-                                     Text="{Binding MyImages[0].Name, UpdateSourceTrigger=Default}">
-                            </TextBox>
-
-                            <Button Name="btnLoad"
-                                    Background="#0069A5"
-                                    HorizontalAlignment="Left"
-                                    VerticalAlignment="Bottom"
-                                    Margin="0 10"
-                                    Width="100"
-                                    Foreground="White"
-                                    Command="{Binding ImgUploadCommand}">Upload</Button>
+                            <TextBlock Text="Thông tin chi tiết sản phẩm"></TextBlock>
                         </StackPanel>
+                        <DockPanel>
+                            <DockPanel.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Margin"
+                                            Value="0 5"></Setter>
+                                </Style>
+                            </DockPanel.Resources>
+                            <StackPanel DockPanel.Dock="Left"
+                                        Width="100"
+                                        Margin="0 10 36 0">
+                                <TextBlock Text="Đơn vị tính"
+                                           FontWeight="DemiBold"></TextBlock>
+                                <TextBox materialDesign:HintAssist.Hint="ĐVT"
+                                         materialDesign:HintAssist.HelperText="*Bắt buộc"
+                                         Text="{Binding SanPhamMoi.DONVITINH}">
+
+                                </TextBox>
+                            </StackPanel>
+                            <StackPanel DockPanel.Dock="Right">
+                                <TextBlock Text="Tích chọn thông số chi tiết cho sản phẩm"
+                                           FontWeight="DemiBold"></TextBlock>
+
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Grid.Column="0">
+                                        <StackPanel.Resources>
+                                            <Style TargetType="DockPanel">
+                                                <Setter Property="Margin"
+                                                        Value="10 5 "></Setter>
+                                            </Style>
+                                        </StackPanel.Resources>
+                                        <DockPanel>
+                                            <CheckBox Command="{Binding ClickComboboxThongTinSanPham}"
+                                                      CommandParameter="0">
+                                                D trong
+                                            </CheckBox>
+                                            <TextBox Margin="10 00"
+                                                     IsEnabled="{Binding CheckEnableThongTinSanPham[0]}"
+                                                     Text="{Binding TextThongTinSanPham[0]}" />
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <CheckBox Command="{Binding ClickComboboxThongTinSanPham}"
+                                                      CommandParameter="1">
+                                                D ngoài
+                                            </CheckBox>
+                                            <TextBox  Margin="10 00"
+                                                      IsEnabled="{Binding CheckEnableThongTinSanPham[1]}"
+                                                      Text="{Binding TextThongTinSanPham[1]}" />
+                                        </DockPanel>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1">
+                                        <StackPanel.Resources>
+                                            <Style TargetType="DockPanel">
+                                                <Setter Property="Margin"
+                                                        Value="10 5 "></Setter>
+                                            </Style>
+                                        </StackPanel.Resources>
+                                        <DockPanel>
+                                            <CheckBox Command="{Binding ClickComboboxThongTinSanPham}"
+                                                      CommandParameter="2">
+                                                L chiều dài
+                                            </CheckBox>
+                                            <TextBox Margin="10 00"
+                                                     IsEnabled="{Binding CheckEnableThongTinSanPham[2]}"
+                                                     Text="{Binding TextThongTinSanPham[2]}" />
+                                        </DockPanel>
+                                        <DockPanel>
+                                            <CheckBox Command="{Binding ClickComboboxThongTinSanPham}"
+                                                      CommandParameter="3">
+                                                ϕ đường kính
+                                            </CheckBox>
+                                            <TextBox Margin="10 00"
+                                                     IsEnabled="{Binding CheckEnableThongTinSanPham[3]}"
+                                                     Text="{Binding TextThongTinSanPham[3]}" />
+                                        </DockPanel>
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+
+                        </DockPanel>
+
                         <StackPanel>
                             <StackPanel.Resources>
                                 <Style TargetType="TextBlock">
@@ -254,85 +510,188 @@
                                      FontSize="12"
                                      VerticalScrollBarVisibility="Auto"
                                      materialDesign:HintAssist.Hint="Thêm 1 ghi chú ?"
+                                     IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}"
+                                     Text="{Binding SanPhamMoi.GHICHU}" />
+
+
+                        </StackPanel>
+                    </StackPanel>
+                </materialDesign:Card>
+            </Grid>
+
+            <Border Grid.Row="4"
+                    Background="{DynamicResource MaterialDesignDivider}"
+                    Height="1"
+                    Margin="50 0"
+                    HorizontalAlignment="Stretch"
+                    SnapsToDevicePixels="True" />
+
+            <Grid Grid.Row="5"
+                  Margin="0 25">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.04*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.04*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="Grid">
+                        <Setter Property="Height"
+                                Value="auto"></Setter>
+                        <Setter Property="Width"
+                                Value="auto"></Setter>
+                    </Style>
+                </Grid.Resources>
+                <materialDesign:Card  Grid.Column="1"
+                                      Height="auto"
+                                      Background="{DynamicResource MaterialDesignBackground}">
+
+                    <StackPanel Margin="20 10">
+                        <StackPanel.Resources>
+                            <Style TargetType="StackPanel">
+                                <Setter Property="Margin"
+                                        Value="0 10"></Setter>
+                            </Style>
+                        </StackPanel.Resources>
+                        <StackPanel>
+                            <StackPanel.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Margin"
+                                            Value="0"></Setter>
+                                    <Setter Property="FontSize"
+                                            Value="20"></Setter>
+                                    <Setter Property="FontWeight"
+                                            Value="Bold"></Setter>
+                                </Style>
+                            </StackPanel.Resources>
+                            <TextBlock Text="Thông nhà cung cấp (*)"></TextBlock>
+                        </StackPanel>
+                        <StackPanel>
+                            <StackPanel.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Margin"
+                                            Value="0 5"></Setter>
+                                </Style>
+                            </StackPanel.Resources>
+                            <DockPanel>
+                                <ToggleButton Style="{StaticResource MaterialDesignSwitchToggleButton}"
+                                              ToolTip="Default ToggleButton Style"
+                                              HorizontalAlignment="Left"
+                                              x:Name="CheckTaoMoiNCC"
+                                              Command="{Binding ClickTaoMoiNhaCungCap}"
+                                              CommandParameter="{Binding CheckTaoMoiNCC}" />
+                                <TextBlock Text="Tạo mới nhà cung cấp ?"
+                                           Foreground="Red"
+                                           Margin="5 0"></TextBlock>
+                            </DockPanel>
+
+                            <TextBlock Text="Tên nhà cung cấp"
+                                       FontWeight="DemiBold"></TextBlock>
+                            <TextBox Visibility="{Binding VisibleTaoMoiNhaCungCap}"
+                                     Text="{Binding SelectedNhaCungCap.TENNHACUNGCAP}"></TextBox>
+                            <ComboBox Visibility="{Binding VisibleChonNhaCungCap}"
+                                      materialDesign:HintAssist.Hint="Filter"
+                                      Margin="0 0 32 0"
+                                      VerticalAlignment="Bottom"
+                                      IsEditable="True"
+                                      ItemsSource="{Binding NhaCungCap}"
+                                      DisplayMemberPath="TENNHACUNGCAP"
+                                      SelectedValue="{Binding SelectedNhaCungCap}">
+
+                                <ComboBox.Text>
+                                    <Binding  Path="SelectedTextTwo"
+                                              Mode="TwoWay"
+                                              UpdateSourceTrigger="PropertyChanged">
+                                    </Binding>
+                                </ComboBox.Text>
+                                <ComboBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <VirtualizingStackPanel />
+                                    </ItemsPanelTemplate>
+                                </ComboBox.ItemsPanel>
+                            </ComboBox>
+                        </StackPanel>
+                        <DockPanel>
+                            <DockPanel.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Margin"
+                                            Value="0 5"></Setter>
+                                </Style>
+                            </DockPanel.Resources>
+                            <StackPanel DockPanel.Dock="Left"
+                                        Width="100"
+                                        Margin="0 10 36 0">
+                                <TextBlock Text="Số điện thoại"
+                                           FontWeight="DemiBold"></TextBlock>
+                                <TextBox materialDesign:HintAssist.Hint="Phone"
+                                         materialDesign:HintAssist.HelperText="*Bắt buộc"
+                                         Text="{Binding SelectedNhaCungCap.SDT}">
+
+                                </TextBox>
+                            </StackPanel>
+                            <StackPanel  DockPanel.Dock="Right">
+                                <TextBlock Text="Địa chỉ"
+                                           FontWeight="DemiBold"></TextBlock>
+                                <TextBox materialDesign:HintAssist.Hint="Ví dụ: 123 Nguyễn Trọng Thủ"
+                                         materialDesign:HintAssist.HelperText="Địa chỉ bao gồm số nhà, tên đường, quận, huyện, thành phố"
+                                         Text="{Binding SelectedNhaCungCap.DIACHI}">
+
+                                </TextBox>
+                            </StackPanel>
+                        </DockPanel>
+                        <StackPanel>
+                            <StackPanel.Resources>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Margin"
+                                            Value="0 5"></Setter>
+                                </Style>
+                            </StackPanel.Resources>
+                            <TextBlock Text="Ghi chú nhà cung cấp"
+                                       FontWeight="DemiBold"></TextBlock>
+                            <TextBox Padding="2"
+                                     VerticalAlignment="Top"
+                                     Height="100"
+                                     AcceptsReturn="True"
+                                     TextWrapping="Wrap"
+                                     BorderBrush="Gray"
+                                     BorderThickness="0.35"
+                                     FontSize="12"
+                                     VerticalScrollBarVisibility="Auto"
+                                     materialDesign:HintAssist.Hint="Thêm 1 ghi chú ?"
                                      IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextFieldTextBoxEnabledComboBox}" />
 
 
                         </StackPanel>
                     </StackPanel>
+                </materialDesign:Card>
 
-                </Grid>
-            </materialDesign:Card>
-            <materialDesign:Card  Grid.Column="3"
-                                  Height="auto"
-                                  Background="{DynamicResource MaterialDesignBackground}">
+            </Grid>
+            
+            <Grid Grid.Row="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.04*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.04*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Background="#0069A5"
+                        ToolTip="MaterialDesignOutlinedButton"
+                        HorizontalAlignment="Right"
+                        Width="200"
+                        Command="{Binding ClickTaoSanPhamMoi}"
+                        CommandParameter="{Binding ElementName=DanhMucSanPhamWindow}"
+                        > 
+                    Tạo Sản Phẩm Mới
+                </Button>
+            </Grid>
 
-                <StackPanel Margin="20 10">
-                    <StackPanel.Resources>
-                        <Style TargetType="StackPanel">
-                            <Setter Property="Margin"
-                                    Value="0 10"></Setter>
-                        </Style>
-                    </StackPanel.Resources>
-                    <StackPanel>
-                        <StackPanel.Resources>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Margin"
-                                        Value="0"></Setter>
-                                <Setter Property="FontSize"
-                                        Value="20"></Setter>
-                                <Setter Property="FontWeight"
-                                        Value="Bold"></Setter>
-                            </Style>
-                        </StackPanel.Resources>
-                        <TextBlock Text="Phiên bản sản phẩm"></TextBlock>
-                    </StackPanel>
-                    <StackPanel>
-                        <StackPanel.Resources>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Margin"
-                                        Value="0 5"></Setter>
-                            </Style>
-                        </StackPanel.Resources>
-                        <TextBlock Text="Tên phiên bản sản phẩm"
-                                   FontWeight="DemiBold"></TextBlock>
-                        <TextBox materialDesign:HintAssist.Hint="Tên SP"
-                                 materialDesign:HintAssist.HelperText="Tên sản phẩm phải lớn hơn 2 kí tự">
-                            <TextBox.Text>
-                                <Binding Path="Name"
-                                         UpdateSourceTrigger="PropertyChanged">
+            <Border Grid.Row="7"
+                    Background="{DynamicResource MaterialDesignDivider}"
+                    Height="1"
+                    Margin="50 50 50 0"
+                    HorizontalAlignment="Stretch"
+                    SnapsToDevicePixels="True" />
 
-                                </Binding>
-                            </TextBox.Text>
-                        </TextBox>
-                    </StackPanel>
-                    <StackPanel>
-                        <StackPanel.Resources>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Margin"
-                                        Value="0 5"></Setter>
-                            </Style>
-                        </StackPanel.Resources>
-                        <TextBlock Text="Kích thước"
-                                   FontWeight="DemiBold"></TextBlock>
-                        <TextBox materialDesign:HintAssist.Hint="Kích thước SP"
-                                 materialDesign:HintAssist.HelperText="Kích thước có thể là số hoặc chữ">
-                            <TextBox.Text>
-                                <Binding Path="Name"
-                                         UpdateSourceTrigger="PropertyChanged">
-
-                                </Binding>
-                            </TextBox.Text>
-                        </TextBox>
-                    </StackPanel>
-                </StackPanel>
-            </materialDesign:Card>
         </Grid>
-
-        <Border Grid.Row="2"
-                Background="{DynamicResource MaterialDesignDivider}"
-                Height="1"
-                Margin="50 0"
-                HorizontalAlignment="Stretch"
-                SnapsToDevicePixels="True" />
-    </Grid>
+    </ScrollViewer>
 </Window>

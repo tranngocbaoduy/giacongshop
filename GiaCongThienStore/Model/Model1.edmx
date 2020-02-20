@@ -152,6 +152,7 @@
           <Property Name="DIACHI" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="SDT" Type="char" MaxLength="50" Nullable="false" />
           <Property Name="ACTIVATE" Type="bit" Nullable="false" />
+          <Property Name="GHICHU" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="NGAYKHOITAO" Type="datetime" />
         </EntityType>
         <EntityType Name="NHANVIEN">
@@ -227,10 +228,10 @@
           <Property Name="LCHIEUDAI" Type="float" Nullable="false" />
           <Property Name="PHIDUONGKINH" Type="float" Nullable="false" />
           <Property Name="GHICHU" Type="nvarchar" MaxLength="500" Nullable="false" />
-          <Property Name="HINHANH" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="HINHANH" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="ACTIVATE" Type="bit" Nullable="false" />
-          <Property Name="NHACUNGCAP" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="LOAISANPHAM" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="MNCC" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="MLSP" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="NGAYKHOITAO" Type="datetime" />
         </EntityType>
         <EntityType Name="TAIKHOAN">
@@ -582,7 +583,7 @@
               <PropertyRef Name="MLSP" />
             </Principal>
             <Dependent Role="SANPHAM">
-              <PropertyRef Name="LOAISANPHAM" />
+              <PropertyRef Name="MLSP" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -594,7 +595,7 @@
               <PropertyRef Name="MNCC" />
             </Principal>
             <Dependent Role="SANPHAM">
-              <PropertyRef Name="NHACUNGCAP" />
+              <PropertyRef Name="MNCC" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -916,6 +917,7 @@
           <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SDT" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="ACTIVATE" Type="Boolean" Nullable="false" />
+          <Property Name="GHICHU" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NGAYKHOITAO" Type="DateTime" Precision="3" />
           <NavigationProperty Name="SANPHAMs" Relationship="Self.FK_SANPHAM_NHACUNGCAP" FromRole="NHACUNGCAP" ToRole="SANPHAM" />
         </EntityType>
@@ -1013,17 +1015,17 @@
           <Property Name="LCHIEUDAI" Type="Double" Nullable="false" />
           <Property Name="PHIDUONGKINH" Type="Double" Nullable="false" />
           <Property Name="GHICHU" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="HINHANH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HINHANH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ACTIVATE" Type="Boolean" Nullable="false" />
-          <Property Name="NHACUNGCAP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LOAISANPHAM" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MNCC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MLSP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NGAYKHOITAO" Type="DateTime" Precision="3" />
           <NavigationProperty Name="CHITIETPHIEUNHAPs" Relationship="Self.FK_CHITIETPHIEUNHAP_SANPHAM" FromRole="SANPHAM" ToRole="CHITIETPHIEUNHAP" />
           <NavigationProperty Name="CHITIETPHIEUXUATs" Relationship="Self.FK_CHITIETPHIEUXUAT_SANPHAM" FromRole="SANPHAM" ToRole="CHITIETPHIEUXUAT" />
           <NavigationProperty Name="CHITIETSANPHAMDUKIENBANVEs" Relationship="Self.FK_CHITIETSANPHAMDUKIENBANVE_SANPHAM" FromRole="SANPHAM" ToRole="CHITIETSANPHAMDUKIENBANVE" />
           <NavigationProperty Name="CHITIETSANPHAMQUYTRINHs" Relationship="Self.FK_CHITIETSANPHAMQUYTRINH_SANPHAM" FromRole="SANPHAM" ToRole="CHITIETSANPHAMQUYTRINH" />
-          <NavigationProperty Name="LOAISANPHAM1" Relationship="Self.FK_SANPHAM_LOAISANPHAM" FromRole="SANPHAM" ToRole="LOAISANPHAM" />
-          <NavigationProperty Name="NHACUNGCAP1" Relationship="Self.FK_SANPHAM_NHACUNGCAP" FromRole="SANPHAM" ToRole="NHACUNGCAP" />
+          <NavigationProperty Name="LOAISANPHAM" Relationship="Self.FK_SANPHAM_LOAISANPHAM" FromRole="SANPHAM" ToRole="LOAISANPHAM" />
+          <NavigationProperty Name="NHACUNGCAP" Relationship="Self.FK_SANPHAM_NHACUNGCAP" FromRole="SANPHAM" ToRole="NHACUNGCAP" />
         </EntityType>
         <EntityType Name="TAIKHOAN">
           <Key>
@@ -1305,7 +1307,7 @@
               <PropertyRef Name="MLSP" />
             </Principal>
             <Dependent Role="SANPHAM">
-              <PropertyRef Name="LOAISANPHAM" />
+              <PropertyRef Name="MLSP" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1317,7 +1319,7 @@
               <PropertyRef Name="MNCC" />
             </Principal>
             <Dependent Role="SANPHAM">
-              <PropertyRef Name="NHACUNGCAP" />
+              <PropertyRef Name="MNCC" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1691,6 +1693,7 @@
                 <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
                 <ScalarProperty Name="SDT" ColumnName="SDT" />
                 <ScalarProperty Name="ACTIVATE" ColumnName="ACTIVATE" />
+                <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
                 <ScalarProperty Name="NGAYKHOITAO" ColumnName="NGAYKHOITAO" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1773,8 +1776,8 @@
                 <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
                 <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
                 <ScalarProperty Name="ACTIVATE" ColumnName="ACTIVATE" />
-                <ScalarProperty Name="NHACUNGCAP" ColumnName="NHACUNGCAP" />
-                <ScalarProperty Name="LOAISANPHAM" ColumnName="LOAISANPHAM" />
+                <ScalarProperty Name="MNCC" ColumnName="MNCC" />
+                <ScalarProperty Name="MLSP" ColumnName="MLSP" />
                 <ScalarProperty Name="NGAYKHOITAO" ColumnName="NGAYKHOITAO" />
               </MappingFragment>
             </EntityTypeMapping>

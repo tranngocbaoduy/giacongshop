@@ -20,6 +20,7 @@ namespace GiaCongThienStore.ViewModel.ContentChild
         public ICommand LoadDanhMucSanPhamCommand { get; set; }
         public ICommand BackCommand { get; set; }
         public ICommand OnKeyUpFilterText { get; set; }
+        public ICommand XemChiTietSanPham { get; set; }
         #endregion
 
         private String _FilterText = "";
@@ -37,6 +38,19 @@ namespace GiaCongThienStore.ViewModel.ContentChild
 
         private ObservableCollection<SANPHAM> _SanPhamList;
         public ObservableCollection<SANPHAM> SanPhamList { get => _SanPhamList; set { _SanPhamList = value; OnPropertyChanged(); } }
+
+        private SANPHAM _SelectedSanPham = new SANPHAM();
+        public SANPHAM SelectedSanPham
+        {
+            get => _SelectedSanPham; set
+            {
+                _SelectedSanPham = value; OnPropertyChanged();
+                if (SelectedSanPham != null)
+                {
+                    MessageBox.Show(SelectedSanPham.CODE);
+                }
+            }
+        }
 
         private ObservableCollection<LOAISANPHAM> _LoaiSPList;
         public ObservableCollection<LOAISANPHAM> LoaiSPList { get => _LoaiSPList; set { _LoaiSPList = value; OnPropertyChanged(); } }
@@ -64,12 +78,22 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                 Filter(p.Text);
             });
 
+            XemChiTietSanPham = new RelayCommand<string>((p) =>
+            {
+                MessageBox.Show(p);
+                if (string.IsNullOrEmpty(p)) { return false; }
+                return true;
+            }, (p) =>
+            {
+                MessageBox.Show(p);
+            });
+
             BackCommand = new RelayCommand<Window>((p) =>
             {
                 return true;
             }, (p) =>
             {
-                SanPhamList.Clear();
+                SanPhamList.Clear(); InitDanhMucSanPhamVM();
                 p = p as Window;
                 if (p != null)
                 {
@@ -129,13 +153,13 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                             }
                             break;
                         case "Nhà cung cấp":
-                            foreach (var item in DataProvider.Ins.DB.NHACUNGCAPs.Where(ncc => ncc.TENNHACUNGCAP.ToUpper().Contains(query.ToUpper())).SelectMany(ncc => DataProvider.Ins.DB.SANPHAMs.Where(item => item.NHACUNGCAP == ncc.MNCC)).ToList())
+                            foreach (var item in DataProvider.Ins.DB.NHACUNGCAPs.Where(ncc => ncc.TENNHACUNGCAP.ToUpper().Contains(query.ToUpper())).SelectMany(ncc => DataProvider.Ins.DB.SANPHAMs.Where(item => item.MNCC == ncc.MNCC)).ToList())
                             {
                                 SanPhamList.Add(item);
                             }
                             break;
                         case "Loại sản phẩm":
-                            foreach (var item in DataProvider.Ins.DB.LOAISANPHAMs.Where(lsp => lsp.TENLOAI.ToUpper().Contains(query.ToUpper())).SelectMany(ncc => DataProvider.Ins.DB.SANPHAMs.Where(item => item.LOAISANPHAM == ncc.MLSP)).ToList())
+                            foreach (var item in DataProvider.Ins.DB.LOAISANPHAMs.Where(lsp => lsp.TENLOAI.ToUpper().Contains(query.ToUpper())).SelectMany(ncc => DataProvider.Ins.DB.SANPHAMs.Where(item => item.MLSP == ncc.MLSP)).ToList())
                             {
                                 SanPhamList.Add(item);
                             }

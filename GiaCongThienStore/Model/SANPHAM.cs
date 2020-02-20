@@ -36,8 +36,8 @@ namespace GiaCongThienStore.Model
         public string GHICHU { get; set; }
         public string HINHANH { get; set; }
         public bool ACTIVATE { get; set; }
-        public string NHACUNGCAP { get; set; }
-        public string LOAISANPHAM { get; set; }
+        public string MNCC { get; set; }
+        public string MLSP { get; set; }
         public Nullable<System.DateTime> NGAYKHOITAO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -48,7 +48,7 @@ namespace GiaCongThienStore.Model
         public virtual ICollection<CHITIETSANPHAMDUKIENBANVE> CHITIETSANPHAMDUKIENBANVEs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHITIETSANPHAMQUYTRINH> CHITIETSANPHAMQUYTRINHs { get; set; }
-        public virtual LOAISANPHAM LOAISANPHAM1 { get; set; }
-        public virtual NHACUNGCAP NHACUNGCAP1 { get; set; }
+        public virtual LOAISANPHAM LOAISANPHAM { get; set; }
+        public virtual NHACUNGCAP NHACUNGCAP { get; set; }
     }
 }
