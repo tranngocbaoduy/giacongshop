@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,8 @@ namespace GiaCongThienStore.ModelCustom
             this.ImageSource = image; 
             var splitString = this.Path.Split('\\');
             this.Name = splitString[splitString.Length - 1];
+            this.Name = this.Name.Replace(".jpg", ".png");
+            this.Name = this.Name.Replace(".jpeg", ".png");
         }
 
         public String Name { get; set; }
@@ -31,9 +34,26 @@ namespace GiaCongThienStore.ModelCustom
 
         public void SaveImage()
         {
-            this.bmp = new Bitmap(this.Path); 
-            this.Name = @"..\..\ResourceImage\SanPham\" + this.Name;
-            this.bmp.Save(this.Name, ImageFormat.Png); 
+            var dir = Directory.GetCurrentDirectory().Split('\\');
+            string fullPath = "";
+            foreach (var item in dir)
+            {
+                if (item != "bin")
+                {
+                    fullPath += item + @"\";
+                }
+                else
+                {
+                    break;
+                }
+            } 
+            this.bmp = new Bitmap(this.Path);
+            string destinationPath = fullPath + @"ResourceImage\SanPham\" + this.Name;
+            this.bmp.Save(destinationPath, ImageFormat.Png); 
+            string initFile = System.IO.Path.GetFileName(this.Path); 
+            File.Copy(this.Path, destinationPath, true);
+
+          
         }
     }
 }

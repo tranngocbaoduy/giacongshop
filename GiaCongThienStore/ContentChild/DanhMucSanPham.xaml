@@ -13,13 +13,13 @@
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
-        Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         DataContext="{StaticResource DanhMucSanPhamVM}"
         Height="768"
         Width="1366"
         WindowStartupLocation="CenterScreen"
-        Name="DanhMucSanPhamWindow">
+        Name="DanhMucSanPhamWindow"
+        Background="#DCEEFF">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedAccountWindowCommand}" />
@@ -129,90 +129,255 @@
                         </Style>
                     </Grid.Resources>
                     <Grid  Grid.Column="1">
-                        <materialDesign:Card ToolTip="Danh sách sản phẩm"
-                                             VerticalAlignment="Stretch">
-                            <DockPanel LastChildFill="True">
-                                <Grid DockPanel.Dock="Top"
-                                      Margin="0 20 10 20">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="0.15*"></ColumnDefinition>
-                                        <ColumnDefinition></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <Grid Grid.Row="1"
+                                  Margin="0 0 0 25">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.6*"></ColumnDefinition>
+                                    <ColumnDefinition Width="0.02*"></ColumnDefinition>
+                                    <ColumnDefinition Width="0.2*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.Resources>
+                                    <Style TargetType="Grid">
+                                        <Setter Property="Height"
+                                                Value="auto"></Setter>
+                                        <Setter Property="Width"
+                                                Value="auto"></Setter>
+                                    </Style>
+                                </Grid.Resources>
+                                <materialDesign:Card  Grid.Column="2"
+                                                      Height="auto"
+                                                      Background="{DynamicResource MaterialDesignBackground}">
 
-                                    <ComboBox  Grid.Column="0"
-                                               materialDesign:HintAssist.Hint="Filter"
-                                               Width="auto"
-                                               MinWidth="72"
-                                               Margin="16 0 16 0"
-                                               VerticalAlignment="Bottom"
-                                               IsEditable="True"
-                                               ItemsSource="{Binding LoaiFilter}"
-                                               SelectedValue="{Binding SelectedValueFilter}">
-                                        <ComboBox.Text>
-                                            <Binding  Path="SelectedTextTwo"
-                                                      Mode="TwoWay"
-                                                      UpdateSourceTrigger="PropertyChanged">
-                                            </Binding>
-                                        </ComboBox.Text>
-                                        <ComboBox.ItemsPanel>
-                                            <ItemsPanelTemplate>
-                                                <VirtualizingStackPanel />
-                                            </ItemsPanelTemplate>
-                                        </ComboBox.ItemsPanel>
-                                    </ComboBox>
+                                    <ListBox ItemsSource="{Binding MyImages}">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Image Source="{Binding ImageSource}"
+                                                           VerticalAlignment="Center"
+                                                           HorizontalAlignment="Center"
+                                                           Margin="10 30"
+                                                           Width="200"
+                                                           MaxHeight="300"
+                                                           MaxWidth="300" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </materialDesign:Card>
+                                <materialDesign:Card  Grid.Column="0"
+                                                      Height="auto"
+                                                      Background="{DynamicResource MaterialDesignBackground}">
 
-                                    <TextBox Grid.Column="1"
-                                             Name="bindingFilterText"
-                                             Text="{Binding Path=FilterText}"
-                                             HorizontalAlignment="Stretch">
-                                        <i:Interaction.Triggers>
-                                            <i:EventTrigger EventName="KeyUp">
-                                                <i:InvokeCommandAction Command="{Binding OnKeyUpFilterText,UpdateSourceTrigger=PropertyChanged}"
-                                                                       CommandParameter="{Binding ElementName=bindingFilterText}" />
-                                            </i:EventTrigger>
-                                        </i:Interaction.Triggers>
-                                    </TextBox>
-                                </Grid>
+                                    <StackPanel Margin="20 10">
+                                        <StackPanel.Resources>
+                                            <Style TargetType="StackPanel">
+                                                <Setter Property="Margin"
+                                                        Value="0 10"></Setter>
+                                            </Style>
+                                        </StackPanel.Resources>
+                                        <StackPanel>
+                                            <StackPanel.Resources>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Margin"
+                                                            Value="0"></Setter>
+                                                    <Setter Property="FontSize"
+                                                            Value="20"></Setter>
+                                                    <Setter Property="FontWeight"
+                                                            Value="Bold"></Setter>
+                                                </Style>
+                                            </StackPanel.Resources>
+                                            <TextBlock Text="Thông tin sản phẩm"></TextBlock>
+                                        </StackPanel>
+                                        <StackPanel>
+                                            <StackPanel.Resources>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Margin"
+                                                            Value="0 5"></Setter>
+                                                </Style>
+                                            </StackPanel.Resources>
 
-                                <ScrollViewer VerticalScrollBarVisibility="Auto"
-                                              HorizontalScrollBarVisibility="Auto"
-                                              MaxHeight="300">
-                                    <ListView ItemsSource="{Binding SanPhamList}" SelectedItem="{Binding SelectedSanPham}">
-                                        <ListView.View>
-                                            <GridView>
-                                              
-                                                <GridViewColumn Header="Mã SP"
-                                                                DisplayMemberBinding="{Binding CODE}"
-> 
-                                                </GridViewColumn>
-                                                <GridViewColumn Header="Tên SP"
-                                                                DisplayMemberBinding="{Binding TENSANPHAM}"></GridViewColumn>
-                                                <GridViewColumn Header="Số lượng"
-                                                                DisplayMemberBinding="{Binding SOLUONG}"></GridViewColumn>
-                                                <GridViewColumn Header="ĐVT"
-                                                                DisplayMemberBinding="{Binding DONVITINH}"></GridViewColumn>
-                                                <GridViewColumn Header="Quy cách"
-                                                                DisplayMemberBinding="{Binding QUYCACH}"></GridViewColumn>
-                                                <GridViewColumn Header="D trong"
-                                                                DisplayMemberBinding="{Binding DTRONG}"></GridViewColumn>
-                                                <GridViewColumn Header="D ngoài"
-                                                                DisplayMemberBinding="{Binding DNGOAI}"></GridViewColumn>
-                                                <GridViewColumn Header="Chiều dài (L)"
-                                                                DisplayMemberBinding="{Binding LCHIEUDAI}"></GridViewColumn>
-                                                <GridViewColumn Header="Đường kính"
-                                                                DisplayMemberBinding="{Binding PHIDUONGKINH}"></GridViewColumn>
-                                                <GridViewColumn Header="Nhà cung cấp"
-                                                                DisplayMemberBinding="{Binding NHACUNGCAP.TENNHACUNGCAP}"></GridViewColumn>
-                                                <GridViewColumn Header="Loại Sản phẩm"
-                                                                DisplayMemberBinding="{Binding LOAISANPHAM.TENLOAI}"></GridViewColumn>
-                                                <GridViewColumn Header="Ngày khởi tạo"
-                                                                DisplayMemberBinding="{Binding NGAYKHOITAO}"></GridViewColumn>
-                                            </GridView>
-                                        </ListView.View>
-                                    </ListView>
-                                </ScrollViewer>
-                            </DockPanel>
-                        </materialDesign:Card>
+                                            <DockPanel>
+                                                <DockPanel.Resources>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="Margin"
+                                                                Value="0 5"></Setter>
+                                                    </Style>
+                                                </DockPanel.Resources>
+                                                <StackPanel DockPanel.Dock="Left"
+                                                            Width="100"
+                                                            Margin="0 10 36 0">
+                                                    <TextBlock Text="Mã sản phẩm"
+                                                               FontWeight="DemiBold"></TextBlock>
+                                                    <TextBox x:Name="CODE"
+                                                             materialDesign:HintAssist.Hint="Code SP"
+                                                             materialDesign:HintAssist.HelperText="*Bắt buộc"
+                                                             Text="{Binding SelectedSanPham.CODE}">
+                                                    </TextBox>
+                                                </StackPanel>
+                                                <StackPanel  DockPanel.Dock="Right">
+                                                    <TextBlock Text="Tên phiên bản sản phẩm"
+                                                               FontWeight="DemiBold"></TextBlock>
+                                                    <TextBox materialDesign:HintAssist.Hint="Tên SP"
+                                                             materialDesign:HintAssist.HelperText="Tên sản phẩm phải lớn hơn 2 kí tự"
+                                                             Text="{Binding SelectedSanPham.TENSANPHAM}">
+                                                    </TextBox>
+                                                </StackPanel>
+                                            </DockPanel>
+                                        </StackPanel>
+                                        <StackPanel>
+
+                                            <DockPanel>
+                                                <DockPanel.Resources>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="Margin"
+                                                                Value="0 5"></Setter>
+                                                    </Style>
+                                                </DockPanel.Resources>
+                                                <Grid>
+                                                    <StackPanel Margin="0 5 30 0 "
+                                                                Width="100">
+                                                        <TextBlock Text="Loại sản phẩm"
+                                                                   FontWeight="DemiBold"></TextBlock>
+                                                        <TextBox  materialDesign:HintAssist.Hint="Loại SP"
+                                                                  Text="{Binding SelectedSanPham.LOAISANPHAM.TENLOAI}">
+                                                        </TextBox>
+                                                    </StackPanel>
+                                                </Grid>
+                                                <Grid>
+                                                    <StackPanel  Margin="0 5 20 0 "
+                                                                 Width="100">
+                                                        <TextBlock Text="Loại sản phẩm" 
+                                                                   FontWeight="DemiBold"></TextBlock>
+                                                        <TextBox  materialDesign:HintAssist.Hint="Loại SP"
+                                                                  Text="{Binding SelectedSanPham.LOAISANPHAM.TENLOAI}">
+                                                        </TextBox>
+                                                    </StackPanel>
+                                                </Grid>
+                                                <Grid>
+                                                    <StackPanel  Margin="0 5">
+                                                        <TextBlock Text="Quy cách"
+                                                                   FontWeight="DemiBold"></TextBlock>
+                                                        <TextBox materialDesign:HintAssist.Hint="Kích thước SP"
+                                                                 Text="{Binding SelectedSanPham.QUYCACH}">
+
+                                                        </TextBox>
+                                                    </StackPanel>
+                                                </Grid>
+                                            </DockPanel>
+
+                                        </StackPanel>
+                                        <DockPanel>
+                                            <Grid DockPanel.Dock="Right"
+                                                  Width="auto">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                                    <ColumnDefinition Width="0.35*"></ColumnDefinition>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Orange"
+                                                           Margin="7 0" Grid.Column="1" Text="{Binding ThongBaoImage}"></TextBlock>
+                                                <Button IsEnabled="{Binding EnaleCapNhatButton}"
+                                                       Command="{Binding CapNhatSanPham}"
+                                                        CommandParameter="{Binding ElementName=CODE}"
+                                                        Grid.Column="2"
+                                                        Opacity="0.7"
+                                                        Foreground="#fff"
+                                                        Background="#23A3FF"
+                                                        BorderBrush="Black"
+                                                        BorderThickness="0.4">
+                                                    Cập nhật
+                                                </Button>
+                                            </Grid>
+                                        </DockPanel>
+                                    </StackPanel>
+                                </materialDesign:Card>
+                            </Grid>
+                            <materialDesign:Card ToolTip="Danh sách sản phẩm"
+                                                 VerticalAlignment="Stretch">
+                                <DockPanel LastChildFill="True">
+                                    <Grid DockPanel.Dock="Top"
+                                          Margin="0 20 10 20">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.15*"></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <ComboBox  Grid.Column="0"
+                                                   materialDesign:HintAssist.Hint="Filter"
+                                                   Width="auto"
+                                                   MinWidth="72"
+                                                   Margin="16 0 16 0"
+                                                   VerticalAlignment="Bottom"
+                                                   IsEditable="True"
+                                                   ItemsSource="{Binding LoaiFilter}"
+                                                   SelectedValue="{Binding SelectedValueFilter}">
+                                            <ComboBox.Text>
+                                                <Binding  Path="SelectedTextTwo"
+                                                          Mode="TwoWay"
+                                                          UpdateSourceTrigger="PropertyChanged">
+                                                </Binding>
+                                            </ComboBox.Text>
+                                            <ComboBox.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <VirtualizingStackPanel />
+                                                </ItemsPanelTemplate>
+                                            </ComboBox.ItemsPanel>
+                                        </ComboBox>
+
+                                        <TextBox Grid.Column="1"
+                                                 Name="bindingFilterText"
+                                                 Text="{Binding Path=FilterText}"
+                                                 HorizontalAlignment="Stretch">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="KeyUp">
+                                                    <i:InvokeCommandAction Command="{Binding OnKeyUpFilterText,UpdateSourceTrigger=PropertyChanged}"
+                                                                           CommandParameter="{Binding ElementName=bindingFilterText}" />
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </TextBox>
+                                    </Grid>
+
+                                    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                                  HorizontalScrollBarVisibility="Auto"
+                                                  MaxHeight="300">
+                                        <ListView ItemsSource="{Binding SanPhamList}"
+                                                  SelectedItem="{Binding SelectedSanPham}">
+                                            <ListView.View>
+                                                <GridView>
+
+                                                    <GridViewColumn Header="Mã SP"
+                                                                    DisplayMemberBinding="{Binding CODE}">
+                                                    </GridViewColumn>
+                                                    <GridViewColumn Header="Tên SP"
+                                                                    DisplayMemberBinding="{Binding TENSANPHAM}"></GridViewColumn>
+                                                    <GridViewColumn Header="Số lượng"
+                                                                    DisplayMemberBinding="{Binding SOLUONG}"></GridViewColumn>
+                                                    <GridViewColumn Header="ĐVT"
+                                                                    DisplayMemberBinding="{Binding DONVITINH}"></GridViewColumn>
+                                                    <GridViewColumn Header="Quy cách"
+                                                                    DisplayMemberBinding="{Binding QUYCACH}"></GridViewColumn>
+                                                    <GridViewColumn Header="D trong"
+                                                                    DisplayMemberBinding="{Binding DTRONG}"></GridViewColumn>
+                                                    <GridViewColumn Header="D ngoài"
+                                                                    DisplayMemberBinding="{Binding DNGOAI}"></GridViewColumn>
+                                                    <GridViewColumn Header="Chiều dài (L)"
+                                                                    DisplayMemberBinding="{Binding LCHIEUDAI}"></GridViewColumn>
+                                                    <GridViewColumn Header="Đường kính"
+                                                                    DisplayMemberBinding="{Binding PHIDUONGKINH}"></GridViewColumn>
+                                                    <GridViewColumn Header="Nhà cung cấp"
+                                                                    DisplayMemberBinding="{Binding NHACUNGCAP.TENNHACUNGCAP}"></GridViewColumn>
+                                                    <GridViewColumn Header="Loại Sản phẩm"
+                                                                    DisplayMemberBinding="{Binding LOAISANPHAM.TENLOAI}"></GridViewColumn>
+                                                    <GridViewColumn Header="Ngày khởi tạo"
+                                                                    DisplayMemberBinding="{Binding NGAYKHOITAO}"></GridViewColumn>
+                                                </GridView>
+                                            </ListView.View>
+                                        </ListView>
+                                    </ScrollViewer>
+                                </DockPanel>
+                            </materialDesign:Card>
+                        </StackPanel>
                     </Grid>
                 </Grid>
             </Grid>

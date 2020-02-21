@@ -108,7 +108,7 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                 return true;
             }, (p) =>
             {
-                //if (!CheckSanPham()) { return; }
+                if (!CheckSanPham()) { return; }
                 if (p != null)
                 {
                     if (!AddHinhAnh()) return; ;
@@ -237,7 +237,7 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                 {
                     return true;
                 }
-                SanPhamMoi.HINHANH = item.Name;
+                SanPhamMoi.HINHANH = item.Name.Replace(".jpg", ".png");
                 item.SaveImage();
             }
             return true;

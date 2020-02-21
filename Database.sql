@@ -7,11 +7,7 @@ CREATE TABLE NHACUNGCAP(
 	MNCC VARCHAR(10) NOT NULL PRIMARY KEY,
 	TENNHACUNGCAP NVARCHAR(100) NOT NULL,
 	DIACHI NVARCHAR(100) NOT NULL,
-	SDT CHAR(50) NOT NULL CHECK (SDT like '+84[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' or 
-								SDT like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' or
-								SDT like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' or
-								SDT like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' or
-								SDT like '+84[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
+	SDT CHAR(50) NOT NULL,
 	ACTIVATE BIT NOT NULL DEFAULT 1,
 	GHICHU NVARCHAR(500) NOT NULL DEFAULT '',
 	NGAYKHOITAO DATETIME DEFAULT CURRENT_TIMESTAMP)
@@ -32,11 +28,7 @@ CREATE TABLE CHUCVU(
 CREATE TABLE KHACHHANG(
 	MKH VARCHAR(10) NOT NULL PRIMARY KEY,
 	TENKHACHHANG NVARCHAR(100) NOT NULL,
-	SDT CHAR(50) NOT NULL CHECK (SDT like '+84[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' or 
-								SDT like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' or
-								SDT like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' or
-								SDT like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' or
-								SDT like '+84[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
+	SDT CHAR(50) NOT NULL,
 	CONGTY NVARCHAR(100) NOT NULL,
 	DIACHI NVARCHAR(100) NOT NULL,
 	ACTIVATE BIT NOT NULL DEFAULT 1,
@@ -100,16 +92,9 @@ CREATE TABLE NHANVIEN(
     TENNV NVARCHAR(100) NOT NULL,
     GIOITINH BIT NOT NULL DEFAULT 0,
 	NGAYSINH DATE NOT NULL, -- yyyy/mm/dd
-    CMND VARCHAR(13) UNIQUE NOT NULL CHECK (CMND like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'
-											or CMND like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'
-											or CMND like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'
-											or CMND like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
+    CMND VARCHAR(13) UNIQUE NOT NULL,
     DIACHI NVARCHAR(100) NOT NULL,
-    SDT CHAR(50) NOT NULL CHECK (SDT like '+84[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' or 
-								SDT like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' or
-								SDT like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' or
-								SDT like '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' or
-								SDT like '+84[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
+    SDT CHAR(50) NOT NULL,
     EMAIL NVARCHAR(50),
     NGAYVAOLAM DATE NOT NULL,
     CHUCVU VARCHAR(10) NOT NULL,

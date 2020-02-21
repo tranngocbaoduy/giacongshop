@@ -24,5 +24,6 @@ namespace GiaCongThienStore.ContentChild
         {
             InitializeComponent(); 
         }
+         
     }
 }
