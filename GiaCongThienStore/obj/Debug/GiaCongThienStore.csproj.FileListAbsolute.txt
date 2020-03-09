@@ -1,4 +1,6 @@
+C:\Users\Tamaki\source\repos\GiaCongThienStore\GiaCongThienStore\obj\Debug\GiaCongThienStore.csprojAssemblyReference.cache
 C:\Users\Tamaki\source\repos\GiaCongThienStore\GiaCongThienStore\obj\Debug\ContentChild\DanhMucSanPham.g.cs
+C:\Users\Tamaki\source\repos\GiaCongThienStore\GiaCongThienStore\obj\Debug\ContentChild\LoaiSanPham.g.cs
 C:\Users\Tamaki\source\repos\GiaCongThienStore\GiaCongThienStore\obj\Debug\ContentChild\ThemSanPham.g.cs
 C:\Users\Tamaki\source\repos\GiaCongThienStore\GiaCongThienStore\obj\Debug\Content\CaNhanContent.g.cs
 C:\Users\Tamaki\source\repos\GiaCongThienStore\GiaCongThienStore\obj\Debug\Content\SanPhamContent.g.cs
@@ -31,6 +33,7 @@ C:\Users\Tamaki\source\repos\GiaCongThienStore\GiaCongThienStore\bin\Debug\Mater
 C:\Users\Tamaki\source\repos\GiaCongThienStore\GiaCongThienStore\bin\Debug\MaterialDesignThemes.Wpf.xml
 C:\Users\Tamaki\source\repos\GiaCongThienStore\GiaCongThienStore\obj\Debug\App.baml
 C:\Users\Tamaki\source\repos\GiaCongThienStore\GiaCongThienStore\obj\Debug\ContentChild\DanhMucSanPham.baml
+C:\Users\Tamaki\source\repos\GiaCongThienStore\GiaCongThienStore\obj\Debug\ContentChild\LoaiSanPham.baml
 C:\Users\Tamaki\source\repos\GiaCongThienStore\GiaCongThienStore\obj\Debug\ContentChild\ThemSanPham.baml
 C:\Users\Tamaki\source\repos\GiaCongThienStore\GiaCongThienStore\obj\Debug\Content\CaNhanContent.baml
 C:\Users\Tamaki\source\repos\GiaCongThienStore\GiaCongThienStore\obj\Debug\Content\SanPhamContent.baml

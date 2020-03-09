@@ -33,6 +33,7 @@ namespace GiaCongThienStore.Model
         public double DNGOAI { get; set; }
         public double LCHIEUDAI { get; set; }
         public double PHIDUONGKINH { get; set; }
+        public double RBANKINH { get; set; }
         public string GHICHU { get; set; }
         public string HINHANH { get; set; }
         public bool ACTIVATE { get; set; }

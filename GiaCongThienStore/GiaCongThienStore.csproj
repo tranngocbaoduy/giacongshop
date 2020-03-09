@@ -105,6 +105,9 @@
     <Compile Include="ContentChild\DanhMucSanPham.xaml.cs">
       <DependentUpon>DanhMucSanPham.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ContentChild\LoaiSanPham.xaml.cs">
+      <DependentUpon>LoaiSanPham.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ContentChild\ThemSanPham.xaml.cs">
       <DependentUpon>ThemSanPham.xaml</DependentUpon>
     </Compile>
@@ -165,6 +168,9 @@
     <Compile Include="Model\LOAISANPHAM.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\LOGHISTORY.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -206,6 +212,7 @@
     </Compile>
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ContentChild\DanhMucSanPhamVM.cs" />
+    <Compile Include="ViewModel\ContentChild\LoaiSanPhamVM.cs" />
     <Compile Include="ViewModel\ContentChild\ThemSanPhamVM.cs" />
     <Compile Include="ViewModel\Content\CaNhanContentVM.cs" />
     <Compile Include="ViewModel\Content\SanPhamContentVM.cs" />
@@ -214,6 +221,10 @@
     <Compile Include="ViewModel\MainVM.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Page Include="ContentChild\DanhMucSanPham.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ContentChild\LoaiSanPham.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -321,6 +332,11 @@
     <Resource Include="ResourceImage\SanPham\1521470576-bo-4-san-pham-trang-da-ngan-ngua-tan-nhang-melano-cc.jpg" />
     <Resource Include="ResourceImage\SanPham\default_product.png" />
     <Resource Include="ResourceImage\SanPham\order.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ResourceImage\menu.png" />
+    <Resource Include="ResourceImage\inventory.png" />
+    <Resource Include="ResourceImage\supplier.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model\Model1.Context.tt">

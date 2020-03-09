@@ -12,15 +12,20 @@
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal"
-        TextOptions.TextRenderingMode="Auto"
-        Background="{DynamicResource MaterialDesignPaper}"
+        TextOptions.TextRenderingMode="Auto" 
         FontFamily="{DynamicResource MaterialDesignFont}"
         DataContext="{StaticResource ThemSanPhamVM}"
         Height="auto"
         Width="1366"
+        Background="#DCEEFF"
         WindowStartupLocation="CenterScreen"
-        Name="DanhMucSanPhamWindow"
-        >
+        Name="DanhMucSanPhamWindow">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}" CommandParameter="{Binding ElementName=DanhMucSanPhamWindow}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid>
             <Grid.RowDefinitions>
@@ -106,7 +111,7 @@
                                    Grid.Column="1"></TextBlock>
                     </Grid>
                     <TextBlock Grid.Row="2"
-                               Text="Thêm sản phẩm mới"
+                               Text="{Binding Header}"
                                Style="{StaticResource HeadingContentChild}"></TextBlock>
 
                 </Grid>
@@ -442,7 +447,8 @@
                                             </Style>
                                         </StackPanel.Resources>
                                         <DockPanel>
-                                            <CheckBox Command="{Binding ClickComboboxThongTinSanPham}"
+                                            <CheckBox IsChecked="{Binding Checked[0]}"
+                                                Command="{Binding ClickComboboxThongTinSanPham}"
                                                       CommandParameter="0">
                                                 D trong
                                             </CheckBox>
@@ -451,7 +457,8 @@
                                                      Text="{Binding TextThongTinSanPham[0]}" />
                                         </DockPanel>
                                         <DockPanel>
-                                            <CheckBox Command="{Binding ClickComboboxThongTinSanPham}"
+                                            <CheckBox IsChecked="{Binding Checked[1]}"
+                                                Command="{Binding ClickComboboxThongTinSanPham}"
                                                       CommandParameter="1">
                                                 D ngoài
                                             </CheckBox>
@@ -468,7 +475,8 @@
                                             </Style>
                                         </StackPanel.Resources>
                                         <DockPanel>
-                                            <CheckBox Command="{Binding ClickComboboxThongTinSanPham}"
+                                            <CheckBox IsChecked="{Binding Checked[2]}"
+                                                Command="{Binding ClickComboboxThongTinSanPham}"
                                                       CommandParameter="2">
                                                 L chiều dài
                                             </CheckBox>
@@ -477,7 +485,8 @@
                                                      Text="{Binding TextThongTinSanPham[2]}" />
                                         </DockPanel>
                                         <DockPanel>
-                                            <CheckBox Command="{Binding ClickComboboxThongTinSanPham}"
+                                            <CheckBox IsChecked="{Binding Checked[3]}"
+                                                Command="{Binding ClickComboboxThongTinSanPham}"
                                                       CommandParameter="3">
                                                 ϕ đường kính
                                             </CheckBox>
@@ -665,7 +674,7 @@
                 </materialDesign:Card>
 
             </Grid>
-            
+
             <Grid Grid.Row="6">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0.04*"></ColumnDefinition>
@@ -679,9 +688,15 @@
                         HorizontalAlignment="Right"
                         Width="200"
                         Command="{Binding ClickTaoSanPhamMoi}"
-                        CommandParameter="{Binding ElementName=DanhMucSanPhamWindow}"
-                        > 
-                    Tạo Sản Phẩm Mới
+                        CommandParameter="{Binding ElementName=DanhMucSanPhamWindow}">
+                    <Grid>
+                        <TextBlock Grid.Row="2"
+                                   Text="Cập nhật"
+                                   Visibility="{Binding VisibleButtonUpdate}"></TextBlock>
+                        <TextBlock Grid.Row="2"
+                                   Text="Tạo mới"
+                                   Visibility="{Binding VisibleButtonAdd}"></TextBlock>
+                    </Grid>
                 </Button>
             </Grid>
 

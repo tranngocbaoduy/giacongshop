@@ -15,6 +15,7 @@
             TextOptions.TextRenderingMode="Auto"
             Background="{DynamicResource MaterialDesignPaper}"
             FontFamily="{DynamicResource MaterialDesignFont}" Name="SanPhamUC">
+ 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"></RowDefinition>
@@ -109,6 +110,12 @@
                 </Border>
 
                 <Border BorderBrush="#000" BorderThickness="1" Grid.Row="1" Margin="20 10">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction Command="{Binding LoaiSanPhamCommand}"
+                                                   CommandParameter="{Binding ElementName=SanPhamUC}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="0.75*"></RowDefinition>
@@ -137,10 +144,10 @@
                         </Grid.Resources>
                         <Grid  Grid.Row="0">
                             <Canvas>
-                                <Image Source="../ResourceImage/order.png"/>
+                                <Image Source="../ResourceImage/menu.png"/>
                             </Canvas>
                         </Grid>
-                        <TextBlock Grid.Row="1" Text="Danh mục sản phẩm"></TextBlock>
+                        <TextBlock Grid.Row="1" Text="Loại sản phẩm"></TextBlock>
                     </Grid>
                 </Border>
             </Grid>
@@ -151,6 +158,12 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <Border BorderBrush="#000" BorderThickness="1" Grid.Row="0" Margin="20 10">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseLeftButtonDown">
+                            <i:InvokeCommandAction Command="{Binding NhaCungCapCommand}"
+                                                   CommandParameter="{Binding ElementName=SanPhamUC}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="0.75*"></RowDefinition>
@@ -179,14 +192,14 @@
                         </Grid.Resources>
                         <Grid  Grid.Row="0">
                             <Canvas>
-                                <Image Source="../ResourceImage/order.png"/>
+                                <Image Source="../ResourceImage/supplier.png"/>
                             </Canvas>
                         </Grid>
-                        <TextBlock Grid.Row="1" Text="Danh mục sản phẩm"></TextBlock>
+                        <TextBlock Grid.Row="1" Text="Nhà cung cấp"></TextBlock>
                     </Grid>
                 </Border>
 
-                <Border BorderBrush="#000" BorderThickness="1" Grid.Row="1" Margin="20 10">
+                <Border Visibility="Collapsed" BorderBrush="#000" BorderThickness="1" Grid.Row="1" Margin="20 10">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="0.75*"></RowDefinition>

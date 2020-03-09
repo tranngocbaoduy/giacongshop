@@ -46,30 +46,30 @@ namespace GiaCongThienStore.ViewModel
             InitalMainVM();
 
             //checked login
-            //LoadedWC = new RelayCommand<Window>((p) => { return true; }, (p) =>
-            //{
-            //    // Show form login when start program
-            //    if (p != null)
-            //    {
-            //        p.Hide();
-            //        Login loginForm = new Login();
-            //        loginForm.ShowDialog();
-            //        if (loginForm.DataContext == null)
-            //        {
-            //            return;
-            //        }
-                     
-            //        if (MainVM.IsLogin)
-            //        { 
-            //            p.Show(); 
-            //        }
-            //        else
-            //        {
-            //            p.Close();
-            //        }
+            LoadedWC = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            {
+                // Show form login when start program
+                if (p != null)
+                {
+                    p.Hide();
+                    Login loginForm = new Login();
+                    loginForm.ShowDialog();
+                    if (loginForm.DataContext == null)
+                    {
+                        return;
+                    }
 
-            //    }
-            //}); 
+                    if (MainVM.IsLogin)
+                    {
+                        p.Show();
+                    }
+                    else
+                    {
+                        p.Close();
+                    }
+
+                }
+            });
 
             //ActiveContent mong muốn bằng cách sữa index
             ActiveWC = new RelayCommand<String>((index) => { return true; }, (index) =>

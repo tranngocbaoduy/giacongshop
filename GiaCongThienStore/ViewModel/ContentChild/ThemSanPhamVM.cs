@@ -21,12 +21,18 @@ namespace GiaCongThienStore.ViewModel.ContentChild
     public class ThemSanPhamVM : BaseViewModel
     {
         #region commands 
+        public ICommand LoadedWindowCommand { get; set; }
         public ICommand BackCommand { get; set; }
         public ICommand ImgUploadCommand { get; set; }
         public ICommand ClickTaoMoiNhaCungCap { get; set; }
         public ICommand ClickComboboxThongTinSanPham { get; set; }
         public ICommand ClickTaoSanPhamMoi { get; set; }
         #endregion 
+        private static bool _isUpdate = false;
+        public static bool isUpdate { get => _isUpdate; set { _isUpdate = value; } }
+
+        private static string _idUpdate = "";
+        public static string idUpdate { get => _idUpdate; set { _idUpdate = value; } }
 
         private ObservableCollection<ImageCustom> _MyImages;
         public ObservableCollection<ImageCustom> MyImages { get => _MyImages; set { _MyImages = value; OnPropertyChanged(); } }
@@ -53,15 +59,43 @@ namespace GiaCongThienStore.ViewModel.ContentChild
         private string _VisibleChonNhaCungCap = "Visible";
         public string VisibleChonNhaCungCap { get => _VisibleChonNhaCungCap; set { _VisibleChonNhaCungCap = value; OnPropertyChanged(); } }
 
+        private string _Header = "Thêm sản phẩm mới";
+        public string Header { get => _Header; set { _Header = value; OnPropertyChanged(); } }
+
+        private string _VisibleButtonAdd = "Visible";
+        public string VisibleButtonAdd { get => _VisibleButtonAdd; set { _VisibleButtonAdd = value; OnPropertyChanged(); } }
+
+        private string _VisibleButtonUpdate = "Collapsed";
+        public string VisibleButtonUpdate { get => _VisibleButtonUpdate; set { _VisibleButtonUpdate = value; OnPropertyChanged(); } }
 
         private ObservableCollection<bool> _CheckEnableThongTinSanPham;
         public ObservableCollection<bool> CheckEnableThongTinSanPham { get => _CheckEnableThongTinSanPham; set { _CheckEnableThongTinSanPham = value; OnPropertyChanged(); } }
+
+        private ObservableCollection<bool> _Checked;
+        public ObservableCollection<bool> Checked { get => _Checked; set { _Checked = value; OnPropertyChanged(); } }
 
         private ObservableCollection<string> _TextThongTinSanPham;
         public ObservableCollection<string> TextThongTinSanPham { get => _TextThongTinSanPham; set { _TextThongTinSanPham = value; OnPropertyChanged(); } }
         public ThemSanPhamVM()
         {
             Init();
+
+            LoadedWindowCommand = new RelayCommand<Window>((p) =>
+            {
+                return true;
+            }, (p) =>
+            {
+                if (ThemSanPhamVM.isUpdate)
+                {
+                    Init();
+                    InitWithId(ThemSanPhamVM.idUpdate);
+                }
+                else
+                {
+                    Init();
+                }
+            });
+
 
             BackCommand = new RelayCommand<Window>((p) =>
             {
@@ -71,6 +105,7 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                 p = p as Window;
                 if (p != null)
                 {
+                    Init();
                     p.Close();
                 }
             });
@@ -104,23 +139,57 @@ namespace GiaCongThienStore.ViewModel.ContentChild
             // Thêm mới sản phẩm
             ClickTaoSanPhamMoi = new RelayCommand<Window>((p) =>
             {
-
                 return true;
             }, (p) =>
             {
                 if (!CheckSanPham()) { return; }
-                if (p != null)
+                if (!ThemSanPhamVM.isUpdate)
                 {
-                    if (!AddHinhAnh()) return; ;
-                    if (!AddThongSoChiTietSanPham()) return; ;
-                    if (!AddNhaCungCap()) return;
+                    if (MessageBox.Show("Đồng ý tạo sản phẩm mới ?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.No)
+                    {
+                        //do no stuff
+                    }
+                    else
+                    {
+                        if (!AddHinhAnh()) return; ;
+                        if (!AddThongSoChiTietSanPham()) return; ;
+                        if (!AddNhaCungCap()) return;
 
-                    DataProvider.Ins.DB.SANPHAMs.Add(SanPhamMoi);
-                    DataProvider.Ins.DB.SaveChanges();
-                    MessageBox.Show("Tạo sản phẩm mới thành công");
-                    _CheckEnableThongTinSanPham.Clear();
-                    _TextThongTinSanPham.Clear();
-                    Init();
+                        DataProvider.Ins.DB.SANPHAMs.Add(SanPhamMoi);
+                        DataProvider.Ins.DB.SaveChanges();
+                        MessageBox.Show("Tạo sản phẩm mới thành công");
+                        _CheckEnableThongTinSanPham.Clear();
+                        _TextThongTinSanPham.Clear();
+                        Init();
+                        p.Close();
+                    }
+                }
+                else
+                {
+                    if (MessageBox.Show("Xác nhận cập nhật ?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.No)
+                    {
+                        //do no stuff
+                    }
+                    else
+                    {
+                        var spInDB = DataProvider.Ins.DB.SANPHAMs.Where(item => item.MSP == SanPhamMoi.MSP).FirstOrDefault();
+                        if (spInDB.HINHANH != MyImages[0].Name.Replace(".jpg", ".png"))
+                        {
+                            if (!AddHinhAnh()) return;
+                        }
+                        if (Update())
+                        {
+                            MessageBox.Show("Cập nhật thành công");
+                            Init();
+                            ThemSanPhamVM.idUpdate = "";
+                            ThemSanPhamVM.isUpdate = false;
+                            p.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cập nhật thất bại");
+                        }
+                    }
                 }
             });
 
@@ -152,16 +221,137 @@ namespace GiaCongThienStore.ViewModel.ContentChild
 
             });
         }
+        public bool Update()
+        {
+            var spInDB = DataProvider.Ins.DB.SANPHAMs.Where(item => item.MSP == SanPhamMoi.MSP).FirstOrDefault();
+            spInDB.HINHANH = SanPhamMoi.HINHANH;
+            spInDB.LCHIEUDAI = SanPhamMoi.LCHIEUDAI;
+            if (IsNumberHelper.IsNumeric(TextThongTinSanPham[0]))
+            {
+                spInDB.DTRONG = Convert.ToDouble(TextThongTinSanPham[0]);
+            }
+            if (IsNumberHelper.IsNumeric(TextThongTinSanPham[1]))
+            {
+                spInDB.DNGOAI = Convert.ToDouble(TextThongTinSanPham[1]);
+            }
+            if (IsNumberHelper.IsNumeric(TextThongTinSanPham[2]))
+            {
+                spInDB.LCHIEUDAI = Convert.ToDouble(TextThongTinSanPham[2]);
+            }
+            if (IsNumberHelper.IsNumeric(TextThongTinSanPham[3]))
+            {
+                spInDB.PHIDUONGKINH = Convert.ToDouble(TextThongTinSanPham[3]);
+            }
+            spInDB.TENSANPHAM = SanPhamMoi.TENSANPHAM;
+            spInDB.CODE = SanPhamMoi.CODE;
+            spInDB.DONVITINH = SanPhamMoi.DONVITINH;
+            spInDB.GHICHU = SanPhamMoi.GHICHU;
+            spInDB.MLSP = SanPhamMoi.MLSP;
+            spInDB.MNCC = SanPhamMoi.MNCC;
+            var loaiSP = DataProvider.Ins.DB.LOAISANPHAMs.Where(item => item.MLSP == SelectedLoaiSanPham.MLSP).FirstOrDefault();
+            var nhaCungCap = DataProvider.Ins.DB.NHACUNGCAPs.Where(item => item.MNCC == SelectedNhaCungCap.MNCC).FirstOrDefault();
+            spInDB.LOAISANPHAM = loaiSP;
+            spInDB.NHACUNGCAP = nhaCungCap;
+            DataProvider.Ins.DB.SaveChanges();
+            return true;
+        }
+        public bool InitWithId(string MSP)
+        {
+            ThemSanPhamVM.isUpdate = true;
+            if (ThemSanPhamVM.isUpdate)
+            {
+                VisibleButtonUpdate = "Visible";
+                VisibleButtonAdd = "Collapsed";
+                VisibleTaoMoiNhaCungCap = "Collapsed";
+                VisibleChonNhaCungCap = "Visible";
+            }
+            CheckEnableThongTinSanPham.Clear(); Checked.Clear();
+            CheckEnableThongTinSanPham = new ObservableCollection<bool>() { false, false, false, false };
+            Checked = new ObservableCollection<bool>() { false, false, false, false };
+
+            Header = "Cập nhật sản phẩm";
+            var sanPham = DataProvider.Ins.DB.SANPHAMs.Where(item => item.MSP == MSP).FirstOrDefault();
+            SanPhamMoi = sanPham;
+            if (sanPham == null)
+            {
+                return false;
+            }
+            else
+            {
+                var loaiSP = DataProvider.Ins.DB.LOAISANPHAMs.Where(item => item.MLSP == sanPham.MLSP).FirstOrDefault();
+                var nhaCungCap = DataProvider.Ins.DB.NHACUNGCAPs.Where(item => item.MNCC == sanPham.MNCC).FirstOrDefault();
+                SelectedLoaiSanPham = loaiSP;
+                SelectedNhaCungCap = nhaCungCap;
+                if (sanPham.DTRONG != 0)
+                {
+                    _Checked[0] = true;
+                    _CheckEnableThongTinSanPham[0] = true;
+                    TextThongTinSanPham[0] = sanPham.DTRONG.ToString();
+                }
+                if (sanPham.DNGOAI != 0)
+                {
+                    _Checked[1] = true;
+                    _CheckEnableThongTinSanPham[1] = true;
+                    TextThongTinSanPham[1] = sanPham.DNGOAI.ToString();
+                }
+                if (sanPham.LCHIEUDAI != 0)
+                {
+                    _Checked[2] = true;
+                    _CheckEnableThongTinSanPham[2] = true;
+                    TextThongTinSanPham[2] = sanPham.LCHIEUDAI.ToString();
+                }
+                if (sanPham.PHIDUONGKINH != 0)
+                {
+                    _Checked[3] = true;
+                    _CheckEnableThongTinSanPham[3] = true;
+                    TextThongTinSanPham[3] = sanPham.PHIDUONGKINH.ToString();
+                }
+                if (sanPham.HINHANH != @"default_product.png" && sanPham.HINHANH.Split('.').Length > 1 && sanPham.HINHANH.Split('.')[1] == "png")
+                {
+                    MyImages.Clear();
+                    // load đường dẫn lấy hình ảnh
+                    var dir = Directory.GetCurrentDirectory().Split('\\');
+                    var fullPath = "";
+                    foreach (var item in dir)
+                    {
+                        if (item != "bin")
+                        {
+                            fullPath += item + @"\";
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                    fullPath = fullPath + @"ResourceImage\SanPham\" + sanPham.HINHANH;
+                    BitmapImage image = new BitmapImage(new Uri(fullPath));
+                    MyImages.Add(new ImageCustom(fullPath, image));
+                }
+            }
+            return true;
+        }
+
 
         public void Init()
         {
+            _VisibleTaoMoiNhaCungCap = "Collapsed";
+            _VisibleChonNhaCungCap = "Visible";
+            _Header = "Thêm sản phẩm mới";
+            _VisibleButtonAdd = "Visible";
+            ThemSanPhamVM.isUpdate = false;
+            if (!ThemSanPhamVM.isUpdate)
+            {
+                VisibleButtonUpdate = "Collapsed";
+                VisibleButtonAdd = "Visible";
+            }
             _LoaiSanPham = new ObservableCollection<LOAISANPHAM>();
             _NhaCungCap = new ObservableCollection<NHACUNGCAP>();
-            if(_CheckEnableThongTinSanPham != null)
+            if (_CheckEnableThongTinSanPham != null)
             {
-                _CheckEnableThongTinSanPham.Clear();
+                _CheckEnableThongTinSanPham.Clear(); _Checked.Clear();
             }
             _CheckEnableThongTinSanPham = new ObservableCollection<bool>() { false, false, false, false };
+            _Checked = new ObservableCollection<bool>() { false, false, false, false };
             TextThongTinSanPham = new ObservableCollection<string>() { "", "", "", "" };
             _MyImages = new ObservableCollection<ImageCustom>();
             MyImages.Clear();
@@ -200,15 +390,18 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                 return false;
             }
             var isSanPham = DataProvider.Ins.DB.SANPHAMs.Select(item => item.TENSANPHAM == SanPhamMoi.TENSANPHAM || item.CODE == SanPhamMoi.CODE).FirstOrDefault();
-            if (DataProvider.Ins.DB.SANPHAMs.Select(item => item.TENSANPHAM == SanPhamMoi.TENSANPHAM || item.CODE == SanPhamMoi.CODE).FirstOrDefault())
+            if (!ThemSanPhamVM.isUpdate)
             {
-                MessageBox.Show("Tên sản phẩm đã tồn tại");
-                return false;
-            }
-            if (DataProvider.Ins.DB.SANPHAMs.Select(item => item.CODE == SanPhamMoi.CODE).FirstOrDefault())
-            {
-                MessageBox.Show("Code đã tồn tại");
-                return false;
+                if (DataProvider.Ins.DB.SANPHAMs.Select(item => item.TENSANPHAM == SanPhamMoi.TENSANPHAM || item.CODE == SanPhamMoi.CODE).FirstOrDefault())
+                {
+                    MessageBox.Show("Tên sản phẩm đã tồn tại");
+                    return false;
+                }
+                if (DataProvider.Ins.DB.SANPHAMs.Select(item => item.CODE == SanPhamMoi.CODE).FirstOrDefault())
+                {
+                    MessageBox.Show("Code đã tồn tại");
+                    return false;
+                }
             }
             if (SelectedLoaiSanPham == null || string.IsNullOrEmpty(SelectedLoaiSanPham.TENLOAI))
             {

@@ -234,6 +234,7 @@
           <ScalarProperty Name="DNGOAI" ColumnName="DNGOAI" />
           <ScalarProperty Name="LCHIEUDAI" ColumnName="LCHIEUDAI" />
           <ScalarProperty Name="PHIDUONGKINH" ColumnName="PHIDUONGKINH" />
+          <ScalarProperty Name="RBANKINH" ColumnName="RBANKINH" />
           <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
           <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
           <ScalarProperty Name="ACTIVATE" ColumnName="ACTIVATE" />
@@ -258,6 +259,15 @@
         <MappingFragment StoreEntitySet="TRANGTHAINHAPXUAT">
           <ScalarProperty Name="MTTNX" ColumnName="MTTNX" />
           <ScalarProperty Name="TENTRANGTHAI" ColumnName="TENTRANGTHAI" />
+          <ScalarProperty Name="NGAYKHOITAO" ColumnName="NGAYKHOITAO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOGHISTORies">
+      <EntityTypeMapping TypeName="GiaCongStoreModel.LOGHISTORY">
+        <MappingFragment StoreEntitySet="LOGHISTORY">
+          <ScalarProperty Name="MLOG" ColumnName="MLOG" />
+          <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
           <ScalarProperty Name="NGAYKHOITAO" ColumnName="NGAYKHOITAO" />
         </MappingFragment>
       </EntityTypeMapping>

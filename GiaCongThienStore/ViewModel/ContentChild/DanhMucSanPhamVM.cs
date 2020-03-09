@@ -1,4 +1,5 @@
-﻿using GiaCongThienStore.Database;
+﻿using GiaCongThienStore.ContentChild;
+using GiaCongThienStore.Database;
 using GiaCongThienStore.Model;
 using GiaCongThienStore.ModelCustom;
 using System;
@@ -15,6 +16,7 @@ namespace GiaCongThienStore.ViewModel.ContentChild
     public class DanhMucSanPhamVM : BaseViewModel
     {
         #region commands
+        public ICommand LoadedWindowCommand { get; set; }
         public ICommand LoadDanhMucSanPhamCommand { get; set; }
         public ICommand BackCommand { get; set; }
         public ICommand CapNhatSanPham { get; set; }
@@ -58,7 +60,7 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                 string dirImage = fullPath + @"ResourceImage\SanPham\default_product.png";
                 MyImages.Clear();
                 if (SelectedSanPham != null)
-                { 
+                {
                     EnaleCapNhatButton = true;
                     bool fileExists = File.Exists(fullPath + @"ResourceImage\SanPham\" + SelectedSanPham.HINHANH.Replace(".jpg", ".png"));
                     if (!string.IsNullOrEmpty(SelectedSanPham.HINHANH) && fileExists)
@@ -89,15 +91,23 @@ namespace GiaCongThienStore.ViewModel.ContentChild
 
         public DanhMucSanPhamVM()
         {
-            InitDanhMucSanPhamVM();
 
-            LoadDanhMucSanPhamCommand = new RelayCommand<object>((p) =>
+
+            LoadedWindowCommand = new RelayCommand<object>((p) =>
             {
                 return true;
             }, (p) =>
             {
-                Filter("");
+                InitDanhMucSanPhamVM();
             });
+
+            LoadDanhMucSanPhamCommand = new RelayCommand<object>((p) =>
+             {
+                 return true;
+             }, (p) =>
+             {
+                 Filter("");
+             });
 
             OnKeyUpFilterText = new RelayCommand<TextBox>((p) =>
             {
@@ -113,7 +123,20 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                 return true;
             }, (p) =>
             {
-                MessageBox.Show(p.Text);
+                ThemSanPham themSanPhamForm = new ThemSanPham();
+                var sanPhamVM = themSanPhamForm.DataContext as ThemSanPhamVM;
+                ThemSanPhamVM.isUpdate = true;
+                ThemSanPhamVM.idUpdate = SelectedSanPham.MSP;
+                if (sanPhamVM.InitWithId(SelectedSanPham.MSP))
+                {
+                    MessageBox.Show("OK");
+                }
+                else
+                {
+                    MessageBox.Show("No");
+                }
+                themSanPhamForm.ShowDialog(); 
+                InitDanhMucSanPhamVM();
             });
 
             XemChiTietSanPham = new RelayCommand<string>((p) =>

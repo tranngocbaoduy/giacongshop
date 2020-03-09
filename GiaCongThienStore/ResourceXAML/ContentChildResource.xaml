@@ -1,7 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:GiaCongThienStore.ResourceXAML"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
+                    xmlns:viewmodel="clr-namespace:GiaCongThienStore.ViewModel"
                     xmlns:viewmodelcontentchild="clr-namespace:GiaCongThienStore.ViewModel.ContentChild">
     <viewmodelcontentchild:DanhMucSanPhamVM x:Key="DanhMucSanPhamVM"></viewmodelcontentchild:DanhMucSanPhamVM>
     <viewmodelcontentchild:ThemSanPhamVM x:Key="ThemSanPhamVM"></viewmodelcontentchild:ThemSanPhamVM>
+    <viewmodelcontentchild:LoaiSanPhamVM x:Key="LoaiSanPhamVM"></viewmodelcontentchild:LoaiSanPhamVM>
 </ResourceDictionary>

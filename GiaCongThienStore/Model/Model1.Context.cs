@@ -46,5 +46,6 @@ namespace GiaCongThienStore.Model
         public virtual DbSet<SANPHAM> SANPHAMs { get; set; }
         public virtual DbSet<TAIKHOAN> TAIKHOANs { get; set; }
         public virtual DbSet<TRANGTHAINHAPXUAT> TRANGTHAINHAPXUATs { get; set; }
+        public virtual DbSet<LOGHISTORY> LOGHISTORies { get; set; }
     }
 }

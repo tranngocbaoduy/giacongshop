@@ -1,4 +1,5 @@
 ﻿using GiaCongThienStore.ContentChild;
+using GiaCongThienStore.ViewModel.ContentChild;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace GiaCongThienStore.ViewModel.Content
     {
         #region commands
         public ICommand DanhMucSanPhamCommand { get; set; }
+        public ICommand LoaiSanPhamCommand { get; set; }
+        public ICommand NhaCungCapCommand { get; set; }
         public ICommand ThemSanPhamCommand { get; set; }
         #endregion
 
@@ -33,6 +36,34 @@ namespace GiaCongThienStore.ViewModel.Content
                 }
             });
 
+            LoaiSanPhamCommand = new RelayCommand<UserControl>((p) => {
+                return true;
+            }, (p) =>
+            {
+                var w = Window.GetWindow(p) as Window;
+                if (w != null)
+                {
+                    w.Hide();
+                    LoaiSanPham LoaiSPForm = new LoaiSanPham();
+                    LoaiSPForm.ShowDialog();
+                    w.Show();
+                }
+            });
+            
+            NhaCungCapCommand = new RelayCommand<UserControl>((p) => {
+                return true;
+            }, (p) =>
+            {
+                var w = Window.GetWindow(p) as Window;
+                if (w != null)
+                {
+                    w.Hide();
+                    ThemSanPham DanhMucForm = new ThemSanPham();
+                    DanhMucForm.ShowDialog();
+                    w.Show();
+                }
+            });
+            
             ThemSanPhamCommand = new RelayCommand<UserControl>((p) => {
                 return true;
             }, (p) =>
@@ -42,6 +73,8 @@ namespace GiaCongThienStore.ViewModel.Content
                 {
                     w.Hide();
                     ThemSanPham DanhMucForm = new ThemSanPham();
+                    ThemSanPhamVM.idUpdate = "";
+                    ThemSanPhamVM.isUpdate = false;
                     DanhMucForm.ShowDialog();
                     w.Show();
                 }
