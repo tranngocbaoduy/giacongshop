@@ -38,6 +38,7 @@ namespace GiaCongThienStore.Model
         public virtual DbSet<KHACHHANG> KHACHHANGs { get; set; }
         public virtual DbSet<LOAIQUYTRINH> LOAIQUYTRINHs { get; set; }
         public virtual DbSet<LOAISANPHAM> LOAISANPHAMs { get; set; }
+        public virtual DbSet<LOGHISTORY> LOGHISTORies { get; set; }
         public virtual DbSet<NHACUNGCAP> NHACUNGCAPs { get; set; }
         public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
         public virtual DbSet<PHIEUNHAP> PHIEUNHAPs { get; set; }
@@ -46,6 +47,5 @@ namespace GiaCongThienStore.Model
         public virtual DbSet<SANPHAM> SANPHAMs { get; set; }
         public virtual DbSet<TAIKHOAN> TAIKHOANs { get; set; }
         public virtual DbSet<TRANGTHAINHAPXUAT> TRANGTHAINHAPXUATs { get; set; }
-        public virtual DbSet<LOGHISTORY> LOGHISTORies { get; set; }
     }
 }

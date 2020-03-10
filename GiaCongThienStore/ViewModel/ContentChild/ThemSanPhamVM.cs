@@ -78,24 +78,7 @@ namespace GiaCongThienStore.ViewModel.ContentChild
         public ObservableCollection<string> TextThongTinSanPham { get => _TextThongTinSanPham; set { _TextThongTinSanPham = value; OnPropertyChanged(); } }
         public ThemSanPhamVM()
         {
-            Init();
-
-            LoadedWindowCommand = new RelayCommand<Window>((p) =>
-            {
-                return true;
-            }, (p) =>
-            {
-                if (ThemSanPhamVM.isUpdate)
-                {
-                    Init();
-                    InitWithId(ThemSanPhamVM.idUpdate);
-                }
-                else
-                {
-                    Init();
-                }
-            });
-
+            Init();  
 
             BackCommand = new RelayCommand<Window>((p) =>
             {
@@ -153,11 +136,12 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                     {
                         if (!AddHinhAnh()) return; ;
                         if (!AddThongSoChiTietSanPham()) return; ;
-                        if (!AddNhaCungCap()) return;
-
+                        if (!AddNhaCungCap()) return; 
                         DataProvider.Ins.DB.SANPHAMs.Add(SanPhamMoi);
                         DataProvider.Ins.DB.SaveChanges();
-                        MessageBox.Show("Tạo sản phẩm mới thành công");
+                        MessageBox.Show("Tạo sản phẩm mới thành công"); 
+
+                        Helper.Helper.WriteLog("Tạo sản phẩm " + SanPhamMoi.MSP + " thành công vào lúc " + SanPhamMoi.NGAYKHOITAO, "SP") ; 
                         _CheckEnableThongTinSanPham.Clear();
                         _TextThongTinSanPham.Clear();
                         Init();
@@ -180,6 +164,7 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                         if (Update())
                         {
                             MessageBox.Show("Cập nhật thành công");
+                            Helper.Helper.WriteLog("Cập nhật sản phẩm " + SanPhamMoi.MSP + " thành công vào lúc " + SanPhamMoi.NGAYKHOITAO, "SP");
                             Init();
                             ThemSanPhamVM.idUpdate = "";
                             ThemSanPhamVM.isUpdate = false;
@@ -198,8 +183,9 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                 return true;
             }, (p) =>
             {
-                String fullPath = "";
-                MyImages.Clear();
+                String fullPath = ""; 
+                MyImages = new ObservableCollection<ImageCustom>(); 
+                _MyImages.Clear();
                 BitmapImage image;
                 OpenFileDialog op = new OpenFileDialog();
                 op.Title = "Select a picture";
@@ -212,6 +198,7 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                     fullPath = op.FileName;
                     string[] partsFileName = fullPath.Split('\\');
                     MyImages.Add(new ImageCustom(fullPath, image));
+                    MessageBox.Show(MyImages.Count.ToString());
                     //System.Windows.MessageBox.Show(delenFileName[(partsFileName.Length - 1)]);
                     //NewPatient.Image = partsFileName[(delenFileName.Length - 1)];
                 }
@@ -242,6 +229,14 @@ namespace GiaCongThienStore.ViewModel.ContentChild
             {
                 spInDB.PHIDUONGKINH = Convert.ToDouble(TextThongTinSanPham[3]);
             }
+            if (IsNumberHelper.IsNumeric(TextThongTinSanPham[4]))
+            {
+                spInDB.RBANKINH = Convert.ToDouble(TextThongTinSanPham[4]);
+            }
+            if (!string.IsNullOrEmpty(TextThongTinSanPham[5]))
+            {
+                spInDB.PBUOCREN = TextThongTinSanPham[5];
+            }
             spInDB.TENSANPHAM = SanPhamMoi.TENSANPHAM;
             spInDB.CODE = SanPhamMoi.CODE;
             spInDB.DONVITINH = SanPhamMoi.DONVITINH;
@@ -265,9 +260,13 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                 VisibleTaoMoiNhaCungCap = "Collapsed";
                 VisibleChonNhaCungCap = "Visible";
             }
-            CheckEnableThongTinSanPham.Clear(); Checked.Clear();
-            CheckEnableThongTinSanPham = new ObservableCollection<bool>() { false, false, false, false };
-            Checked = new ObservableCollection<bool>() { false, false, false, false };
+            if(CheckEnableThongTinSanPham != null && Checked!=null)
+            {
+                CheckEnableThongTinSanPham.Clear(); Checked.Clear();
+            } 
+            CheckEnableThongTinSanPham = new ObservableCollection<bool>() { false, false, false, false , false, false };
+            Checked = new ObservableCollection<bool>() { false, false, false, false, false, false };
+            TextThongTinSanPham = new ObservableCollection<string>() { "", "", "", "", "", "" };
 
             Header = "Cập nhật sản phẩm";
             var sanPham = DataProvider.Ins.DB.SANPHAMs.Where(item => item.MSP == MSP).FirstOrDefault();
@@ -306,8 +305,21 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                     _CheckEnableThongTinSanPham[3] = true;
                     TextThongTinSanPham[3] = sanPham.PHIDUONGKINH.ToString();
                 }
+                if (sanPham.RBANKINH != 0)
+                {
+                    _Checked[4] = true;
+                    _CheckEnableThongTinSanPham[4] = true;
+                    TextThongTinSanPham[4] = sanPham.RBANKINH.ToString();
+                }
+                if (!string.IsNullOrEmpty(sanPham.PBUOCREN))
+                {
+                    _Checked[5] = true;
+                    _CheckEnableThongTinSanPham[5] = true;
+                    TextThongTinSanPham[5] = sanPham.PBUOCREN.ToString();
+                }
                 if (sanPham.HINHANH != @"default_product.png" && sanPham.HINHANH.Split('.').Length > 1 && sanPham.HINHANH.Split('.')[1] == "png")
                 {
+                    MyImages = new ObservableCollection<ImageCustom>();
                     MyImages.Clear();
                     // load đường dẫn lấy hình ảnh
                     var dir = Directory.GetCurrentDirectory().Split('\\');
@@ -350,9 +362,9 @@ namespace GiaCongThienStore.ViewModel.ContentChild
             {
                 _CheckEnableThongTinSanPham.Clear(); _Checked.Clear();
             }
-            _CheckEnableThongTinSanPham = new ObservableCollection<bool>() { false, false, false, false };
-            _Checked = new ObservableCollection<bool>() { false, false, false, false };
-            TextThongTinSanPham = new ObservableCollection<string>() { "", "", "", "" };
+            _CheckEnableThongTinSanPham = new ObservableCollection<bool>() { false, false, false, false , false, false };
+            _Checked = new ObservableCollection<bool>() { false, false, false, false , false, false };
+            TextThongTinSanPham = new ObservableCollection<string>() { "", "", "", "", "", "" };
             _MyImages = new ObservableCollection<ImageCustom>();
             MyImages.Clear();
             _NhaCungCap.Clear();
@@ -490,6 +502,8 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                 MessageBox.Show("Tạo nhà cung cấp mới thành công !!");
                 DataProvider.Ins.DB.NHACUNGCAPs.Add(nc);
                 DataProvider.Ins.DB.SaveChanges();
+
+                Helper.Helper.WriteLog("Tạo nhà cung cấp " + nc.MNCC + " thành công vào lúc " + nc.NGAYKHOITAO, "NCC");
             }
             return true;
         }
@@ -520,6 +534,12 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                         else if (i == 3)
                         {
                             SanPhamMoi.PHIDUONGKINH = Convert.ToDouble(TextThongTinSanPham[i]);
+                        }else if (i == 4)
+                        {
+                            SanPhamMoi.RBANKINH = Convert.ToDouble(TextThongTinSanPham[i]);
+                        }else if (i == 5)
+                        {
+                            SanPhamMoi.PBUOCREN = TextThongTinSanPham[i];
                         }
                     }
                     else

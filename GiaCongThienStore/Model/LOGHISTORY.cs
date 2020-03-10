@@ -15,6 +15,7 @@ namespace GiaCongThienStore.Model
     public partial class LOGHISTORY
     {
         public string MLOG { get; set; }
+        public string CODE { get; set; }
         public string CONTENT { get; set; }
         public Nullable<System.DateTime> NGAYKHOITAO { get; set; }
     }

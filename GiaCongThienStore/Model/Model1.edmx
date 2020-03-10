@@ -143,13 +143,12 @@
           <Property Name="TENLOAI" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="NGAYKHOITAO" Type="datetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'GiaCongStore.dbo.LOGHISTORY' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="LOGHISTORY">
           <Key>
             <PropertyRef Name="MLOG" />
           </Key>
           <Property Name="MLOG" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="CODE" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="CONTENT" Type="nvarchar" MaxLength="1000" />
           <Property Name="NGAYKHOITAO" Type="datetime" />
         </EntityType>
@@ -238,6 +237,7 @@ warning 6002: The table/view 'GiaCongStore.dbo.LOGHISTORY' does not have a prima
           <Property Name="LCHIEUDAI" Type="float" Nullable="false" />
           <Property Name="PHIDUONGKINH" Type="float" Nullable="false" />
           <Property Name="RBANKINH" Type="float" Nullable="false" />
+          <Property Name="PBUOCREN" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="GHICHU" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="HINHANH" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="ACTIVATE" Type="bit" Nullable="false" />
@@ -624,6 +624,7 @@ warning 6002: The table/view 'GiaCongStore.dbo.LOGHISTORY' does not have a prima
           <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LOAIQUYTRINH" EntityType="Self.LOAIQUYTRINH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LOAISANPHAM" EntityType="Self.LOAISANPHAM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOGHISTORY" EntityType="Self.LOGHISTORY" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NHACUNGCAP" EntityType="Self.NHACUNGCAP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PHIEUNHAP" EntityType="Self.PHIEUNHAP" Schema="dbo" store:Type="Tables" />
@@ -632,13 +633,6 @@ warning 6002: The table/view 'GiaCongStore.dbo.LOGHISTORY' does not have a prima
           <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TAIKHOAN" EntityType="Self.TAIKHOAN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TRANGTHAINHAPXUAT" EntityType="Self.TRANGTHAINHAPXUAT" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="LOGHISTORY" EntityType="Self.LOGHISTORY" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [LOGHISTORY].[MLOG] AS [MLOG], 
-    [LOGHISTORY].[CONTENT] AS [CONTENT], 
-    [LOGHISTORY].[NGAYKHOITAO] AS [NGAYKHOITAO]
-    FROM [dbo].[LOGHISTORY] AS [LOGHISTORY]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_BANVE_KHACHHANG" Association="Self.FK_BANVE_KHACHHANG">
             <End Role="KHACHHANG" EntitySet="KHACHHANG" />
             <End Role="BANVE" EntitySet="BANVE" />
@@ -926,6 +920,15 @@ warning 6002: The table/view 'GiaCongStore.dbo.LOGHISTORY' does not have a prima
           <Property Name="NGAYKHOITAO" Type="DateTime" Precision="3" />
           <NavigationProperty Name="SANPHAMs" Relationship="Self.FK_SANPHAM_LOAISANPHAM" FromRole="LOAISANPHAM" ToRole="SANPHAM" />
         </EntityType>
+        <EntityType Name="LOGHISTORY">
+          <Key>
+            <PropertyRef Name="MLOG" />
+          </Key>
+          <Property Name="MLOG" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CONTENT" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="NGAYKHOITAO" Type="DateTime" Precision="3" />
+        </EntityType>
         <EntityType Name="NHACUNGCAP">
           <Key>
             <PropertyRef Name="MNCC" />
@@ -1033,6 +1036,7 @@ warning 6002: The table/view 'GiaCongStore.dbo.LOGHISTORY' does not have a prima
           <Property Name="LCHIEUDAI" Type="Double" Nullable="false" />
           <Property Name="PHIDUONGKINH" Type="Double" Nullable="false" />
           <Property Name="RBANKINH" Type="Double" Nullable="false" />
+          <Property Name="PBUOCREN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="GHICHU" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="HINHANH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ACTIVATE" Type="Boolean" Nullable="false" />
@@ -1065,14 +1069,6 @@ warning 6002: The table/view 'GiaCongStore.dbo.LOGHISTORY' does not have a prima
           <Property Name="NGAYKHOITAO" Type="DateTime" Precision="3" />
           <NavigationProperty Name="PHIEUNHAPs" Relationship="Self.FK_PHIEUNHAP_TRANGTHAINHAPXUAT" FromRole="TRANGTHAINHAPXUAT" ToRole="PHIEUNHAP" />
           <NavigationProperty Name="PHIEUXUATs" Relationship="Self.FK_PHIEUXUAT_TRANGTHAINHAPXUAT" FromRole="TRANGTHAINHAPXUAT" ToRole="PHIEUXUAT" />
-        </EntityType>
-        <EntityType Name="LOGHISTORY">
-          <Key>
-            <PropertyRef Name="MLOG" />
-          </Key>
-          <Property Name="MLOG" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CONTENT" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="NGAYKHOITAO" Type="DateTime" Precision="3" />
         </EntityType>
         <Association Name="FK_BANVE_KHACHHANG">
           <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="1" />
@@ -1436,6 +1432,7 @@ warning 6002: The table/view 'GiaCongStore.dbo.LOGHISTORY' does not have a prima
           <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
           <EntitySet Name="LOAIQUYTRINHs" EntityType="Self.LOAIQUYTRINH" />
           <EntitySet Name="LOAISANPHAMs" EntityType="Self.LOAISANPHAM" />
+          <EntitySet Name="LOGHISTORies" EntityType="Self.LOGHISTORY" />
           <EntitySet Name="NHACUNGCAPs" EntityType="Self.NHACUNGCAP" />
           <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
           <EntitySet Name="PHIEUNHAPs" EntityType="Self.PHIEUNHAP" />
@@ -1444,7 +1441,6 @@ warning 6002: The table/view 'GiaCongStore.dbo.LOGHISTORY' does not have a prima
           <EntitySet Name="SANPHAMs" EntityType="Self.SANPHAM" />
           <EntitySet Name="TAIKHOANs" EntityType="Self.TAIKHOAN" />
           <EntitySet Name="TRANGTHAINHAPXUATs" EntityType="Self.TRANGTHAINHAPXUAT" />
-          <EntitySet Name="LOGHISTORies" EntityType="Self.LOGHISTORY" />
           <AssociationSet Name="FK_BANVE_KHACHHANG" Association="Self.FK_BANVE_KHACHHANG">
             <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
             <End Role="BANVE" EntitySet="BANVEs" />
@@ -1713,6 +1709,16 @@ warning 6002: The table/view 'GiaCongStore.dbo.LOGHISTORY' does not have a prima
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="LOGHISTORies">
+            <EntityTypeMapping TypeName="GiaCongStoreModel.LOGHISTORY">
+              <MappingFragment StoreEntitySet="LOGHISTORY">
+                <ScalarProperty Name="MLOG" ColumnName="MLOG" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+                <ScalarProperty Name="NGAYKHOITAO" ColumnName="NGAYKHOITAO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="NHACUNGCAPs">
             <EntityTypeMapping TypeName="GiaCongStoreModel.NHACUNGCAP">
               <MappingFragment StoreEntitySet="NHACUNGCAP">
@@ -1802,6 +1808,7 @@ warning 6002: The table/view 'GiaCongStore.dbo.LOGHISTORY' does not have a prima
                 <ScalarProperty Name="LCHIEUDAI" ColumnName="LCHIEUDAI" />
                 <ScalarProperty Name="PHIDUONGKINH" ColumnName="PHIDUONGKINH" />
                 <ScalarProperty Name="RBANKINH" ColumnName="RBANKINH" />
+                <ScalarProperty Name="PBUOCREN" ColumnName="PBUOCREN" />
                 <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
                 <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
                 <ScalarProperty Name="ACTIVATE" ColumnName="ACTIVATE" />
@@ -1826,15 +1833,6 @@ warning 6002: The table/view 'GiaCongStore.dbo.LOGHISTORY' does not have a prima
               <MappingFragment StoreEntitySet="TRANGTHAINHAPXUAT">
                 <ScalarProperty Name="MTTNX" ColumnName="MTTNX" />
                 <ScalarProperty Name="TENTRANGTHAI" ColumnName="TENTRANGTHAI" />
-                <ScalarProperty Name="NGAYKHOITAO" ColumnName="NGAYKHOITAO" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LOGHISTORies">
-            <EntityTypeMapping TypeName="GiaCongStoreModel.LOGHISTORY">
-              <MappingFragment StoreEntitySet="LOGHISTORY">
-                <ScalarProperty Name="MLOG" ColumnName="MLOG" />
-                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
                 <ScalarProperty Name="NGAYKHOITAO" ColumnName="NGAYKHOITAO" />
               </MappingFragment>
             </EntityTypeMapping>

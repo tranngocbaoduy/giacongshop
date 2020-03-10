@@ -159,7 +159,7 @@
                                     </StackPanel>
                                 </ListBoxItem>
                             </ListBox>-->
-                                <ListBox ItemsSource="{Binding Path=MyImages}">
+                                <ListBox ItemsSource="{Binding MyImages}">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
@@ -465,6 +465,17 @@
                                             <TextBox  Margin="10 00"
                                                       IsEnabled="{Binding CheckEnableThongTinSanPham[1]}"
                                                       Text="{Binding TextThongTinSanPham[1]}" />
+                                        </DockPanel> 
+                                        
+                                        <DockPanel>
+                                            <CheckBox IsChecked="{Binding Checked[4]}"
+                                                Command="{Binding ClickComboboxThongTinSanPham}"
+                                                      CommandParameter="4">
+                                                R Bán kinh
+                                            </CheckBox>
+                                            <TextBox  Margin="10 00"
+                                                      IsEnabled="{Binding CheckEnableThongTinSanPham[4]}"
+                                                      Text="{Binding TextThongTinSanPham[4]}" />
                                         </DockPanel>
                                     </StackPanel>
                                     <StackPanel Grid.Column="1">
@@ -493,6 +504,17 @@
                                             <TextBox Margin="10 00"
                                                      IsEnabled="{Binding CheckEnableThongTinSanPham[3]}"
                                                      Text="{Binding TextThongTinSanPham[3]}" />
+                                        </DockPanel> 
+                                        
+                                        <DockPanel>
+                                            <CheckBox IsChecked="{Binding Checked[5]}"
+                                                Command="{Binding ClickComboboxThongTinSanPham}"
+                                                      CommandParameter="5">
+                                                P bước ren
+                                            </CheckBox>
+                                            <TextBox Margin="10 00"
+                                                     IsEnabled="{Binding CheckEnableThongTinSanPham[5]}"
+                                                     Text="{Binding TextThongTinSanPham[5]}" />
                                         </DockPanel>
                                     </StackPanel>
                                 </Grid>

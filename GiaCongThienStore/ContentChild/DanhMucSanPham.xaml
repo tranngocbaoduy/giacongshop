@@ -344,7 +344,7 @@
 
                                     <ScrollViewer VerticalScrollBarVisibility="Auto"
                                                   HorizontalScrollBarVisibility="Auto"
-                                                  MaxHeight="300">
+                                                  MaxHeight="600">
                                         <ListView ItemsSource="{Binding SanPhamList}"
                                                   SelectedItem="{Binding SelectedSanPham}">
                                             <ListView.View>
@@ -421,7 +421,7 @@
 
                         <Grid Grid.Row="0"></Grid>
                         <TextBlock Grid.Row="1"
-                                   Text="Lịch sử giao dịch"
+                                   Text="Lịch sử thao tác"
                                    Style="{StaticResource HeadingContentChild}"></TextBlock>
 
                     </Grid>
@@ -488,40 +488,18 @@
                                     </TextBox>
                                 </Grid>
 
-                                <!--<ScrollViewer VerticalScrollBarVisibility="Auto">
-                                    <ListView ItemsSource="{Binding SanPhamList}">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="300">
+                                    <ListView ItemsSource="{Binding LogHistory}">
                                         <ListView.View>
                                             <GridView>
-                                                <GridViewColumn Header="Mã SP"
-                                                                DisplayMemberBinding="{Binding CODE}"></GridViewColumn>
-                                                <GridViewColumn Header=""
-                                                                DisplayMemberBinding="{Binding HINHANH}"></GridViewColumn>
-                                                <GridViewColumn Header="Tên SP"
-                                                                DisplayMemberBinding="{Binding TENSANPHAM}"></GridViewColumn>
-                                                <GridViewColumn Header="Số lượng"
-                                                                DisplayMemberBinding="{Binding SOLUONG}"></GridViewColumn>
-                                                <GridViewColumn Header="ĐVT"
-                                                                DisplayMemberBinding="{Binding DONVITINH}"></GridViewColumn>
-                                                <GridViewColumn Header="Quy cách"
-                                                                DisplayMemberBinding="{Binding QUYCACH}"></GridViewColumn>
-                                                <GridViewColumn Header="D trong"
-                                                                DisplayMemberBinding="{Binding DTRONG}"></GridViewColumn>
-                                                <GridViewColumn Header="D ngoài"
-                                                                DisplayMemberBinding="{Binding DNGOAI}"></GridViewColumn>
-                                                <GridViewColumn Header="Chiều dài (L)"
-                                                                DisplayMemberBinding="{Binding LCHIEUDAI}"></GridViewColumn>
-                                                <GridViewColumn Header="Đường kính"
-                                                                DisplayMemberBinding="{Binding PHIDUONGKINH}"></GridViewColumn>
-                                                <GridViewColumn Header="Nhà cung cấp"
-                                                                DisplayMemberBinding="{Binding NHACUNGCAP1.TENNHACUNGCAP}"></GridViewColumn>
-                                                <GridViewColumn Header="Loại Sản phẩm"
-                                                                DisplayMemberBinding="{Binding LOAISANPHAM1.TENLOAI}"></GridViewColumn>
-                                                <GridViewColumn Header="Ngày khởi tạo"
-                                                                DisplayMemberBinding="{Binding NGAYKHOITAO}"></GridViewColumn>
+                                                <GridViewColumn Header="Mã LOG"
+                                                                DisplayMemberBinding="{Binding MLOG}"></GridViewColumn>
+                                                <GridViewColumn Header="Nội dung"
+                                                                DisplayMemberBinding="{Binding CONTENT}"></GridViewColumn>
                                             </GridView>
                                         </ListView.View>
                                     </ListView>
-                                </ScrollViewer>-->
+                                </ScrollViewer>
                             </DockPanel>
                         </materialDesign:Card>
                     </Grid>

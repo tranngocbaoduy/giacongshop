@@ -42,6 +42,9 @@ namespace GiaCongThienStore.ViewModel.ContentChild
         private ObservableCollection<SANPHAM> _SanPhamList;
         public ObservableCollection<SANPHAM> SanPhamList { get => _SanPhamList; set { _SanPhamList = value; OnPropertyChanged(); } }
 
+        private ObservableCollection<LOGHISTORY> _LogHistory;
+        public ObservableCollection<LOGHISTORY> LogHistory { get => _LogHistory; set { _LogHistory = value; OnPropertyChanged(); } }
+
         public string fullPath = "";
 
         public bool _EnaleCapNhatButton = false;
@@ -169,6 +172,7 @@ namespace GiaCongThienStore.ViewModel.ContentChild
             FilterText = "";
             MyImages = new ObservableCollection<ImageCustom>();
             SanPhamList = new ObservableCollection<SANPHAM>();
+            LogHistory = new ObservableCollection<LOGHISTORY>();
             LoaiFilter = new ObservableCollection<String>();
             LoaiFilter.Clear();
             _SanPhamList.Clear();
@@ -176,6 +180,13 @@ namespace GiaCongThienStore.ViewModel.ContentChild
             {
                 _SanPhamList.Add(item);
             }
+
+            var listLog = DataProvider.Ins.DB.LOGHISTORies.Where(i => i.CODE == "SP" || i.CODE == "NCC").ToList();
+            listLog.Reverse();
+            foreach (var item in listLog)
+            {
+                LogHistory.Add(item);
+            } 
             LoaiFilter.Add("Tên");
             LoaiFilter.Add("Mã");
             LoaiFilter.Add("Nhà cung cấp");

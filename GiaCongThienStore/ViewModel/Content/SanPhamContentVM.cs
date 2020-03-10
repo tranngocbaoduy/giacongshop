@@ -75,6 +75,9 @@ namespace GiaCongThienStore.ViewModel.Content
                     ThemSanPham DanhMucForm = new ThemSanPham();
                     ThemSanPhamVM.idUpdate = "";
                     ThemSanPhamVM.isUpdate = false;
+
+                    var sanPhamVM = DanhMucForm.DataContext as ThemSanPhamVM;
+                    sanPhamVM.Init();
                     DanhMucForm.ShowDialog();
                     w.Show();
                 }

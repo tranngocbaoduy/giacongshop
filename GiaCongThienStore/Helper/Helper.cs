@@ -1,4 +1,6 @@
-﻿using System;
+﻿using GiaCongThienStore.Database;
+using GiaCongThienStore.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,25 @@ namespace GiaCongThienStore.Helper
                 return idTable + temp + id;
             }
             return null;
+        }
+
+
+        public static bool WriteLog(string message, string code)
+        {
+            try
+            {
+                LOGHISTORY log = new LOGHISTORY();
+                log.MLOG = Helper.GetNewID("LOG", DataProvider.Ins.DB.LOGHISTORies.ToList()[DataProvider.Ins.DB.LOGHISTORies.Count() - 1].MLOG);
+                log.CODE = code;
+                log.CONTENT = message; 
+                DataProvider.Ins.DB.LOGHISTORies.Add(log);
+                DataProvider.Ins.DB.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return false;
+            } 
+            return true;
         }
     }
 }
