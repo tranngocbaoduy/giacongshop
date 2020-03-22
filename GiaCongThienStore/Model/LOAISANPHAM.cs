@@ -22,6 +22,7 @@ namespace GiaCongThienStore.Model
     
         public string MLSP { get; set; }
         public string TENLOAI { get; set; }
+        public bool ACTIVATE { get; set; }
         public Nullable<System.DateTime> NGAYKHOITAO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

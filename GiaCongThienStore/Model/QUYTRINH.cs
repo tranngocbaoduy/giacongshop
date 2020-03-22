@@ -29,6 +29,7 @@ namespace GiaCongThienStore.Model
         public string TENQUYTRINH { get; set; }
         public bool DONE { get; set; }
         public System.DateTime THOIDIEMHOANTHANH { get; set; }
+        public bool ACTIVATE { get; set; }
         public Nullable<System.DateTime> NGAYKHOITAO { get; set; }
     
         public virtual BANVE BANVE { get; set; }

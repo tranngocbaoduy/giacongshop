@@ -37,6 +37,7 @@
     <Property Name="CHIEUSAUCAT" Type="float" />
     <Property Name="CHIEUDAILAMVIEC" Type="float" />
     <Property Name="THOIGIANHOANTHANH" Type="float" />
+    <Property Name="ACTIVATE" Type="bit" Nullable="false" />
     <Property Name="NGAYKHOITAO" Type="datetime" />
   </EntityType>
   <EntityType Name="CHITIETNGUOITHAMGIABANVE">
@@ -106,6 +107,7 @@
     </Key>
     <Property Name="MCV" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="TENCHUCVU" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ACTIVATE" Type="bit" Nullable="false" />
     <Property Name="NGAYKHOITAO" Type="datetime" />
   </EntityType>
   <EntityType Name="KHACHHANG">
@@ -136,6 +138,7 @@
     </Key>
     <Property Name="MLSP" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="TENLOAI" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ACTIVATE" Type="bit" Nullable="false" />
     <Property Name="NGAYKHOITAO" Type="datetime" />
   </EntityType>
   <EntityType Name="LOGHISTORY">
@@ -215,6 +218,7 @@
     <Property Name="TENQUYTRINH" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="DONE" Type="bit" Nullable="false" />
     <Property Name="THOIDIEMHOANTHANH" Type="datetime" Nullable="false" />
+    <Property Name="ACTIVATE" Type="bit" Nullable="false" />
     <Property Name="NGAYKHOITAO" Type="datetime" />
   </EntityType>
   <EntityType Name="SANPHAM">

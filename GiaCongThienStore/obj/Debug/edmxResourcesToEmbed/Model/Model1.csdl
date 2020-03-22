@@ -43,6 +43,7 @@
     <Property Name="CHIEUSAUCAT" Type="Double" />
     <Property Name="CHIEUDAILAMVIEC" Type="Double" />
     <Property Name="THOIGIANHOANTHANH" Type="Double" />
+    <Property Name="ACTIVATE" Type="Boolean" Nullable="false" />
     <Property Name="NGAYKHOITAO" Type="DateTime" Precision="3" />
     <NavigationProperty Name="QUYTRINHs" Relationship="Self.FK_QUYTRINH_CHEDOCAT" FromRole="CHEDOCAT" ToRole="QUYTRINH" />
   </EntityType>
@@ -127,6 +128,7 @@
     </Key>
     <Property Name="MCV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="TENCHUCVU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ACTIVATE" Type="Boolean" Nullable="false" />
     <Property Name="NGAYKHOITAO" Type="DateTime" Precision="3" />
     <NavigationProperty Name="CHITIETNGUOITHAMGIABANVEs" Relationship="Self.FK_CHITIETNGUOITHAMGIABANVE_CHUCVU" FromRole="CHUCVU" ToRole="CHITIETNGUOITHAMGIABANVE" />
     <NavigationProperty Name="CHITIETNGUOITHAMGIAQUYTRINHs" Relationship="Self.FK_CHITIETNGUOITHAMGIAQUYTRINH_CHUCVU" FromRole="CHUCVU" ToRole="CHITIETNGUOITHAMGIAQUYTRINH" />
@@ -162,6 +164,7 @@
     </Key>
     <Property Name="MLSP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="TENLOAI" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ACTIVATE" Type="Boolean" Nullable="false" />
     <Property Name="NGAYKHOITAO" Type="DateTime" Precision="3" />
     <NavigationProperty Name="SANPHAMs" Relationship="Self.FK_SANPHAM_LOAISANPHAM" FromRole="LOAISANPHAM" ToRole="SANPHAM" />
   </EntityType>
@@ -258,6 +261,7 @@
     <Property Name="TENQUYTRINH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="DONE" Type="Boolean" Nullable="false" />
     <Property Name="THOIDIEMHOANTHANH" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ACTIVATE" Type="Boolean" Nullable="false" />
     <Property Name="NGAYKHOITAO" Type="DateTime" Precision="3" />
     <NavigationProperty Name="BANVE" Relationship="Self.FK_QUYTRINH_BANVE" FromRole="QUYTRINH" ToRole="BANVE" />
     <NavigationProperty Name="CHEDOCAT" Relationship="Self.FK_QUYTRINH_CHEDOCAT" FromRole="QUYTRINH" ToRole="CHEDOCAT" />

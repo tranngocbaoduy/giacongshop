@@ -141,7 +141,7 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                         DataProvider.Ins.DB.SaveChanges();
                         MessageBox.Show("Tạo sản phẩm mới thành công"); 
 
-                        Helper.Helper.WriteLog("Tạo sản phẩm " + SanPhamMoi.MSP + " thành công vào lúc " + SanPhamMoi.NGAYKHOITAO, "SP") ; 
+                        Helper.Helper.WriteLog("Tạo sản phẩm " + SanPhamMoi.MSP + " thành công vào lúc " + SanPhamMoi.NGAYKHOITAO + " bởi " + MainVM.Account.TAIKHOAN1, "SP") ; 
                         _CheckEnableThongTinSanPham.Clear();
                         _TextThongTinSanPham.Clear();
                         Init();
@@ -157,14 +157,17 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                     else
                     {
                         var spInDB = DataProvider.Ins.DB.SANPHAMs.Where(item => item.MSP == SanPhamMoi.MSP).FirstOrDefault();
-                        if (spInDB.HINHANH != MyImages[0].Name.Replace(".jpg", ".png"))
+                        if (MyImages.Count == 1 && spInDB.HINHANH != MyImages[0].Name.Replace(".jpg", ".png"))
                         {
-                            if (!AddHinhAnh()) return;
+                            if(MyImages[0].Name != spInDB.HINHANH)
+                            {
+                                if (!AddHinhAnh()) return; 
+                            }
                         }
                         if (Update())
                         {
                             MessageBox.Show("Cập nhật thành công");
-                            Helper.Helper.WriteLog("Cập nhật sản phẩm " + SanPhamMoi.MSP + " thành công vào lúc " + SanPhamMoi.NGAYKHOITAO, "SP");
+                            Helper.Helper.WriteLog("Cập nhật sản phẩm " + SanPhamMoi.MSP + " thành công vào lúc " + DateTime.UtcNow + " bởi " + MainVM.Account.TAIKHOAN1, "SP");
                             Init();
                             ThemSanPhamVM.idUpdate = "";
                             ThemSanPhamVM.isUpdate = false;
@@ -511,6 +514,7 @@ namespace GiaCongThienStore.ViewModel.ContentChild
         public bool AddThongSoChiTietSanPham()
         {
             bool isChecked = false;
+            SanPhamMoi.PBUOCREN = "";
             for (int i = 0; i < CheckEnableThongTinSanPham.Count(); i++)
             {
                 isChecked = CheckEnableThongTinSanPham.ElementAt(i);

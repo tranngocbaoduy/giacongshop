@@ -39,6 +39,7 @@
           <ScalarProperty Name="CHIEUSAUCAT" ColumnName="CHIEUSAUCAT" />
           <ScalarProperty Name="CHIEUDAILAMVIEC" ColumnName="CHIEUDAILAMVIEC" />
           <ScalarProperty Name="THOIGIANHOANTHANH" ColumnName="THOIGIANHOANTHANH" />
+          <ScalarProperty Name="ACTIVATE" ColumnName="ACTIVATE" />
           <ScalarProperty Name="NGAYKHOITAO" ColumnName="NGAYKHOITAO" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -109,6 +110,7 @@
         <MappingFragment StoreEntitySet="CHUCVU">
           <ScalarProperty Name="MCV" ColumnName="MCV" />
           <ScalarProperty Name="TENCHUCVU" ColumnName="TENCHUCVU" />
+          <ScalarProperty Name="ACTIVATE" ColumnName="ACTIVATE" />
           <ScalarProperty Name="NGAYKHOITAO" ColumnName="NGAYKHOITAO" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -142,6 +144,7 @@
         <MappingFragment StoreEntitySet="LOAISANPHAM">
           <ScalarProperty Name="MLSP" ColumnName="MLSP" />
           <ScalarProperty Name="TENLOAI" ColumnName="TENLOAI" />
+          <ScalarProperty Name="ACTIVATE" ColumnName="ACTIVATE" />
           <ScalarProperty Name="NGAYKHOITAO" ColumnName="NGAYKHOITAO" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -227,6 +230,7 @@
           <ScalarProperty Name="TENQUYTRINH" ColumnName="TENQUYTRINH" />
           <ScalarProperty Name="DONE" ColumnName="DONE" />
           <ScalarProperty Name="THOIDIEMHOANTHANH" ColumnName="THOIDIEMHOANTHANH" />
+          <ScalarProperty Name="ACTIVATE" ColumnName="ACTIVATE" />
           <ScalarProperty Name="NGAYKHOITAO" ColumnName="NGAYKHOITAO" />
         </MappingFragment>
       </EntityTypeMapping>

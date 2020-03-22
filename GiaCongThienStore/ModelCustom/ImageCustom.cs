@@ -24,8 +24,6 @@ namespace GiaCongThienStore.ModelCustom
             this.ImageSource = image; 
             var splitString = this.Path.Split('\\');
             this.Name = splitString[splitString.Length - 1];
-            this.Name = this.Name.Replace(".jpg", ".png");
-            this.Name = this.Name.Replace(".jpeg", ".png");
         }
 
         public String Name { get; set; }
@@ -34,6 +32,8 @@ namespace GiaCongThienStore.ModelCustom
 
         public void SaveImage()
         {
+            var name = this.Name.Split('.');
+            this.Name = name[0] + "_" + DateTime.UtcNow.ToBinary() + ".png";
             var dir = Directory.GetCurrentDirectory().Split('\\');
             string fullPath = "";
             foreach (var item in dir)
@@ -49,11 +49,13 @@ namespace GiaCongThienStore.ModelCustom
             } 
             this.bmp = new Bitmap(this.Path);
             string destinationPath = fullPath + @"ResourceImage\SanPham\" + this.Name;
-            this.bmp.Save(destinationPath, ImageFormat.Png); 
-            string initFile = System.IO.Path.GetFileName(this.Path); 
+            if (!Directory.Exists(destinationPath))
+            {
+                this.bmp.Save(destinationPath, ImageFormat.Png);
+                string initFile = System.IO.Path.GetFileName(this.Path);
+            } 
             File.Copy(this.Path, destinationPath, true);
 
-          
         }
     }
 }

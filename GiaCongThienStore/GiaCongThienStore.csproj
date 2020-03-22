@@ -105,6 +105,9 @@
     <Compile Include="ContentChild\DanhMucSanPham.xaml.cs">
       <DependentUpon>DanhMucSanPham.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ContentChild\KhoiPhucLoaiSanPham.xaml.cs">
+      <DependentUpon>KhoiPhucLoaiSanPham.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ContentChild\LoaiSanPham.xaml.cs">
       <DependentUpon>LoaiSanPham.xaml</DependentUpon>
     </Compile>
@@ -212,6 +215,7 @@
     </Compile>
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ContentChild\DanhMucSanPhamVM.cs" />
+    <Compile Include="ViewModel\ContentChild\KhoiPhucLoaiSanPhamVM.cs" />
     <Compile Include="ViewModel\ContentChild\LoaiSanPhamVM.cs" />
     <Compile Include="ViewModel\ContentChild\ThemSanPhamVM.cs" />
     <Compile Include="ViewModel\Content\CaNhanContentVM.cs" />
@@ -221,6 +225,10 @@
     <Compile Include="ViewModel\MainVM.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
     <Page Include="ContentChild\DanhMucSanPham.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ContentChild\KhoiPhucLoaiSanPham.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -5,4 +5,5 @@
     <viewmodelcontentchild:DanhMucSanPhamVM x:Key="DanhMucSanPhamVM"></viewmodelcontentchild:DanhMucSanPhamVM>
     <viewmodelcontentchild:ThemSanPhamVM x:Key="ThemSanPhamVM"></viewmodelcontentchild:ThemSanPhamVM>
     <viewmodelcontentchild:LoaiSanPhamVM x:Key="LoaiSanPhamVM"></viewmodelcontentchild:LoaiSanPhamVM>
+    <viewmodelcontentchild:KhoiPhucLoaiSanPhamVM x:Key="KhoiPhucLoaiSanPhamVM"></viewmodelcontentchild:KhoiPhucLoaiSanPhamVM> 
 </ResourceDictionary>

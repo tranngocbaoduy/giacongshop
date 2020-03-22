@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Tamaki\source\repos\GiaCongThienStore\GiaCongThienStore\App.xaml
-11-1713296368
+121186920324
 2-1556844510
-54-1471592760
+561366571669
 26-1853310112
-ContentChild\DanhMucSanPham.xaml;ContentChild\LoaiSanPham.xaml;ContentChild\ThemSanPham.xaml;Content\CaNhanContent.xaml;Content\SanPhamContent.xaml;Content\TongQuanContent.xaml;Login.xaml;MainWindow.xaml;ResourceXAML\ContentChildResource.xaml;ResourceXAML\MainCSS.xaml;ResourceXAML\MainResource.xaml;
+ContentChild\DanhMucSanPham.xaml;ContentChild\KhoiPhucLoaiSanPham.xaml;ContentChild\LoaiSanPham.xaml;ContentChild\ThemSanPham.xaml;Content\CaNhanContent.xaml;Content\SanPhamContent.xaml;Content\TongQuanContent.xaml;Login.xaml;MainWindow.xaml;ResourceXAML\ContentChildResource.xaml;ResourceXAML\MainCSS.xaml;ResourceXAML\MainResource.xaml;
 
 False
 

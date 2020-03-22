@@ -4,29 +4,29 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8f3f75fe932c46889b9bc0548ef4754b" Name="Diagram1">
-        <EntityTypeShape EntityType="GiaCongStoreModel.BANVE" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="GiaCongStoreModel.CALAMVIEC" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+      <Diagram DiagramId="ae25b8b5a0e141f099ddbdb319259e17" Name="Diagram1">
+        <EntityTypeShape EntityType="GiaCongStoreModel.BANVE" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.CALAMVIEC" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="GiaCongStoreModel.CHEDOCAT" Width="1.5" PointX="8.25" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="GiaCongStoreModel.CHITIETNGUOITHAMGIABANVE" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="GiaCongStoreModel.CHITIETNGUOITHAMGIAQUYTRINH" Width="1.5" PointX="6" PointY="11" IsExpanded="true" />
-        <EntityTypeShape EntityType="GiaCongStoreModel.CHITIETPHIEUNHAP" Width="1.5" PointX="13.5" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GiaCongStoreModel.CHITIETPHIEUXUAT" Width="1.5" PointX="10.5" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GiaCongStoreModel.CHITIETSANPHAMDUKIENBANVE" Width="1.5" PointX="10.5" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="GiaCongStoreModel.CHITIETSANPHAMQUYTRINH" Width="1.5" PointX="12.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.CHITIETNGUOITHAMGIABANVE" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.CHITIETNGUOITHAMGIAQUYTRINH" Width="1.5" PointX="6" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.CHITIETPHIEUNHAP" Width="1.5" PointX="13.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.CHITIETPHIEUXUAT" Width="1.5" PointX="10.5" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.CHITIETSANPHAMDUKIENBANVE" Width="1.5" PointX="10.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.CHITIETSANPHAMQUYTRINH" Width="1.5" PointX="12.75" PointY="10.125" IsExpanded="true" />
         <EntityTypeShape EntityType="GiaCongStoreModel.CHUCVU" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="GiaCongStoreModel.KHACHHANG" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="GiaCongStoreModel.LOAIQUYTRINH" Width="1.5" PointX="8.25" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.KHACHHANG" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.LOAIQUYTRINH" Width="1.5" PointX="8.25" PointY="21.125" IsExpanded="true" />
         <EntityTypeShape EntityType="GiaCongStoreModel.LOAISANPHAM" Width="1.5" PointX="6" PointY="14.875" IsExpanded="true" />
         <EntityTypeShape EntityType="GiaCongStoreModel.LOGHISTORY" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="GiaCongStoreModel.NHACUNGCAP" Width="1.5" PointX="6" PointY="17.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="GiaCongStoreModel.NHANVIEN" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.NHACUNGCAP" Width="1.5" PointX="6" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.NHANVIEN" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="GiaCongStoreModel.PHIEUNHAP" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GiaCongStoreModel.PHIEUXUAT" Width="1.5" PointX="8.25" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GiaCongStoreModel.QUYTRINH" Width="1.5" PointX="10.5" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="GiaCongStoreModel.SANPHAM" Width="1.5" PointX="8.25" PointY="14.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="GiaCongStoreModel.TAIKHOAN" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="GiaCongStoreModel.TRANGTHAINHAPXUAT" Width="1.5" PointX="6" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.SANPHAM" Width="1.5" PointX="8.25" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.TAIKHOAN" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GiaCongStoreModel.TRANGTHAINHAPXUAT" Width="1.5" PointX="6" PointY="2.25" IsExpanded="true" />
         <AssociationConnector Association="GiaCongStoreModel.FK_BANVE_KHACHHANG" ManuallyRouted="false" />
         <AssociationConnector Association="GiaCongStoreModel.FK_BANVE_NHANVIEN" ManuallyRouted="false" />
         <AssociationConnector Association="GiaCongStoreModel.FK_CHITIETNGUOITHAMGIABANVE_BANVE" ManuallyRouted="false" />
