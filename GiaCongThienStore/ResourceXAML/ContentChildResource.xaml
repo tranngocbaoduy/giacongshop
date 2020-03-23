@@ -5,5 +5,7 @@
     <viewmodelcontentchild:DanhMucSanPhamVM x:Key="DanhMucSanPhamVM"></viewmodelcontentchild:DanhMucSanPhamVM>
     <viewmodelcontentchild:ThemSanPhamVM x:Key="ThemSanPhamVM"></viewmodelcontentchild:ThemSanPhamVM>
     <viewmodelcontentchild:LoaiSanPhamVM x:Key="LoaiSanPhamVM"></viewmodelcontentchild:LoaiSanPhamVM>
-    <viewmodelcontentchild:KhoiPhucLoaiSanPhamVM x:Key="KhoiPhucLoaiSanPhamVM"></viewmodelcontentchild:KhoiPhucLoaiSanPhamVM> 
+    <viewmodelcontentchild:KhoiPhucLoaiSanPhamVM x:Key="KhoiPhucLoaiSanPhamVM"></viewmodelcontentchild:KhoiPhucLoaiSanPhamVM>
+    <viewmodelcontentchild:NhaCungCapVM x:Key="NhaCungCapVM"></viewmodelcontentchild:NhaCungCapVM>
+    <viewmodelcontentchild:KhoiPhucNhaCungCapVM x:Key="KhoiPhucNhaCungCapVM"></viewmodelcontentchild:KhoiPhucNhaCungCapVM> 
 </ResourceDictionary>

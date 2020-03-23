@@ -108,8 +108,14 @@
     <Compile Include="ContentChild\KhoiPhucLoaiSanPham.xaml.cs">
       <DependentUpon>KhoiPhucLoaiSanPham.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ContentChild\KhoiPhucNhaCungCap.xaml.cs">
+      <DependentUpon>KhoiPhucNhaCungCap.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ContentChild\LoaiSanPham.xaml.cs">
       <DependentUpon>LoaiSanPham.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ContentChild\NhaCungCap.xaml.cs">
+      <DependentUpon>NhaCungCap.xaml</DependentUpon>
     </Compile>
     <Compile Include="ContentChild\ThemSanPham.xaml.cs">
       <DependentUpon>ThemSanPham.xaml</DependentUpon>
@@ -216,7 +222,9 @@
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\ContentChild\DanhMucSanPhamVM.cs" />
     <Compile Include="ViewModel\ContentChild\KhoiPhucLoaiSanPhamVM.cs" />
+    <Compile Include="ViewModel\ContentChild\KhoiPhucNhaCungCapVM.cs" />
     <Compile Include="ViewModel\ContentChild\LoaiSanPhamVM.cs" />
+    <Compile Include="ViewModel\ContentChild\NhaCungCapVM.cs" />
     <Compile Include="ViewModel\ContentChild\ThemSanPhamVM.cs" />
     <Compile Include="ViewModel\Content\CaNhanContentVM.cs" />
     <Compile Include="ViewModel\Content\SanPhamContentVM.cs" />
@@ -232,7 +240,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ContentChild\KhoiPhucNhaCungCap.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ContentChild\LoaiSanPham.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ContentChild\NhaCungCap.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

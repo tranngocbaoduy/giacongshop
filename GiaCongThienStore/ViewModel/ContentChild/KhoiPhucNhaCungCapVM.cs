@@ -1,26 +1,23 @@
 ﻿using GiaCongThienStore.Database;
 using GiaCongThienStore.Model;
-using GiaCongThienStore.ModelCustom;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
 
 namespace GiaCongThienStore.ViewModel.ContentChild
 {
-    class KhoiPhucLoaiSanPhamVM : BaseViewModel
+    public class KhoiPhucNhaCungCapVM : BaseViewModel
     {
         #region commands
-        public ICommand LoadLoaiSanPhamCommand { get; set; }
+        public ICommand LoadDanhMucSanPhamCommand { get; set; }
         public ICommand BackCommand { get; set; }
-        public ICommand KhoiPhucLSPCommand { get; set; }
+        public ICommand KhoiPhucNCCCommand { get; set; }
         public ICommand OnKeyUpFilterText { get; set; }
         #endregion
 
@@ -37,8 +34,8 @@ namespace GiaCongThienStore.ViewModel.ContentChild
             }
         }
 
-        private ObservableCollection<LOAISANPHAM> _LoaiSanPhamList;
-        public ObservableCollection<LOAISANPHAM> LoaiSanPhamList { get => _LoaiSanPhamList; set { _LoaiSanPhamList = value; OnPropertyChanged(); } }
+        private ObservableCollection<NHACUNGCAP> _NhaCungCapList;
+        public ObservableCollection<NHACUNGCAP> NhaCungCapList { get => _NhaCungCapList; set { _NhaCungCapList = value; OnPropertyChanged(); } }
 
         public string fullPath = "";
 
@@ -48,13 +45,13 @@ namespace GiaCongThienStore.ViewModel.ContentChild
         public bool _EnableKhoiPhucButton = false;
         public bool EnableKhoiPhucButton { get => _EnableKhoiPhucButton; set { _EnableKhoiPhucButton = value; OnPropertyChanged(); } }
 
-        private LOAISANPHAM _SelectedLoaiSanPham = new LOAISANPHAM();
-        public LOAISANPHAM SelectedLoaiSanPham
+        private NHACUNGCAP _SelectedNhaCungCap = new NHACUNGCAP();
+        public NHACUNGCAP SelectedNhaCungCap
         {
-            get => _SelectedLoaiSanPham; set
+            get => _SelectedNhaCungCap; set
             {
-                _SelectedLoaiSanPham = value; OnPropertyChanged();
-                if (SelectedLoaiSanPham != null)
+                _SelectedNhaCungCap = value; OnPropertyChanged();
+                if (SelectedNhaCungCap != null)
                 {
                     EnableKhoiPhucButton = true;
                 }
@@ -68,11 +65,11 @@ namespace GiaCongThienStore.ViewModel.ContentChild
         private ObservableCollection<String> _LoaiFilter;
         public ObservableCollection<String> LoaiFilter { get => _LoaiFilter; set { _LoaiFilter = value; OnPropertyChanged(); } }
 
-        public KhoiPhucLoaiSanPhamVM()
+        public KhoiPhucNhaCungCapVM()
         {
             Init();
             CheckChucVu();
-            LoadLoaiSanPhamCommand = new RelayCommand<object>((p) =>
+            LoadDanhMucSanPhamCommand = new RelayCommand<object>((p) =>
             {
                 return true;
             }, (p) =>
@@ -88,7 +85,7 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                 Filter(p.Text);
             });
 
-            KhoiPhucLSPCommand = new RelayCommand<TextBox>((p) =>
+            KhoiPhucNCCCommand = new RelayCommand<TextBox>((p) =>
             {
                 return true;
             }, (p) =>
@@ -115,14 +112,14 @@ namespace GiaCongThienStore.ViewModel.ContentChild
         public void Init()
         {
             FilterText = "";
-            LoaiSanPhamList = new ObservableCollection<LOAISANPHAM>();
+            NhaCungCapList = new ObservableCollection<NHACUNGCAP>();
             LoaiFilter = new ObservableCollection<String>();
             LoaiFilter.Clear();
-            _LoaiSanPhamList.Clear();
-            var loaisp = DataProvider.Ins.DB.LOAISANPHAMs.Where(item => !item.ACTIVATE);
+            NhaCungCapList.Clear();
+            var loaisp = DataProvider.Ins.DB.NHACUNGCAPs.Where(item => !item.ACTIVATE);
             foreach (var item in loaisp)
             {
-                _LoaiSanPhamList.Add(item);
+                NhaCungCapList.Add(item);
             }
             LoaiFilter.Add("Tên");
             LoaiFilter.Add("Mã");
@@ -130,17 +127,17 @@ namespace GiaCongThienStore.ViewModel.ContentChild
 
         public void Filter(String query)
         {
-            _LoaiSanPhamList.Clear();
+            NhaCungCapList.Clear();
 
             if (query != null || SelectedValueFilter != null)
             {
                 FilterText = query;
                 if (query.Length == 0)
                 {
-                    var items = DataProvider.Ins.DB.LOAISANPHAMs.Where(item => !item.ACTIVATE).ToList();
+                    var items = DataProvider.Ins.DB.NHACUNGCAPs.Where(item => !item.ACTIVATE).ToList();
                     foreach (var item in items)
                     {
-                        LoaiSanPhamList.Add(item);
+                        NhaCungCapList.Add(item);
                     }
                 }
                 else
@@ -148,17 +145,17 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                     switch (SelectedValueFilter)
                     {
                         case "Tên":
-                            foreach (var item in DataProvider.Ins.DB.LOAISANPHAMs.Where(item => item.TENLOAI.ToUpper().Contains(query.ToUpper()) && !item.ACTIVATE))
+                            foreach (var item in DataProvider.Ins.DB.NHACUNGCAPs.Where(item => item.TENNHACUNGCAP.ToUpper().Contains(query.ToUpper()) && !item.ACTIVATE))
                             {
 
-                                LoaiSanPhamList.Add(item);
+                                NhaCungCapList.Add(item);
                             }
                             break;
 
                         case "Mã":
-                            foreach (var item in DataProvider.Ins.DB.LOAISANPHAMs.Where(item => item.MLSP.ToUpper().Contains(query.ToUpper()) && !item.ACTIVATE))
+                            foreach (var item in DataProvider.Ins.DB.NHACUNGCAPs.Where(item => item.MNCC.ToUpper().Contains(query.ToUpper()) && !item.ACTIVATE))
                             {
-                                LoaiSanPhamList.Add(item);
+                                NhaCungCapList.Add(item);
                             }
                             break;
 
@@ -170,10 +167,10 @@ namespace GiaCongThienStore.ViewModel.ContentChild
             }
             else
             {
-                var items = DataProvider.Ins.DB.LOAISANPHAMs.Where(item => !item.ACTIVATE).ToList();
+                var items = DataProvider.Ins.DB.NHACUNGCAPs.Where(item => !item.ACTIVATE).ToList();
                 foreach (var item in items)
                 {
-                    LoaiSanPhamList.Add(item);
+                    NhaCungCapList.Add(item);
                 }
             }
 
@@ -188,11 +185,11 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                 }
                 else
                 {
-                    var loaisp = DataProvider.Ins.DB.LOAISANPHAMs.Where(item => item.MLSP == SelectedLoaiSanPham.MLSP).ToList()[0];
-                    loaisp.ACTIVATE = true;
+                    var ncc = DataProvider.Ins.DB.NHACUNGCAPs.Where(item => item.MNCC == SelectedNhaCungCap.MNCC).ToList()[0];
+                    ncc.ACTIVATE = true;
                     DataProvider.Ins.DB.SaveChanges();
-                    Helper.Helper.WriteLog("Khôi phục loại sản phẩm " + loaisp.MLSP + " thành công vào lúc " + DateTime.UtcNow.ToString() + " bởi " + MainVM.Account.TAIKHOAN1, "LSP");
-                    MessageBox.Show("Khôi phục loại sản phẩm thành công");
+                    Helper.Helper.WriteLog("Khôi phục nhà cung cấp " + ncc.MNCC + " thành công vào lúc " + DateTime.UtcNow.ToString() + " bởi " + MainVM.Account.TAIKHOAN1, "NCC");
+                    MessageBox.Show("Khôi phục nhà cung cấp thành công");
                     Init();
                 }
             }

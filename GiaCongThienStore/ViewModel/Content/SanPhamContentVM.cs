@@ -58,8 +58,8 @@ namespace GiaCongThienStore.ViewModel.Content
                 if (w != null)
                 {
                     w.Hide();
-                    ThemSanPham DanhMucForm = new ThemSanPham();
-                    DanhMucForm.ShowDialog();
+                    NhaCungCap nccForm = new NhaCungCap();
+                    nccForm.ShowDialog();
                     w.Show();
                 }
             });
@@ -72,13 +72,13 @@ namespace GiaCongThienStore.ViewModel.Content
                 if (w != null)
                 {
                     w.Hide();
-                    ThemSanPham DanhMucForm = new ThemSanPham();
+                    ThemSanPham themSPForm = new ThemSanPham();
                     ThemSanPhamVM.idUpdate = "";
                     ThemSanPhamVM.isUpdate = false;
 
-                    var sanPhamVM = DanhMucForm.DataContext as ThemSanPhamVM;
+                    var sanPhamVM = themSPForm.DataContext as ThemSanPhamVM;
                     sanPhamVM.Init();
-                    DanhMucForm.ShowDialog();
+                    themSPForm.ShowDialog();
                     w.Show();
                 }
             });

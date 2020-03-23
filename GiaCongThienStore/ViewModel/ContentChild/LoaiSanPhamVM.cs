@@ -16,7 +16,7 @@ using System.Windows.Media.Imaging;
 
 namespace GiaCongThienStore.ViewModel.ContentChild
 {
-    class LoaiSanPhamVM : BaseViewModel
+    public class LoaiSanPhamVM : BaseViewModel
     {
         #region commands
         public ICommand LoadDanhMucSanPhamCommand { get; set; }
@@ -40,8 +40,6 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                 Filter(FilterText);
             }
         }
-        private ObservableCollection<ImageCustom> _MyImages;
-        public ObservableCollection<ImageCustom> MyImages { get => _MyImages; set { _MyImages = value; OnPropertyChanged(); } }
 
         private ObservableCollection<LOAISANPHAM> _LoaiSanPhamList;
         public ObservableCollection<LOAISANPHAM> LoaiSanPhamList { get => _LoaiSanPhamList; set { _LoaiSanPhamList = value; OnPropertyChanged(); } }
@@ -74,10 +72,7 @@ namespace GiaCongThienStore.ViewModel.ContentChild
         {
             get => _SelectedLoaiSanPham; set
             {
-                _SelectedLoaiSanPham = value; OnPropertyChanged();
-                BitmapImage image;
-                string dirImage = fullPath + @"ResourceImage\SanPham\default_product.png";
-                MyImages.Clear();
+                _SelectedLoaiSanPham = value; OnPropertyChanged(); 
                 if (SelectedLoaiSanPham != null)
                 {
                     //EnaleCapNhatButton = true;
@@ -100,9 +95,7 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                     ThongBaoImage = "";
                     EnableXoaButton = false;
                     EnableCapNhatButton = false;
-                }
-                image = new BitmapImage(new Uri(dirImage));
-                MyImages.Add(new ImageCustom(fullPath, image));
+                } 
             }
         }
 
@@ -180,8 +173,7 @@ namespace GiaCongThienStore.ViewModel.ContentChild
 
         public void Init()
         {
-            FilterText = "";
-            MyImages = new ObservableCollection<ImageCustom>();
+            FilterText = ""; 
             LoaiSanPhamList = new ObservableCollection<LOAISANPHAM>();
             LoaiFilter = new ObservableCollection<String>();
             LogHistory = new ObservableCollection<LOGHISTORY>();
@@ -228,7 +220,8 @@ namespace GiaCongThienStore.ViewModel.ContentChild
                 FilterText = query;
                 if (query.Length == 0)
                 {
-                    foreach (var item in DataProvider.Ins.DB.LOAISANPHAMs)
+                    var items = DataProvider.Ins.DB.LOAISANPHAMs.Where(item => item.ACTIVATE).ToList();
+                    foreach (var item in items)
                     {
                         LoaiSanPhamList.Add(item);
                     }
@@ -260,7 +253,8 @@ namespace GiaCongThienStore.ViewModel.ContentChild
             }
             else
             {
-                foreach (var item in DataProvider.Ins.DB.LOAISANPHAMs)
+                var items = DataProvider.Ins.DB.LOAISANPHAMs.Where(item => item.ACTIVATE).ToList();
+                foreach (var item in items)
                 {
                     LoaiSanPhamList.Add(item);
                 }
